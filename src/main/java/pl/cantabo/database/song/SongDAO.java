@@ -1,4 +1,4 @@
-package pl.cantabo.database;
+package pl.cantabo.database.song;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Entity
@@ -16,7 +14,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Table(name = "users")
-public class UserDAO extends Auditable<UUID> {
+public class SongDAO extends Auditable<UUID> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,21 +25,14 @@ public class UserDAO extends Auditable<UUID> {
     private String name;
 
     @Column(columnDefinition = "text")
-    @NotEmpty
-    private String type;
+    private String musicAuthor;
 
     @Column(columnDefinition = "text")
-    @NotEmpty
-    @Email
-    private String email;
+    private String wordsAuthor;
 
-    @Column(columnDefinition = "text")
-    private String password;
+    private long viewCounter;
 
-    private Boolean active;
+    private boolean defaultItem;
 
-    @Column(columnDefinition = "text")
-    private String token;
-
-    private ZonedDateTime tokenExpiration;
+    private UUID parentId;
 }
