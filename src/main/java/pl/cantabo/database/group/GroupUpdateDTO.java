@@ -1,4 +1,4 @@
-package pl.cantabo.database.playlist.group;
+package pl.cantabo.database.group;
 
 import lombok.Data;
 

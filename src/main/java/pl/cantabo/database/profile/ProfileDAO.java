@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import pl.cantabo.auditor.Auditable;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.UUID;
@@ -13,7 +14,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Table(name = "profiles")
-public class ProfileDAO {
+public class ProfileDAO  extends Auditable<UUID>  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
