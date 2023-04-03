@@ -1,4 +1,4 @@
-package pl.cantabo.database;
+package pl.cantabo.database.user;
 
 import jakarta.persistence.*;
 import lombok.Builder;
