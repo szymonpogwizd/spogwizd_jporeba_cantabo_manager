@@ -1,4 +1,4 @@
-package pl.cantabo.database.song;
+package pl.cantabo.database.song.songCategory;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -13,8 +13,8 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @Data
-@Table(name = "songs")
-public class SongDAO extends Auditable<UUID> {
+@Table(name = "songCategories")
+public class SongCategoryDAO extends Auditable<UUID> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,15 +24,5 @@ public class SongDAO extends Auditable<UUID> {
     @NotEmpty
     private String name;
 
-    @Column(columnDefinition = "text")
-    private String musicAuthor;
-
-    @Column(columnDefinition = "text")
-    private String wordsAuthor;
-
-    private long viewCounter;
-
     private boolean defaultItem;
-
-    private UUID parentId;
 }
