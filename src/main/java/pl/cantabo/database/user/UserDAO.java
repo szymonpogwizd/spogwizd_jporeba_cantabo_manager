@@ -8,6 +8,7 @@ import pl.cantabo.auditor.Auditable;
 import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.settings.SettingsDAO;
 import pl.cantabo.validator.email.Email;
+import pl.cantabo.validator.password.Password;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.ZonedDateTime;
@@ -38,6 +39,8 @@ public class UserDAO extends Auditable<UUID> {
     private String email;
 
     @Column(columnDefinition = "text")
+    @NotEmpty
+    @Password
     private String password;
 
     private Boolean active;
