@@ -15,14 +15,10 @@ public class UserUpdateDTO {
     private String name;
 
     @NotBlank
-    @Size(min = 1, max = 100)
-    private String type;
+    private UserType type;
 
     @Email
     private String email;
-
-    @Password
-    private String password;
 
     private Boolean active;
 }

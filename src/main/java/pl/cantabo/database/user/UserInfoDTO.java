@@ -7,7 +7,7 @@ public class UserInfoDTO {
 
     private String name;
 
-    private String type;
+    private UserType type;
 
     private String email;
 

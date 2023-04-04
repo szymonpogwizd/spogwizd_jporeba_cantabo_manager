@@ -29,9 +29,9 @@ public class UserDAO extends Auditable<UUID> {
     @NotEmpty
     private String name;
 
-    @Column(columnDefinition = "text")
     @NotEmpty
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private UserType type;
 
     @Column(columnDefinition = "text")
     @NotEmpty
