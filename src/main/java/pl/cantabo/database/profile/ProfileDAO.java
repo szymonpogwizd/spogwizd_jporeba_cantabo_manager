@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
+import pl.cantabo.database.group.GroupDAO;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.UUID;
@@ -57,4 +58,8 @@ public class ProfileDAO  extends Auditable<UUID>  {
     private boolean expandedList;
 
     private boolean defaultItem;
+
+    @ManyToOne
+    @JoinColumn(name = "groupId")
+    private GroupDAO group;
 }

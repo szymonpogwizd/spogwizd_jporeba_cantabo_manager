@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
+import pl.cantabo.database.song.SongDAO;
 
 import java.util.Calendar;
 import java.util.UUID;
@@ -21,4 +22,8 @@ public class SongHistoryDAO extends Auditable<UUID> {
     private UUID id;
 
     private Calendar scheduledDate;
+
+    @ManyToOne
+    @JoinColumn(name = "songId")
+    private SongDAO song;
 }
