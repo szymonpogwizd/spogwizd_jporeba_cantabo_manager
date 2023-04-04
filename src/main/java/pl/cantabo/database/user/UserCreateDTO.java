@@ -2,6 +2,7 @@ package pl.cantabo.database.user;
 
 import lombok.Data;
 import pl.cantabo.validator.email.Email;
+import pl.cantabo.validator.password.Password;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -20,8 +21,7 @@ public class UserCreateDTO {
     @Email
     private String email;
 
-    @NotBlank
-    @Size(min = 8, max = 100)
+    @Password
     private String password;
 
     private Boolean active;
