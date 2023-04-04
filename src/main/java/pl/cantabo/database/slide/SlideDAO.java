@@ -5,7 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
+import pl.cantabo.database.group.GroupDAO;
+import pl.cantabo.database.playlist.PlaylistDAO;
+import pl.cantabo.database.song.SongDAO;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -19,7 +23,6 @@ public class SlideDAO extends Auditable<UUID> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-
     private Integer order;
 
     @Column(columnDefinition = "text")
@@ -27,5 +30,13 @@ public class SlideDAO extends Auditable<UUID> {
 
     private boolean defaultItem;
 
+    @ManyToMany(mappedBy = "slides")
+    private Set<PlaylistDAO> playlists;
 
+    @ManyToMany(mappedBy = "slides")
+    private Set<GroupDAO> groups;
+
+    @ManyToOne
+    @JoinColumn(name = "songId")
+    private SongDAO song;
 }

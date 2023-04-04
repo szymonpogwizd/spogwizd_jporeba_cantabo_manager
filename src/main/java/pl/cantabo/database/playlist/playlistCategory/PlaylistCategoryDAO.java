@@ -5,8 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
+import pl.cantabo.database.group.GroupDAO;
+import pl.cantabo.database.playlist.PlaylistDAO;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -26,4 +29,10 @@ public class PlaylistCategoryDAO extends Auditable<UUID> {
     private String name;
 
     private boolean defaultItem;
+
+    @ManyToMany(mappedBy = "playlistCategories")
+    private Set<PlaylistDAO> playlists;
+
+    @ManyToMany(mappedBy = "playlistCategories")
+    private Set<GroupDAO> groups;
 }

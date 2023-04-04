@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
+import pl.cantabo.database.group.GroupDAO;
+import pl.cantabo.database.settings.SettingsDAO;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -44,4 +46,11 @@ public class UserDAO extends Auditable<UUID> {
     private String token;
 
     private ZonedDateTime tokenExpiration;
+
+    @ManyToOne
+    @JoinColumn(name = "groupId")
+    private GroupDAO group;
+
+    @OneToOne(mappedBy = "user")
+    private SettingsDAO settings;
 }
