@@ -1,8 +1,8 @@
 package pl.cantabo.database.user;
 
 import lombok.Data;
+import pl.cantabo.validator.email.Email;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 

@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 import pl.cantabo.auditor.Auditable;
 import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.settings.SettingsDAO;
+import pl.cantabo.validator.email.Email;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.time.ZonedDateTime;
 import java.util.UUID;
