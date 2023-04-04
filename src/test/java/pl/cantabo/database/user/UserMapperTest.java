@@ -25,7 +25,7 @@ class UserMapperTest {
     @Test
     void userDAO2UserInfoDTO() {
         // given
-        UserDAO userDAO = UserDAOFactory.defaultUser();
+        UserDAO userDAO = UserDAOFactory.defaultBuilder().build();
 
         // when
         UserInfoDTO userInfoDTO = userMapper.userDAO2UserInfoDTO(userDAO);
