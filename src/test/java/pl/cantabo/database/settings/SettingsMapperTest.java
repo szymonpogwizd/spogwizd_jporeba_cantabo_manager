@@ -4,25 +4,21 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.cantabo.database.settings.factory.SettingsDAOFactory;
-import pl.cantabo.database.user.UserMapper;
-import pl.cantabo.database.user.UserMapperImpl;
+import pl.cantabo.database.settings.factory.SettingsDTOFactory;
+import pl.cantabo.database.user.RealMapper;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-@TestConfiguration
+
 @ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = RealMapper.class)
 class SettingsMapperTest {
 
     @Autowired
     private SettingsMapper settingsMapper;
 
-    @Bean
-    public SettingsMapper settingsMapper() {
-        return new SettingsMapperImpl();
-    }
 
     @Test
     void settingsDAO2SettingsDTO() {
@@ -41,9 +37,34 @@ class SettingsMapperTest {
 
     @Test
     void settingsCreateDAO2SettingsDTO() {
+        //Given
+        SettingsCreateDTO  settingsCreateDTO = SettingsDTOFactory.defaultSettingsCreateDTO();
+
+        //when
+        SettingsDAO settingsDAO = settingsMapper.settingsCreateDAO2SettingsDTO(settingsCreateDTO);
+        //ten
+        assertNotNull(settingsDAO);
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(settingsCreateDTO.isDarkTheme()).isEqualTo(settingsDAO.isDarkTheme());
+        softly.assertThat(settingsCreateDTO.getFontSize()).isEqualTo(settingsDAO.getFontSize());
+        softly.assertAll();
     }
+
+
+
 
     @Test
     void settingsUpdateDAO2SettingsDTO() {
+        //Given
+        SettingsUpdateDTO settingsUpdateDTO = SettingsDTOFactory.defaultSettingsDTO();
+        //when
+        SettingsDAO settingsDAO = settingsMapper.settingsUpdateDAO2SettingsDTO(settingsUpdateDTO);
+        //then
+        assertNotNull(settingsDAO);
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(settingsUpdateDTO.isDarkTheme()).isEqualTo(settingsDAO.isDarkTheme());
+        softly.assertThat(settingsDAO.getFontSize()).isEqualTo(settingsDAO.getFontSize());
+        softly.assertAll();
+
     }
 }
