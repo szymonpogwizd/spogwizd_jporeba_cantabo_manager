@@ -2,7 +2,6 @@ package pl.cantabo.database.user;
 
 import lombok.Data;
 import pl.cantabo.validator.email.Email;
-import pl.cantabo.validator.password.Password;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -15,7 +14,7 @@ public class UserUpdateDTO {
     private String name;
 
     @NotBlank
-    private UserType type;
+    private UserType userType;
 
     @Email
     private String email;

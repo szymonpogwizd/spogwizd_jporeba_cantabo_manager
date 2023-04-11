@@ -34,7 +34,7 @@ class UserMapperTest {
         assertNotNull(userInfoDTO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(userDAO.getName()).isEqualTo(userInfoDTO.getName());
-        softly.assertThat(userDAO.getType()).isEqualTo(userInfoDTO.getType());
+        softly.assertThat(userDAO.getUserType()).isEqualTo(userInfoDTO.getType());
         softly.assertThat(userDAO.getEmail()).isEqualTo(userInfoDTO.getEmail());
         softly.assertThat(userDAO.getActive()).isEqualTo(userInfoDTO.getActive());
         softly.assertAll();
@@ -52,7 +52,7 @@ class UserMapperTest {
         assertNotNull(userDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(userCreateDTO.getActive()).isEqualTo(userDAO.getActive());
-        softly.assertThat(userCreateDTO.getType()).isEqualTo(userDAO.getType());
+        softly.assertThat(userCreateDTO.getUserType()).isEqualTo(userDAO.getUserType());
         softly.assertThat(userCreateDTO.getEmail()).isEqualTo(userDAO.getEmail());
         softly.assertThat(userCreateDTO.getName()).isEqualTo(userDAO.getName());
         softly.assertThat(passwordEncoder.matches(userCreateDTO.getPassword(), userDAO.getPassword())).isTrue();
@@ -71,7 +71,7 @@ class UserMapperTest {
         assertNotNull(userDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(userUpdateDTO.getActive()).isEqualTo(userDAO.getActive());
-        softly.assertThat(userUpdateDTO.getType()).isEqualTo(userDAO.getType());
+        softly.assertThat(userUpdateDTO.getUserType()).isEqualTo(userDAO.getUserType());
         softly.assertThat(userUpdateDTO.getEmail()).isEqualTo(userDAO.getEmail());
         softly.assertThat(userUpdateDTO.getName()).isEqualTo(userDAO.getName());
         softly.assertAll();

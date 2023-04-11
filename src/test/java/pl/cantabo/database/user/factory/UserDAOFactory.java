@@ -9,22 +9,25 @@ import java.util.UUID;
 
 public class UserDAOFactory {
 
-    public static final Boolean ACTIVE = true;
-    public static final String EMAIL = "test@example.com";
-    public static final UserType USER_TYPE = UserType.USER;
     public static final String NAME = "Test User";
+    public static final UserType USER_TYPE = UserType.USER;
+    public static final String EMAIL = "test@example.com";
+    public static final String PASSWORD = "Password1@";
+    public static final Boolean ACTIVE = true;
     public static final String TOKEN = UUID.randomUUID().toString();
     public static final ZonedDateTime EXPIRATION = ZonedDateTime.now().plusDays(1);
 
     public static UserDAO.UserDAOBuilder defaultBuilder() {
         return UserDAO.builder()
-                .active(ACTIVE)
-                .email(EMAIL)
-                .type(USER_TYPE)
                 .name(NAME)
+                .userType(USER_TYPE)
+                .email(EMAIL)
+                .password(PASSWORD)
+                .active(ACTIVE)
                 .token(TOKEN)
                 .tokenExpiration(EXPIRATION)
-                .id(UUID.randomUUID());
+                .group(null)
+                .settings(null);
     }
 
     public static UserDAO defaultUser() {
