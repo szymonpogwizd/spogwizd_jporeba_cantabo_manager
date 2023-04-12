@@ -23,7 +23,7 @@ public class SlideDAO extends Auditable<UUID> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private Integer order;
+    private Integer itemOrder;
 
     @Column(columnDefinition = "text")
     private String body;

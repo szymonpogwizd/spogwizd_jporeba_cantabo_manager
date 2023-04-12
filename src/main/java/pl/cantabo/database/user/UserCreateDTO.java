@@ -15,7 +15,7 @@ public class UserCreateDTO {
     private String name;
 
     @NotBlank
-    private UserType type;
+    private UserType userType;
 
     @Email
     private String email;

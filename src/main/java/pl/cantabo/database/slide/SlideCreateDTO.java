@@ -9,8 +9,7 @@ import javax.validation.constraints.Size;
 public class SlideCreateDTO {
 
     @NotBlank
-    private Integer order;
-
+    private Integer itemOrder;
 
     @NotBlank
     @Size(min = 1, max = 5000)
