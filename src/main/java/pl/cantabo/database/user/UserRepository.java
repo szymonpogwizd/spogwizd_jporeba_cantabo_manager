@@ -10,8 +10,8 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<UserDAO, UUID> {
 
-    List<UserDAO> findByUserType(UserType userType);
+    List<UserDAO> findUserByUserType(UserType userType);
 
-//    @Query("SELECT u FROM UserDAO u WHERE u.name = :fragment OR u.email = :fragment")
-//    List<UserDAO> findByUserNameOrEmail(String fragment);
+    @Query("SELECT u FROM UserDAO u WHERE u.name LIKE %:fragment% OR u.email LIKE %:fragment%")
+    List<UserDAO> findUserByUserNameOrEmail(String fragment);
 }
