@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.user.factory.UserDAOFactory;
 
 import java.util.List;
@@ -66,6 +67,21 @@ class UserRepositoryTest {
 
         // then
         assertFalse(deletedUserDAO.isPresent());
+    }
+
+    @Test
+    public void findAllUserTest() {
+        // given
+        UserDAO userDAO = UserDAOFactory.defaultBuilder().build();
+        UserDAO userDAO2 = UserDAOFactory.defaultBuilder().build();
+
+        // when
+        userRepository.saveAndFlush(userDAO);
+        userRepository.saveAndFlush(userDAO2);
+        List<UserDAO> userDAOList = userRepository.findAll();
+
+        // then
+        assertEquals(2, userDAOList.size());
     }
 
     @Test

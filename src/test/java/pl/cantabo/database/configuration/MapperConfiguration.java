@@ -1,13 +1,15 @@
-package pl.cantabo.database.user;
+package pl.cantabo.database.configuration;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.cantabo.database.user.UserMapper;
+import pl.cantabo.database.user.UserMapperImpl;
 import pl.cantabo.utils.password.PasswordEncoderMapper;
 
 @TestConfiguration
-public class RealMapper {
+public class MapperConfiguration {
 
     @Bean
     public PasswordEncoder passwordEncoder() {

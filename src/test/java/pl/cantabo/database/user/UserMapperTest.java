@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.user.factory.UserDAOFactory;
 import pl.cantabo.database.user.factory.UserDTOFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = RealMapper.class)
+@ContextConfiguration(classes = MapperConfiguration.class)
 class UserMapperTest {
 
     @Autowired
