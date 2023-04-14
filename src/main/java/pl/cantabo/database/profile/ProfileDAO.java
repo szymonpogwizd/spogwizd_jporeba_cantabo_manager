@@ -25,7 +25,7 @@ public class ProfileDAO  extends Auditable<UUID>  {
     @NotEmpty
     private String name;
 
-    private Boolean active;
+    private boolean active;
 
     private boolean sortByUsed;
 
