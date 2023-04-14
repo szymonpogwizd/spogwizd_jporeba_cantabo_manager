@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import pl.cantabo.database.song.SongDAO;
-import pl.cantabo.database.song.SongRepository;
-import pl.cantabo.database.song.factory.SongDAOFactory;
 import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
 
 import java.util.List;
@@ -22,13 +19,9 @@ class SongCategoryRepositoryTest {
     @Autowired
     private SongCategoryRepository songCategoryRepository;
 
-    @Autowired
-    private SongRepository songRepository;
-
     @BeforeEach
     public void setUp() {
         songCategoryRepository.deleteAll();
-        songRepository.deleteAll();
     }
 
     @Test
