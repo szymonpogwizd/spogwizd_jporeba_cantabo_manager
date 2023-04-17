@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.cantabo.database.song.SongMapper;
 import pl.cantabo.database.song.SongMapperImpl;
+import pl.cantabo.database.song.songCategory.SongCategoryMapper;
+import pl.cantabo.database.song.songCategory.SongCategoryMapperImpl;
 import pl.cantabo.database.user.UserMapper;
 import pl.cantabo.database.user.UserMapperImpl;
 import pl.cantabo.utils.password.PasswordEncoderMapper;
@@ -31,5 +33,10 @@ public class MapperConfiguration {
     @Bean
     public SongMapper songMapper() {
         return new SongMapperImpl();
+    }
+
+    @Bean
+    public SongCategoryMapper songCategoryMapper() {
+        return new SongCategoryMapperImpl();
     }
 }
