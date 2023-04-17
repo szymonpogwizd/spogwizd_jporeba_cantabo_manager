@@ -35,7 +35,7 @@ class UserMapperTest {
         assertNotNull(userInfoDTO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(userDAO.getName()).isEqualTo(userInfoDTO.getName());
-        softly.assertThat(userDAO.getUserType()).isEqualTo(userInfoDTO.getType());
+        softly.assertThat(userDAO.getUserType()).isEqualTo(userInfoDTO.getUserType());
         softly.assertThat(userDAO.getEmail()).isEqualTo(userInfoDTO.getEmail());
         softly.assertThat(userDAO.getActive()).isEqualTo(userInfoDTO.getActive());
         softly.assertAll();
