@@ -95,9 +95,9 @@ class UserRepositoryTest {
         userRepository.save(user3);
 
         // when
-        List<UserDAO> userUser1 = userRepository.findUserByUserNameOrEmail("user1");
-        List<UserDAO> userExam = userRepository.findUserByUserNameOrEmail("exam");
-        List<UserDAO> userCom = userRepository.findUserByUserNameOrEmail("com");
+        List<UserDAO> userUser1 = userRepository.findByUserNameOrEmail("user1");
+        List<UserDAO> userExam = userRepository.findByUserNameOrEmail("exam");
+        List<UserDAO> userCom = userRepository.findByUserNameOrEmail("com");
 
         // then
         assertEquals(1, userUser1.size());
@@ -117,8 +117,8 @@ class UserRepositoryTest {
         userRepository.save(admin);
 
         // when
-        List<UserDAO> userTypeUser = userRepository.findUserByUserType(UserType.USER);
-        List<UserDAO> userTypeAdministrator = userRepository.findUserByUserType(UserType.ADMINISTRATOR);
+        List<UserDAO> userTypeUser = userRepository.findByUserType(UserType.USER);
+        List<UserDAO> userTypeAdministrator = userRepository.findByUserType(UserType.ADMINISTRATOR);
 
         // then
         assertEquals(2, userTypeUser.size());
@@ -126,5 +126,22 @@ class UserRepositoryTest {
         assertTrue(userTypeUser.contains(user1));
         assertTrue(userTypeUser.contains(user2));
         assertTrue(userTypeAdministrator.contains(admin));
+    }
+
+    @Test
+    public void findUserByEmailTest() {
+        // given
+        UserDAO user1 = UserDAOFactory.defaultBuilder().email("user1@example.com").build();
+        UserDAO user2 = UserDAOFactory.defaultBuilder().email("user2@example.com").build();
+
+        userRepository.save(user1);
+        userRepository.save(user2);
+
+        // when
+        Optional<UserDAO> userDAO = userRepository.findByEmail("user2@example.com");
+
+        // then
+        assertTrue(userDAO.isPresent());
+        assertEquals(user2.getEmail(), userDAO.get().getEmail());
     }
 }
