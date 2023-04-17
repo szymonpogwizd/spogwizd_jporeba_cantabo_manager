@@ -5,16 +5,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserDAO, UUID> {
 
-    List<UserDAO> findByUserType(UserType userType);
-
-    Optional<UserDAO> findByEmail(String email);
+    List<UserDAO> findUserByUserType(UserType userType);
 
     @Query("SELECT u FROM UserDAO u WHERE u.name LIKE %:fragment% OR u.email LIKE %:fragment%")
-    List<UserDAO> findByUserNameOrEmail(String fragment);
+    List<UserDAO> findUserByUserNameOrEmail(String fragment);
 }
