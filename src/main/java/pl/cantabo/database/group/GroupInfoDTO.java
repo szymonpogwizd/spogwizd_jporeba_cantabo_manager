@@ -6,5 +6,6 @@ import lombok.Data;
 public class GroupInfoDTO {
 
     private String name;
+    private Boolean DefaultItem;
 
 }
