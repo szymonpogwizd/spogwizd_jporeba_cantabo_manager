@@ -9,6 +9,7 @@ import pl.cantabo.database.group.GroupMapper;
 import pl.cantabo.database.group.GroupMapperImpl;
 import pl.cantabo.database.playlist.*;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryMapper;
+import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryMapperImpl;
 import pl.cantabo.database.profile.ProfileMapper;
 import pl.cantabo.database.profile.ProfileMapperImpl;
 import pl.cantabo.database.slide.*;
