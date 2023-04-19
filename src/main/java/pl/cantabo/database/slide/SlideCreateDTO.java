@@ -16,6 +16,4 @@ public class SlideCreateDTO {
     private String body;
 
     private Boolean defaultItem;
-
-
 }

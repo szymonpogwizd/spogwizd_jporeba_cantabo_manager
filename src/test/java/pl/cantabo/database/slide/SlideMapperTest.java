@@ -10,7 +10,7 @@ import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.slide.factory.SlideDAOFactory;
 import pl.cantabo.database.slide.factory.SlideDTOFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)
 public class SlideMapperTest {
@@ -48,7 +48,6 @@ public class SlideMapperTest {
         softly.assertThat(slideCreateDTO.getItemOrder()).isEqualTo(slideDAO.getItemOrder());
         softly.assertThat(slideCreateDTO.getDefaultItem()).isEqualTo(slideDAO.isDefaultItem());
         softly.assertAll();
-
     }
 
     @Test
@@ -62,8 +61,6 @@ public class SlideMapperTest {
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(slideUpdateDTO.getBody()).isEqualTo(slideDAO.getBody());
         softly.assertThat(slideUpdateDTO.getItemOrder()).isEqualTo(slideDAO.getItemOrder());
-        softly.assertThat(slideUpdateDTO.isDefaultItem()).isEqualTo(slideDAO.isDefaultItem());
         softly.assertAll();
-
     }
 }

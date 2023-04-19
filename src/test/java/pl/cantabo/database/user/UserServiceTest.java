@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pl.cantabo.database.user.factory.UserDAOFactory;
+import pl.cantabo.model.UserService;
 import pl.cantabo.utils.exception.EntityExistsException;
 
 import java.util.List;

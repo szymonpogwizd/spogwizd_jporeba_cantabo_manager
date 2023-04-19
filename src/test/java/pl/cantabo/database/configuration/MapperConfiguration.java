@@ -67,9 +67,17 @@ public class MapperConfiguration {
     }
 
     @Bean
-    public SlideMapper slideMapper() {return new SlideMapperImpl();}
+    public SlideMapper slideMapper() {
+        return new SlideMapperImpl();
+    }
 
     @Bean
-    public PlaylistCategoryMapper playlistCategoryMapper() {return  new SlideMapperImpl();}
+    public PlaylistMapper playlistMapper() {
+        return new PlaylistMapperImpl();
+    }
 
+    @Bean
+    public PlaylistCategoryMapper playlistCategoryMapper() {
+        return new PlaylistCategoryMapperImpl();
+    }
 }

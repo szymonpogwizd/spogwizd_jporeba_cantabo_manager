@@ -6,7 +6,7 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(
         componentModel = "spring",
-        unmappedSourcePolicy =  ReportingPolicy.IGNORE;
+        unmappedSourcePolicy = ReportingPolicy.IGNORE
 )
 public interface SlideMapper {
 

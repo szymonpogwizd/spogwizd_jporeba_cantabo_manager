@@ -10,7 +10,7 @@ import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.playlist.playlistCategory.factory.PlaylistCategoryDAOFactory;
 import pl.cantabo.database.playlist.playlistCategory.factory.PlaylistCategoryDTOFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)
 public class PlaylistCategoryMapperTest{
@@ -35,7 +35,7 @@ public class PlaylistCategoryMapperTest{
         //given
         PlaylistCategoryCreateDTO playlistCategoryCreateDTO = PlaylistCategoryDTOFactory.defaultPlaylistCategoryCreateDTO();
         //when
-        PlaylistCategoryDAO playlistCategoryDAO = playlistCategoryMapper.playlistCategoryCreateDTO2PlaylistCategoryDAO(new PlaylistCategoryCreateDTO);
+        PlaylistCategoryDAO playlistCategoryDAO = playlistCategoryMapper.playlistCategoryCreateDTO2PlaylistCategoryDAO(playlistCategoryCreateDTO);
         //then
         assertNotNull(playlistCategoryDAO);
         SoftAssertions softly = new SoftAssertions();

@@ -1,8 +1,10 @@
-package pl.cantabo.database.song;
+package pl.cantabo.model;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import pl.cantabo.database.song.SongDAO;
+import pl.cantabo.database.song.SongRepository;
 
 import java.util.List;
 import java.util.UUID;
