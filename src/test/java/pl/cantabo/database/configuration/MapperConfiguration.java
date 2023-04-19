@@ -5,6 +5,8 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.cantabo.database.group.GroupMapper;
+import pl.cantabo.database.group.GroupMapperImpl;
 import pl.cantabo.database.profile.ProfileMapper;
 import pl.cantabo.database.profile.ProfileMapperImpl;
 import pl.cantabo.database.song.SongMapper;
@@ -16,6 +18,7 @@ import pl.cantabo.database.settings.SettingsMapperImpl;
 import pl.cantabo.database.user.UserMapper;
 import pl.cantabo.database.user.UserMapperImpl;
 import pl.cantabo.utils.password.PasswordEncoderMapper;
+
 
 @TestConfiguration
 public class MapperConfiguration {
@@ -51,7 +54,11 @@ public class MapperConfiguration {
     }
 
     @Bean
-    public SettingsMapper settignsMapper() {
+    public SettingsMapper settingsMapper() {
         return new SettingsMapperImpl();
     }
+
+   @Bean
+    public GroupMapper groupMapper() {return new GroupMapperImpl();}
+   }
 }

@@ -6,14 +6,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.settings.factory.SettingsDAOFactory;
 import pl.cantabo.database.settings.factory.SettingsDTOFactory;
-import pl.cantabo.database.user.RealMapper;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = RealMapper.class)
+@ContextConfiguration(classes = MapperConfiguration.class)
 class SettingsMapperTest {
 
     @Autowired
