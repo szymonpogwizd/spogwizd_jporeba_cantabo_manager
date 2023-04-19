@@ -15,4 +15,7 @@ public class SlideCreateDTO {
     @Size(min = 1, max = 5000)
     private String body;
 
+    private Boolean defaultItem;
+
+
 }

@@ -6,4 +6,8 @@ import lombok.Data;
 public class SlideInfoDTO {
 
     private String body;
+
+    private boolean defaultItem;
+
+    private Integer itemOrder;
 }
