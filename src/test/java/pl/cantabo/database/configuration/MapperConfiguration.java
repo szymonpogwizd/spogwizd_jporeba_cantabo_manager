@@ -9,6 +9,7 @@ import pl.cantabo.database.group.GroupMapper;
 import pl.cantabo.database.group.GroupMapperImpl;
 import pl.cantabo.database.profile.ProfileMapper;
 import pl.cantabo.database.profile.ProfileMapperImpl;
+import pl.cantabo.database.slide.SlideMapper;
 import pl.cantabo.database.song.SongMapper;
 import pl.cantabo.database.song.SongMapperImpl;
 import pl.cantabo.database.song.songCategory.SongCategoryMapper;
@@ -60,5 +61,8 @@ public class MapperConfiguration {
 
    @Bean
     public GroupMapper groupMapper() {return new GroupMapperImpl();}
+
+    @Bean
+    public SlideMapper slideMapper() {return new SlideMapperImpl();}
    }
-}
+
