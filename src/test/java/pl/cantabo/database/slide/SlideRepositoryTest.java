@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.cantabo.database.slide.factory.SlideDAOFactory;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 @Transactional
 public class SlideRepositoryTest {
@@ -21,7 +24,7 @@ public class SlideRepositoryTest {
     }
 
     @Test
-    public void saveSlideTest(){
+    public void saveSlideTest() {
         //givem
         SlideDAO slideDAO = SlideDAOFactory.defaultBiulder().build();
         //when
@@ -30,8 +33,9 @@ public class SlideRepositoryTest {
         assertNotNull(savedSlideDAO.getId());
         assertEquals(slideDAO, savedSlideDAO);
     }
+
     @Test
-    public  void updateSlideTest(){
+    public void updateSlideTest() {
         //given
         SlideDAO slideDAO = SlideDAOFactory.defaultBiulder().build();
         //when
@@ -39,11 +43,13 @@ public class SlideRepositoryTest {
         slideDAO.setBody("newBody");
         SlideDAO savedSlideDAO = slideRepository.saveAndFlush(slideDAO);
         //then
-        assertEquals(savedSlideDAO);
+        assertNotNull(savedSlideDAO);
         assertEquals(slideDAO.getId(), savedSlideDAO.getId());
         assertEquals("newBody", savedSlideDAO.getBody());
     }
-    @Test public void findSlideTest(){
+
+    @Test
+    public void findSlideTest() {
         //given
         SlideDAO slideDAO1 = SlideDAOFactory.defaultBiulder().build();
         SlideDAO slideDAO2 = SlideDAOFactory.defaultBiulder().build();

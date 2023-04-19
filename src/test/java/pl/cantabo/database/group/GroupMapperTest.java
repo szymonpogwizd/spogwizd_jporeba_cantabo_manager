@@ -6,12 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.group.factory.GroupDAOFactory;
 import pl.cantabo.database.group.factory.GroupDTOFactory;
-
-
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -43,7 +40,7 @@ class GroupMapperTest {
         //Given
         GroupCreateDTO groupCreateDTO = GroupDTOFactory.defaultGroupCreateDTO();
         //When
-        GroupDAO groupDAO = groupMapper.groupCreateDTO2GroupDAO(new GroupCreateDTO);
+        GroupDAO groupDAO = groupMapper.groupCreateDTO2GroupDAO(groupCreateDTO);
 
         //Then
         assertNotNull(groupDAO);

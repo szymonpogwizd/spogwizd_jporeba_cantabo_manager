@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 @Repository
-public class PlaylistRepository extends  JpaRepository<PlaylistDAO, UUID>{
+public interface PlaylistRepository extends JpaRepository<PlaylistDAO, UUID> {
 }

@@ -1,10 +1,12 @@
-package pl.cantabo.database.user;
+package pl.cantabo.model;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.cantabo.database.user.UserDAO;
+import pl.cantabo.database.user.UserRepository;
 import pl.cantabo.utils.TokenUtility;
 import pl.cantabo.utils.exception.EntityExistsException;
 
