@@ -7,9 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.cantabo.database.group.GroupMapper;
 import pl.cantabo.database.group.GroupMapperImpl;
+import pl.cantabo.database.playlist.*;
 import pl.cantabo.database.profile.ProfileMapper;
 import pl.cantabo.database.profile.ProfileMapperImpl;
-import pl.cantabo.database.slide.SlideMapper;
+import pl.cantabo.database.slide.*;
 import pl.cantabo.database.song.SongMapper;
 import pl.cantabo.database.song.SongMapperImpl;
 import pl.cantabo.database.song.songCategory.SongCategoryMapper;
@@ -59,10 +60,11 @@ public class MapperConfiguration {
         return new SettingsMapperImpl();
     }
 
-   @Bean
-    public GroupMapper groupMapper() {return new GroupMapperImpl();}
+    @Bean
+    public GroupMapper groupMapper() {
+        return new GroupMapperImpl();
+    }
 
     @Bean
-    public SlideMapper slideMapper() {return new SlideMapperImpl();}
-   }
-
+    public SlideMapper slideMapper()
+}
