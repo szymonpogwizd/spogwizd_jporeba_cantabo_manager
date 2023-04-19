@@ -4,6 +4,8 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.cantabo.database.group.GroupMapper;
+import pl.cantabo.database.group.GroupMapperImpl;
 import pl.cantabo.database.settings.SettingsMapper;
 import pl.cantabo.database.settings.SettingsMapperImpl;
 import pl.cantabo.utils.password.PasswordEncoderMapper;
@@ -27,7 +29,12 @@ public class RealMapper {
     }
 
     @Bean
-    public SettingsMapper settignsMapper() {
+    public SettingsMapper settingsMapper() {
         return new SettingsMapperImpl();
+    }
+
+    @Bean
+    public GroupMapper groupMapper() {return new GroupMapperImpl();}
+
     }
 }
