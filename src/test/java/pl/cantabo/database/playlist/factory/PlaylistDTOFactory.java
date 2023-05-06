@@ -1,7 +1,6 @@
 package pl.cantabo.database.playlist.factory;
 
 import pl.cantabo.database.playlist.PlaylistCreateDTO;
-import pl.cantabo.database.playlist.PlaylistDAO;
 import pl.cantabo.database.playlist.PlaylistUpdateDTO;
 
 public class PlaylistDTOFactory {

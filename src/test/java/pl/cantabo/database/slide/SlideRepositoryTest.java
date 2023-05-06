@@ -26,7 +26,7 @@ public class SlideRepositoryTest {
     @Test
     public void saveSlideTest() {
         //givem
-        SlideDAO slideDAO = SlideDAOFactory.defaultBiulder().build();
+        SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
         //when
         SlideDAO savedSlideDAO = slideRepository.saveAndFlush(slideDAO);
         //then
@@ -37,7 +37,7 @@ public class SlideRepositoryTest {
     @Test
     public void updateSlideTest() {
         //given
-        SlideDAO slideDAO = SlideDAOFactory.defaultBiulder().build();
+        SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
         //when
         slideRepository.saveAndFlush(slideDAO);
         slideDAO.setBody("newBody");
@@ -51,8 +51,8 @@ public class SlideRepositoryTest {
     @Test
     public void findSlideTest() {
         //given
-        SlideDAO slideDAO1 = SlideDAOFactory.defaultBiulder().build();
-        SlideDAO slideDAO2 = SlideDAOFactory.defaultBiulder().build();
+        SlideDAO slideDAO1 = SlideDAOFactory.defaultBuilder().build();
+        SlideDAO slideDAO2 = SlideDAOFactory.defaultBuilder().build();
         slideRepository.saveAndFlush(slideDAO1);
         slideRepository.saveAndFlush(slideDAO2);
         //when

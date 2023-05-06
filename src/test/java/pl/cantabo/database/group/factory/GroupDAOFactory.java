@@ -6,18 +6,12 @@ import java.util.UUID;
 
 public class GroupDAOFactory {
 
-    public static  final Boolean DEFAULTITEM = true;
-    public static final String  NAME =  null;
+    public static final Boolean DEFAULT_ITEM = true;
+    public static final String NAME = null;
 
-
-    public static GroupDAO.GroupDAOBuilder defaultBuilder(){
+    public static GroupDAO.GroupDAOBuilder defaultBuilder() {
         return GroupDAO.builder()
-                .defaultItem(DEFAULTITEM)
-                .name(NAME)
-                .id(UUID.randomUUID());
-    }
-
-    public static GroupDAO defaultGroup() {
-        return GroupDAO.builder().build();
+                .defaultItem(DEFAULT_ITEM)
+                .name(NAME);
     }
 }

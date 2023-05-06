@@ -9,7 +9,7 @@ public class SlideDTOFactory {
         SlideCreateDTO slideCreateDTO = new SlideCreateDTO();
         slideCreateDTO.setBody(SlideDAOFactory.BODY);
         slideCreateDTO.setItemOrder(SlideDAOFactory.ORDER);
-        slideCreateDTO.setDefaultItem(SlideDAOFactory.DEFAULTITEM);
+        slideCreateDTO.setDefaultItem(SlideDAOFactory.DEFAULT_ITEM);
 
         return slideCreateDTO;
     }
