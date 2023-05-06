@@ -21,7 +21,7 @@ import pl.cantabo.database.settings.SettingsMapper;
 import pl.cantabo.database.settings.SettingsMapperImpl;
 import pl.cantabo.database.user.UserMapper;
 import pl.cantabo.database.user.UserMapperImpl;
-import pl.cantabo.utils.password.PasswordEncoderMapper;
+//import pl.cantabo.utils.password.PasswordEncoderMapper;
 
 
 @TestConfiguration
@@ -32,10 +32,10 @@ public class MapperConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public PasswordEncoderMapper passwordEncoderMapper(PasswordEncoder passwordEncoder) {
-        return new PasswordEncoderMapper(passwordEncoder);
-    }
+//    @Bean
+//    public PasswordEncoderMapper passwordEncoderMapper(PasswordEncoder passwordEncoder) {
+//        return new PasswordEncoderMapper(passwordEncoder);
+//    }
 
     @Bean
     public UserMapper userMapper() {

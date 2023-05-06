@@ -23,7 +23,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
-	// TODO chwilowo wyłączone zabezpieczenia - do włączenia po zaimplementowaniu logowania (razem z tym odkomentować PasswordEncoderConfig, PasswordEncoderMapper)
+	// TODO chwilowo wyłączone zabezpieczenia - do włączenia po zaimplementowaniu logowania (razem z tym odkomentować PasswordEncoderConfig, PasswordEncoderMapper oraz PasswordEncoderMapperTest, MapperConfiguration)
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

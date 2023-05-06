@@ -1,8 +1,11 @@
-package pl.cantabo.database.user;
+package pl.cantabo.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.cantabo.database.user.UserDAO;
+import pl.cantabo.database.user.UserRepository;
+import pl.cantabo.database.user.UserType;
 import pl.cantabo.database.user.factory.UserDAOFactory;
 import pl.cantabo.service.UserService;
 import pl.cantabo.utils.exception.EntityExistsException;
@@ -85,6 +88,17 @@ class UserServiceTest {
         // then
         verify(userRepository, times(1)).findAll();
         assertEquals(3, userDAOList.size());
+    }
+
+    @Test
+    void getAllUserTypes() {
+        // given
+        // when
+        List<UserType> userTypes = List.of(UserType.values());
+
+        // then
+        assertEquals(3, userTypes.size());
+        assertEquals(userTypes, userService.getAllUserTypes());
     }
 
     private UserDAO buildCreateUserDAO() {
