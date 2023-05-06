@@ -1,4 +1,4 @@
-package pl.cantabo.model;
+package pl.cantabo.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.cantabo.database.user.UserDAO;
 import pl.cantabo.database.user.UserRepository;
+import pl.cantabo.database.user.UserType;
 import pl.cantabo.utils.TokenUtility;
 import pl.cantabo.utils.exception.EntityExistsException;
 
@@ -45,5 +46,10 @@ public class UserService {
     public List<UserDAO> getAll() {
         log.debug("Getting all users");
         return log.traceExit(userRepository.findAll());
+    }
+
+    public List<UserType> getAllUserTypes() {
+        log.debug("Getting all user types");
+        return log.traceExit(List.of(UserType.values()));
     }
 }

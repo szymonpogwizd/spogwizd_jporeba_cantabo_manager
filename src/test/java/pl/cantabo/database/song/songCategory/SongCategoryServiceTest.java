@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
-import pl.cantabo.model.SongCategoryService;
+import pl.cantabo.service.SongCategoryService;
 
 import java.util.List;
 import java.util.UUID;

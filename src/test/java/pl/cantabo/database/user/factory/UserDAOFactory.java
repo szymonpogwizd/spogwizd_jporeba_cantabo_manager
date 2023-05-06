@@ -29,4 +29,11 @@ public class UserDAOFactory {
                 .group(null)
                 .settings(null);
     }
+
+    public static List<UserDAO> defaultList() {
+        return List.of(
+                defaultBuilder().email("test1@example.com").build(),
+                defaultBuilder().email("test2@example.com").build()
+        );
+    }
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
-import pl.cantabo.model.ProfileService;
+import pl.cantabo.service.ProfileService;
 
 import java.util.List;
 import java.util.UUID;
