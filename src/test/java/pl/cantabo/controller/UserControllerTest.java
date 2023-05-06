@@ -15,11 +15,15 @@ import pl.cantabo.service.UserService;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -61,5 +65,16 @@ class UserControllerTest {
                 .andExpect(jsonPath("$[0]").value(UserType.USER.toString()))
                 .andExpect(jsonPath("$[1]").value(UserType.ADMINISTRATOR.toString()))
                 .andExpect(jsonPath("$[2]").value(UserType.SUPERADMINISTRATOR.toString()));
+    }
+
+    @Test
+    public void deleteUser() throws Exception {
+        // given
+        doNothing().when(userService).delete(any());
+
+        // when
+        // then
+        mockMvc.perform(delete("/dashboard/users/" + UUID.randomUUID()))
+                .andExpect(status().isOk());
     }
 }

@@ -2,8 +2,12 @@ package pl.cantabo.database.profile;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class ProfileInfoDTO {
+
+    private UUID id;
 
     private String name;
 

@@ -2,10 +2,7 @@ package pl.cantabo.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.cantabo.database.user.UserInfoDTO;
 import pl.cantabo.database.user.UserMapper;
 import pl.cantabo.database.user.UserType;
@@ -13,6 +10,7 @@ import pl.cantabo.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -42,5 +40,11 @@ public class UserController {
         return log.traceExit(
                 new ArrayList<>(userService.getAllUserTypes())
         );
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteUser(@PathVariable UUID id) {
+        log.debug("Deleting user {}", id);
+        userService.delete(id);
     }
 }
