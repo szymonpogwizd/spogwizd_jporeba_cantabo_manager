@@ -56,4 +56,20 @@ public class UserDAO extends Auditable<UUID> {
 
     @OneToOne(mappedBy = "user")
     private SettingsDAO settings;
+
+    public UserDAO() {
+    }
+
+    public UserDAO(UUID id, String name, UserType userType, String email, String password, Boolean active, String token, ZonedDateTime tokenExpiration, GroupDAO group, SettingsDAO settings) {
+        this.id = id;
+        this.name = name;
+        this.userType = userType;
+        this.email = email;
+        this.password = password;
+        this.active = active;
+        this.token = token;
+        this.tokenExpiration = tokenExpiration;
+        this.group = group;
+        this.settings = settings;
+    }
 }

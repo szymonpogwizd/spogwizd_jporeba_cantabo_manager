@@ -23,6 +23,7 @@ import java.util.UUID;
 @Data
 @Table(name = "groups")
 public class GroupDAO extends Auditable<UUID> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -73,4 +74,20 @@ public class GroupDAO extends Auditable<UUID> {
 
     @OneToMany(mappedBy = "group")
     private Set<ProfileDAO> profiles;
+
+    public GroupDAO() {
+    }
+
+    public GroupDAO(UUID id, String name, boolean defaultItem, Set<SongDAO> songs, Set<SongCategoryDAO> songCategories, Set<SlideDAO> slides, Set<PlaylistDAO> playlists, Set<PlaylistCategoryDAO> playlistCategories, Set<UserDAO> users, Set<ProfileDAO> profiles) {
+        this.id = id;
+        this.name = name;
+        this.defaultItem = defaultItem;
+        this.songs = songs;
+        this.songCategories = songCategories;
+        this.slides = slides;
+        this.playlists = playlists;
+        this.playlistCategories = playlistCategories;
+        this.users = users;
+        this.profiles = profiles;
+    }
 }

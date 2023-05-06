@@ -21,7 +21,7 @@ public class SlideMapperTest {
     @Test
     void  slideDAO2SlideInfoDTO(){
         //given
-        SlideDAO slideDAO = SlideDAOFactory.defaultBiulder().build();
+        SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
         //When
 
         SlideInfoDTO slideInfoDTO  = slideMapper.slideDAO2SlideInfoDTO(slideDAO);
