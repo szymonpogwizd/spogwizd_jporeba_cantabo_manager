@@ -1,9 +1,7 @@
 package pl.cantabo.database.playlist;
 
-
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import pl.cantabo.database.slide.SlideDAO;
 
 @Mapper(
         componentModel = "spring",

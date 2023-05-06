@@ -1,4 +1,4 @@
-package pl.cantabo.model;
+package pl.cantabo.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
