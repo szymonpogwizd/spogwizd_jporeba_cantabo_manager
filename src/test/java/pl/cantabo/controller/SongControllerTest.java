@@ -11,6 +11,7 @@ import pl.cantabo.database.song.SongDAO;
 import pl.cantabo.database.song.factory.SongDAOFactory;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
+import pl.cantabo.service.ProfileService;
 import pl.cantabo.service.SongCategoryService;
 import pl.cantabo.service.SongService;
 import pl.cantabo.service.UserService;
@@ -42,6 +43,9 @@ class SongControllerTest {
 
     @MockBean
     private SongCategoryService songCategoryService;
+
+    @MockBean
+    private ProfileService profileService;
 
     @Test
     public void getAll() throws Exception {

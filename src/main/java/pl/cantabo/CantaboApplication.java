@@ -3,17 +3,12 @@ package pl.cantabo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import pl.cantabo.database.group.GroupDAO;
-import pl.cantabo.database.group.GroupRepository;
-import pl.cantabo.database.song.SongDAO;
+import pl.cantabo.database.profile.ProfileDAO;
+import pl.cantabo.database.profile.ProfileRepository;
 import pl.cantabo.database.song.SongRepository;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.song.songCategory.SongCategoryRepository;
-import pl.cantabo.database.user.UserDAO;
-import pl.cantabo.database.user.UserRepository;
-import pl.cantabo.database.user.UserType;
 
-import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -23,19 +18,20 @@ public class CantaboApplication {
 
 	public static void main(String[] args) {
 
-//		populateDatabase();
+		populateDatabase(args);
 
 		SpringApplication.run(CantaboApplication.class, args);
 	}
 
-//	static void populateDatabase() {
+	static void populateDatabase(String[] args) {
 		//		TESTOWE WSTAWIANIE DANYCH DO BAZY
-//		ConfigurableApplicationContext context = SpringApplication.run(CantaboApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(CantaboApplication.class, args);
 //
 //		UserRepository userRepository = context.getBean(UserRepository.class);
 //		GroupRepository groupRepository = context.getBean(GroupRepository.class);
 //		SongRepository songRepository = context.getBean(SongRepository.class);
 //		SongCategoryRepository songCategoryRepository = context.getBean(SongCategoryRepository.class);
+		ProfileRepository profileRepository = context.getBean(ProfileRepository.class);
 //
 //		List<UserDAO> users = Arrays.asList(
 //				new UserDAO(UUID.randomUUID(), "User 1", UserType.USER, "user1@example.com", "passwordQWEq223!@#", true, UUID.randomUUID().toString(), ZonedDateTime.now().plusDays(1), null, null),
@@ -63,10 +59,18 @@ public class CantaboApplication {
 //				new SongCategoryDAO(UUID.randomUUID(), "Category 3", true, null, null),
 //				new SongCategoryDAO(UUID.randomUUID(), "Category 4", true, null, null)
 //		);
+
+		List<ProfileDAO> profiles = Arrays.asList(
+				new ProfileDAO(UUID.randomUUID(), "Profile 1", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
+				new ProfileDAO(UUID.randomUUID(), "Profile 2", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
+				new ProfileDAO(UUID.randomUUID(), "Profile 3", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
+				new ProfileDAO(UUID.randomUUID(), "Profile 4", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null)
+		);
 //
 //		userRepository.saveAllAndFlush(users);
 ////		groupRepository.saveAllAndFlush(groups);
 //		songRepository.saveAllAndFlush(songs);
 //		songCategoryRepository.saveAllAndFlush(songCategories);
-//	}
+		profileRepository.saveAllAndFlush(profiles);
+	}
 }

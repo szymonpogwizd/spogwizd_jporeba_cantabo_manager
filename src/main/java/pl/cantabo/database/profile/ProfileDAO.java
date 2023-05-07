@@ -62,4 +62,30 @@ public class ProfileDAO  extends Auditable<UUID>  {
     @ManyToOne
     @JoinColumn(name = "groupId")
     private GroupDAO group;
+
+    public ProfileDAO() {
+    }
+
+    public ProfileDAO(UUID id, String name, boolean active, boolean sortByUsed, int bgColor, int txColor, int stopColor, String fontStyle, float margin, float maxFont, float maxMin, String align, String algorithmRange, boolean showTitle, boolean allBig, boolean showEmptySlide, boolean invertColors, boolean expandedList, boolean defaultItem, GroupDAO group) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+        this.sortByUsed = sortByUsed;
+        this.bgColor = bgColor;
+        this.txColor = txColor;
+        this.stopColor = stopColor;
+        this.fontStyle = fontStyle;
+        this.margin = margin;
+        this.maxFont = maxFont;
+        this.maxMin = maxMin;
+        this.align = align;
+        this.algorithmRange = algorithmRange;
+        this.showTitle = showTitle;
+        this.allBig = allBig;
+        this.showEmptySlide = showEmptySlide;
+        this.invertColors = invertColors;
+        this.expandedList = expandedList;
+        this.defaultItem = defaultItem;
+        this.group = group;
+    }
 }
