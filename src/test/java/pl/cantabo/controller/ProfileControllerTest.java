@@ -7,24 +7,20 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
-import pl.cantabo.database.user.UserDAO;
-import pl.cantabo.database.user.UserType;
-import pl.cantabo.database.user.factory.UserDAOFactory;
+import pl.cantabo.database.profile.ProfileDAO;
+import pl.cantabo.database.profile.factory.ProfileDAOFactory;
 import pl.cantabo.service.ProfileService;
 import pl.cantabo.service.SongCategoryService;
 import pl.cantabo.service.SongService;
 import pl.cantabo.service.UserService;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -32,10 +28,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ContextConfiguration(classes = MapperConfiguration.class)
 @WebMvcTest
-class UserControllerTest {
+class ProfileControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private ProfileService profileService;
 
     @MockBean
     private UserService userService;
@@ -46,47 +45,27 @@ class UserControllerTest {
     @MockBean
     private SongCategoryService songCategoryService;
 
-    @MockBean
-    private ProfileService profileService;
-
     @Test
     public void getAll() throws Exception {
         // given
-        List<UserDAO> givenUsers = UserDAOFactory.defaultList();
-        given(userService.getAll()).willReturn(givenUsers);
+        List<ProfileDAO> givenProfiles = ProfileDAOFactory.defaultList();
+        given(profileService.getAll()).willReturn(givenProfiles);
 
         // when
         // then
-        mockMvc.perform(get("/dashboard/users"))
+        mockMvc.perform(get("/dashboard/profiles"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()", is(givenUsers.size())));
-    }
-
-    @Test
-    public void getUserType() throws Exception {
-        // given
-        List<UserType> userTypes = Arrays.asList(UserType.values());
-        when(userService.getAllUserTypes()).thenReturn(userTypes);
-
-        // when
-        mockMvc.perform(get("/dashboard/users/userTypes"))
-
-                // then
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(userTypes.size())))
-                .andExpect(jsonPath("$[0]").value(UserType.USER.toString()))
-                .andExpect(jsonPath("$[1]").value(UserType.ADMINISTRATOR.toString()))
-                .andExpect(jsonPath("$[2]").value(UserType.SUPERADMINISTRATOR.toString()));
+                .andExpect(jsonPath("$.size()", is(givenProfiles.size())));
     }
 
     @Test
     public void deleteUser() throws Exception {
         // given
-        doNothing().when(userService).delete(any());
+        doNothing().when(profileService).delete(any());
 
         // when
         // then
-        mockMvc.perform(delete("/dashboard/users/" + UUID.randomUUID()))
+        mockMvc.perform(delete("/dashboard/profiles/" + UUID.randomUUID()))
                 .andExpect(status().isOk());
     }
 }

@@ -2,6 +2,8 @@ package pl.cantabo.database.profile.factory;
 
 import pl.cantabo.database.profile.ProfileDAO;
 
+import java.util.List;
+
 public class ProfileDAOFactory {
 
     public static final String NAME = "Test Profile";
@@ -43,5 +45,13 @@ public class ProfileDAOFactory {
                 .invertColors(INVERT_COLORS)
                 .expandedList(EXPANDED_LIST)
                 .defaultItem(DEFAULT_ITEM);
+    }
+
+    public static List<ProfileDAO> defaultList() {
+        return List.of(
+                defaultBuilder().build(),
+                defaultBuilder().build(),
+                defaultBuilder().build()
+        );
     }
 }
