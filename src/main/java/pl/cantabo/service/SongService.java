@@ -3,6 +3,7 @@ package pl.cantabo.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.cantabo.database.song.SongDAO;
 import pl.cantabo.database.song.SongRepository;
 
@@ -16,6 +17,7 @@ public class SongService {
 
     private final SongRepository songRepository;
 
+    @Transactional
     public SongDAO create(SongDAO song) {
         log.debug("Creating song {}", song);
         return log.traceExit(songRepository.save(song));

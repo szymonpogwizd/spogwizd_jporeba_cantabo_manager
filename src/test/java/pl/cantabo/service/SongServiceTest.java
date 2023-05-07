@@ -1,10 +1,11 @@
-package pl.cantabo.database.song;
+package pl.cantabo.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.cantabo.database.song.SongDAO;
+import pl.cantabo.database.song.SongRepository;
 import pl.cantabo.database.song.factory.SongDAOFactory;
-import pl.cantabo.service.SongService;
 
 import java.util.List;
 import java.util.UUID;

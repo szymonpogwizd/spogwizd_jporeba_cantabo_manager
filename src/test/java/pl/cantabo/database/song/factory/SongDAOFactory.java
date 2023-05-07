@@ -2,6 +2,8 @@ package pl.cantabo.database.song.factory;
 
 import pl.cantabo.database.song.SongDAO;
 
+import java.util.List;
+
 public class SongDAOFactory {
 
     public static final String NAME = "testName";
@@ -21,5 +23,12 @@ public class SongDAOFactory {
                 .songCategories(null)
                 .slides(null)
                 .songHistory(null);
+    }
+
+    public static List<SongDAO> defaultList() {
+        return List.of(
+                defaultBuilder().name("testName1").build(),
+                defaultBuilder().name("testName2").build()
+        );
     }
 }

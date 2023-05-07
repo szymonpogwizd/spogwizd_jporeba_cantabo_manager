@@ -34,4 +34,15 @@ public class SongCategoryDAO extends Auditable<UUID> {
 
     @ManyToMany(mappedBy = "songCategories")
     private Set<GroupDAO> groups;
+
+    public SongCategoryDAO() {
+    }
+
+    public SongCategoryDAO(UUID id, String name, boolean defaultItem, Set<SongDAO> songs, Set<GroupDAO> groups) {
+        this.id = id;
+        this.name = name;
+        this.defaultItem = defaultItem;
+        this.songs = songs;
+        this.groups = groups;
+    }
 }

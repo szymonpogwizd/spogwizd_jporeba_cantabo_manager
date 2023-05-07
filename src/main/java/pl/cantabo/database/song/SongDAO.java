@@ -56,4 +56,21 @@ public class SongDAO extends Auditable<UUID> {
 
     @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SongHistoryDAO> songHistory;
+
+    public SongDAO() {
+    }
+
+    public SongDAO(UUID id, String name, String musicAuthor, String wordsAuthor, long viewCounter, boolean defaultItem, UUID parentId, Set<SongCategoryDAO> songCategories, Set<GroupDAO> groups, Set<SlideDAO> slides, Set<SongHistoryDAO> songHistory) {
+        this.id = id;
+        this.name = name;
+        this.musicAuthor = musicAuthor;
+        this.wordsAuthor = wordsAuthor;
+        this.viewCounter = viewCounter;
+        this.defaultItem = defaultItem;
+        this.parentId = parentId;
+        this.songCategories = songCategories;
+        this.groups = groups;
+        this.slides = slides;
+        this.songHistory = songHistory;
+    }
 }

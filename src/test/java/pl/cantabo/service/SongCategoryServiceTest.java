@@ -1,8 +1,10 @@
-package pl.cantabo.database.song.songCategory;
+package pl.cantabo.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.cantabo.database.song.songCategory.SongCategoryDAO;
+import pl.cantabo.database.song.songCategory.SongCategoryRepository;
 import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
 import pl.cantabo.service.SongCategoryService;
 
