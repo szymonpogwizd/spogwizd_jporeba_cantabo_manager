@@ -1,8 +1,10 @@
-package pl.cantabo.database.profile;
+package pl.cantabo.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.cantabo.database.profile.ProfileDAO;
+import pl.cantabo.database.profile.ProfileRepository;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
 import pl.cantabo.service.ProfileService;
 
