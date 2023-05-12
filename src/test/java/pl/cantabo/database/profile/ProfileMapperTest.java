@@ -10,7 +10,7 @@ import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
 import pl.cantabo.database.profile.factory.ProfileDTOFactory;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)

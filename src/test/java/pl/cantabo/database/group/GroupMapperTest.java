@@ -21,7 +21,7 @@ class GroupMapperTest {
     private GroupMapper groupMapper;
 
     @Test
-    void groupDAO2GroupInfoDTO(){
+    void groupDAO2GroupInfoDTO() {
         //Given
         GroupDAO groupDAO = GroupDAOFactory.defaultBuilder().build();
 
@@ -35,8 +35,9 @@ class GroupMapperTest {
         softly.assertAll();
 
     }
+
     @Test
-    void groupCreateDTO2GroupDAO(){
+    void groupCreateDTO2GroupDAO() {
         //Given
         GroupCreateDTO groupCreateDTO = GroupDTOFactory.defaultGroupCreateDTO();
         //When
@@ -50,6 +51,7 @@ class GroupMapperTest {
         softly.assertAll();
 
     }
+
     @Test
     void groupUpdateDTO2GroupDAO() {
         //given

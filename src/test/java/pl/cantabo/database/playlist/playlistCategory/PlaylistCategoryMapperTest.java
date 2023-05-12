@@ -11,27 +11,29 @@ import pl.cantabo.database.playlist.playlistCategory.factory.PlaylistCategoryDAO
 import pl.cantabo.database.playlist.playlistCategory.factory.PlaylistCategoryDTOFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)
-public class PlaylistCategoryMapperTest{
+public class PlaylistCategoryMapperTest {
 
     @Autowired
     private PlaylistCategoryMapper playlistCategoryMapper;
 
     @Test
-    void playlistCategoryDAO2PlaylistCategoryInfoDTO(){
+    void playlistCategoryDAO2PlaylistCategoryInfoDTO() {
         //given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         //when
         PlaylistCategoryInfoDTO playlistCategoryInfoDTO = playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryDTO(playlistCategoryDAO);
         //then
         assertNotNull(playlistCategoryInfoDTO);
-        SoftAssertions  softly = new SoftAssertions();
+        SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistCategoryDAO.getName()).isEqualTo(playlistCategoryInfoDTO.getName());
         softly.assertAll();
     }
+
     @Test
-    void playlistCategoryCreateDTO2PlaylistCategoryDAO(){
+    void playlistCategoryCreateDTO2PlaylistCategoryDAO() {
         //given
         PlaylistCategoryCreateDTO playlistCategoryCreateDTO = PlaylistCategoryDTOFactory.defaultPlaylistCategoryCreateDTO();
         //when
@@ -42,8 +44,9 @@ public class PlaylistCategoryMapperTest{
         softly.assertThat(playlistCategoryCreateDTO.getName()).isEqualTo(playlistCategoryDAO.getName());
         softly.assertAll();
     }
+
     @Test
-    void playlistCategoryUpdateDTO2PlaylistCategoryDAO(){
+    void playlistCategoryUpdateDTO2PlaylistCategoryDAO() {
         //given
         PlaylistCategoryUpdateDTO playlistCategoryUpdateDTO = PlaylistCategoryDTOFactory.defaultPlaylistCategoryDTO();
         //when

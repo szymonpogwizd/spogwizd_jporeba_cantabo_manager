@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
 public class PlaylistCategoryRepositoryTest {
@@ -18,12 +19,12 @@ public class PlaylistCategoryRepositoryTest {
     private PlaylistCategoryRepository playlistCategoryRepository;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         playlistCategoryRepository.deleteAll();
     }
 
     @Test
-    public void savePlaylistCategoryTest(){
+    public void savePlaylistCategoryTest() {
         //given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         //when
@@ -32,8 +33,9 @@ public class PlaylistCategoryRepositoryTest {
         assertNotNull(savedPlaylistCategoryDAO.getId());
         assertEquals(playlistCategoryDAO, savedPlaylistCategoryDAO);
     }
+
     @Test
-    public void updatePlaylistCategoryTest(){
+    public void updatePlaylistCategoryTest() {
         //given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         playlistCategoryDAO.setName("old Name");
@@ -46,8 +48,9 @@ public class PlaylistCategoryRepositoryTest {
         assertEquals(playlistCategoryDAO.getId(), savedPlaylistCategoryDAO.getId());
         assertEquals("new Name", savedPlaylistCategoryDAO.getName());
     }
+
     @Test
-    public void deletePlaylistCategory(){
+    public void deletePlaylistCategory() {
         //given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO);
@@ -57,8 +60,9 @@ public class PlaylistCategoryRepositoryTest {
         //then
         assertFalse(deletedPlaylistCategoryDAO.isPresent());
     }
+
     @Test
-    public void findAllPlaylistCategoryTest(){
+    public void findAllPlaylistCategoryTest() {
         //given
         PlaylistCategoryDAO playlistCategoryDAO1 = PlaylistCategoryDAOFactory.defaultBuilder().build();
         PlaylistCategoryDAO playlistCategoryDAO2 = PlaylistCategoryDAOFactory.defaultBuilder().build();

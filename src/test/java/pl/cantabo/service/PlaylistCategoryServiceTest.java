@@ -9,23 +9,24 @@ import pl.cantabo.database.playlist.playlistCategory.factory.PlaylistCategoryDAO
 
 import java.util.List;
 import java.util.UUID;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
 
 class PlaylistCategoryServiceTest {
     private PlaylistCategoryService playlistCategoryService;
     private PlaylistCategoryRepository playlistCategoryRepository;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         playlistCategoryRepository = Mockito.mock(PlaylistCategoryRepository.class);
         playlistCategoryService = new PlaylistCategoryService(playlistCategoryRepository);
     }
 
 
     @Test
-    void create(){
+    void create() {
         //Given
         PlaylistCategoryDAO playlistCategory = PlaylistCategoryDAOFactory.defaultBuilder().build();
 
@@ -37,7 +38,7 @@ class PlaylistCategoryServiceTest {
     }
 
     @Test
-    void delete(){
+    void delete() {
         //given
         UUID id = UUID.randomUUID();
         //when
@@ -48,7 +49,7 @@ class PlaylistCategoryServiceTest {
     }
 
     @Test
-    void getAll(){
+    void getAll() {
         //given
         List<PlaylistCategoryDAO> playlistCategoryList = List.of(
                 PlaylistCategoryDAOFactory.defaultBuilder().build(),

@@ -62,8 +62,8 @@ class UserControllerTest {
         // when
         // then
         mockMvc.perform(post("/dashboard/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtility.toJson(createDTO)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtility.toJson(createDTO)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email", is(userDAO.getEmail())))
                 .andExpect(jsonPath("$.name", is(userDAO.getName())))
@@ -80,8 +80,8 @@ class UserControllerTest {
         // when
         // then
         mockMvc.perform(post("/dashboard/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtility.toJson(createDTO)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtility.toJson(createDTO)))
                 .andExpect(status().isOk());
     }
 

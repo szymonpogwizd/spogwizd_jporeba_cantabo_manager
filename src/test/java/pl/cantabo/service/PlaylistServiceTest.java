@@ -15,18 +15,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 class PlaylistServiceTest {
-     private PlaylistService playlistService;
-     private PlaylistRepository playlistRepository;
+    private PlaylistService playlistService;
+    private PlaylistRepository playlistRepository;
 
-     @BeforeEach
-    public void init(){
-         playlistRepository = Mockito.mock(PlaylistRepository.class);
-         playlistService = new PlaylistService(playlistRepository);
-     }
+    @BeforeEach
+    public void init() {
+        playlistRepository = Mockito.mock(PlaylistRepository.class);
+        playlistService = new PlaylistService(playlistRepository);
+    }
 
     @Test
-    void create(){
-         //given
+    void create() {
+        //given
         PlaylistDAO playlist = PlaylistDAOFactory.defaultBuilder().build();
         //when
         playlistService.create(playlist);
@@ -34,18 +34,20 @@ class PlaylistServiceTest {
         verify(playlistRepository, times(1)).save(playlist);
         assertNotNull(playlist);
     }
+
     @Test
-    void delete(){
-         //given
+    void delete() {
+        //given
         UUID id = UUID.randomUUID();
         //when
         playlistService.delete(id);
         //then
-        verify(playlistRepository,times(1)).deleteById(id);
+        verify(playlistRepository, times(1)).deleteById(id);
     }
+
     @Test
-    void getAll(){
-         //given
+    void getAll() {
+        //given
         List<PlaylistDAO> playlistList = List.of(
                 PlaylistDAOFactory.defaultBuilder().build(),
                 PlaylistDAOFactory.defaultBuilder().build(),

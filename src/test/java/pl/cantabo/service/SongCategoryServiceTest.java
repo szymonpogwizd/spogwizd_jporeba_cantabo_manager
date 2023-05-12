@@ -6,7 +6,6 @@ import org.mockito.Mockito;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.song.songCategory.SongCategoryRepository;
 import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
-import pl.cantabo.service.SongCategoryService;
 
 import java.util.List;
 import java.util.UUID;

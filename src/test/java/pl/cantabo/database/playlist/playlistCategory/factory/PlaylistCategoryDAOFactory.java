@@ -4,10 +4,10 @@ import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
 
 public class PlaylistCategoryDAOFactory {
 
-    public static final  String NAME = "test playlistCategory";
+    public static final String NAME = "test playlistCategory";
     public static final Boolean DEFAULT_ITEM = true;
 
-    public static PlaylistCategoryDAO.PlaylistCategoryDAOBuilder defaultBuilder(){
+    public static PlaylistCategoryDAO.PlaylistCategoryDAOBuilder defaultBuilder() {
         return PlaylistCategoryDAO.builder()
                 .name(NAME)
                 .defaultItem(DEFAULT_ITEM);

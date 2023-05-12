@@ -11,6 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @SpringBootTest
 @Transactional
 public class SlideRepositoryTest {
@@ -19,7 +20,7 @@ public class SlideRepositoryTest {
     private SlideRepository slideRepository;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         slideRepository.deleteAll();
     }
 
