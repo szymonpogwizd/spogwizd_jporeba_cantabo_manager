@@ -18,7 +18,7 @@ public class CantaboApplication {
 
 	public static void main(String[] args) {
 
-		populateDatabase(args);
+//		populateDatabase(args);
 
 		SpringApplication.run(CantaboApplication.class, args);
 	}

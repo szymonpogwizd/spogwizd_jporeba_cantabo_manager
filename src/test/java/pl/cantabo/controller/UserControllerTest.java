@@ -4,16 +4,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
+import pl.cantabo.database.user.UserCreateDTO;
 import pl.cantabo.database.user.UserDAO;
 import pl.cantabo.database.user.UserType;
 import pl.cantabo.database.user.factory.UserDAOFactory;
+import pl.cantabo.database.user.factory.UserDTOFactory;
 import pl.cantabo.service.ProfileService;
 import pl.cantabo.service.SongCategoryService;
 import pl.cantabo.service.SongService;
 import pl.cantabo.service.UserService;
+import pl.cantabo.utils.JsonUtility;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +29,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -48,6 +51,39 @@ class UserControllerTest {
 
     @MockBean
     private ProfileService profileService;
+
+    @Test
+    public void createUser_ok() throws Exception {
+        // given
+        UserDAO userDAO = UserDAOFactory.defaultBuilder().build();
+        UserCreateDTO createDTO = UserDTOFactory.defaultUserCreateDTO();
+        given(userService.create(any())).willReturn(userDAO);
+
+        // when
+        // then
+        mockMvc.perform(post("/dashboard/users")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonUtility.toJson(createDTO)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.email", is(userDAO.getEmail())))
+                .andExpect(jsonPath("$.name", is(userDAO.getName())))
+                .andExpect(jsonPath("$.userType", is(userDAO.getUserType().toString())))
+                .andExpect(jsonPath("$.active", is(userDAO.getActive())));
+    }
+
+    @Test
+    public void createUser_noValidInput() throws Exception {
+        // given
+        UserCreateDTO createDTO = UserDTOFactory.defaultUserCreateDTO();
+        createDTO.setEmail(null);
+
+        // when
+        // then
+        mockMvc.perform(post("/dashboard/users")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonUtility.toJson(createDTO)))
+                .andExpect(status().isOk());
+    }
 
     @Test
     public void getAll() throws Exception {
