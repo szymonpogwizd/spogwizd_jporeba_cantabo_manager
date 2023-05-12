@@ -11,6 +11,7 @@ import pl.cantabo.database.slide.factory.SlideDAOFactory;
 import pl.cantabo.database.slide.factory.SlideDTOFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)
 public class SlideMapperTest {
@@ -19,12 +20,12 @@ public class SlideMapperTest {
     private SlideMapper slideMapper;
 
     @Test
-    void  slideDAO2SlideInfoDTO(){
+    void slideDAO2SlideInfoDTO() {
         //given
         SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
         //When
 
-        SlideInfoDTO slideInfoDTO  = slideMapper.slideDAO2SlideInfoDTO(slideDAO);
+        SlideInfoDTO slideInfoDTO = slideMapper.slideDAO2SlideInfoDTO(slideDAO);
         //then
         assertNotNull(slideInfoDTO);
         SoftAssertions softly = new SoftAssertions();
@@ -36,7 +37,7 @@ public class SlideMapperTest {
     }
 
     @Test
-    void slideCreateDTO2SlideDAO(){
+    void slideCreateDTO2SlideDAO() {
         //Given
         SlideCreateDTO slideCreateDTO = SlideDTOFactory.defaultSLideCreateDTO();
         //when

@@ -7,7 +7,7 @@ public class PlaylistDAOFactory {
     public static final String NAME = "test playlist";
     public static final Boolean DEFAULT_ITEM = true;
 
-    public static PlaylistDAO.PlaylistDAOBuilder defaultBuilder(){
+    public static PlaylistDAO.PlaylistDAOBuilder defaultBuilder() {
         return PlaylistDAO.builder()
                 .name(NAME)
                 .defaultItem(DEFAULT_ITEM);

@@ -10,6 +10,7 @@ import pl.cantabo.database.playlist.factory.PlaylistDAOFactory;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
 public class PlaylistRepositoryTest {
@@ -18,12 +19,12 @@ public class PlaylistRepositoryTest {
     private PlaylistRepository playlistRepository;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         playlistRepository.deleteAll();
     }
 
     @Test
-    public void savePlaylistTest(){
+    public void savePlaylistTest() {
         //given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
         //when
@@ -32,8 +33,9 @@ public class PlaylistRepositoryTest {
         assertNotNull(savedPlaylistDAO.getId());
         assertEquals(playlistDAO, savedPlaylistDAO);
     }
+
     @Test
-    public void detelePlaylistTest(){
+    public void detelePlaylistTest() {
         //given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
         playlistRepository.saveAndFlush(playlistDAO);
@@ -43,8 +45,9 @@ public class PlaylistRepositoryTest {
         //then
         assertNull(deletedPlaylistDAO);
     }
+
     @Test
-    public void findAllPlaylistTest(){
+    public void findAllPlaylistTest() {
         //given
         PlaylistDAO playlistDAO1 = PlaylistDAOFactory.defaultBuilder().build();
         PlaylistDAO playlistDAO2 = PlaylistDAOFactory.defaultBuilder().build();

@@ -6,7 +6,7 @@ public class JsonUtility {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
-    public static String toJson(Object o){
+    public static String toJson(Object o) {
         try {
             return objectMapper.writeValueAsString(o);
         } catch (Exception e) {

@@ -12,6 +12,7 @@ import pl.cantabo.database.playlist.factory.PlaylistDAOFactory;
 import pl.cantabo.database.playlist.factory.PlaylistDTOFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)
 public class PlaylistMapperTest {
@@ -20,7 +21,7 @@ public class PlaylistMapperTest {
     private PlaylistMapper playlistMapper;
 
     @Test
-    void playlistDAO2PlaylistInfoDTO(){
+    void playlistDAO2PlaylistInfoDTO() {
         //Given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
         // when
@@ -31,8 +32,9 @@ public class PlaylistMapperTest {
         softly.assertThat(playlistDAO.getName()).isEqualTo(playlistInfoDTO.getName());
         softly.assertAll();
     }
+
     @Test
-    void playlistCreateDTO2PlaylistDAO(){
+    void playlistCreateDTO2PlaylistDAO() {
         //given
         PlaylistCreateDTO playlistCreateDTO = PlaylistDTOFactory.defaultPlaylistCreateDTO();
 
@@ -46,7 +48,7 @@ public class PlaylistMapperTest {
     }
 
     @Test
-    void PlaylistUpdateDTO2PlaylistDAO(){
+    void PlaylistUpdateDTO2PlaylistDAO() {
         //given
         PlaylistUpdateDTO playlistUpdateDTO = PlaylistDTOFactory.defaultPlaylistUpdateDTO();
         //when

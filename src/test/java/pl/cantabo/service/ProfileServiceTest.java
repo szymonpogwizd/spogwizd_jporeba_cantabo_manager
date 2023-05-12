@@ -6,7 +6,6 @@ import org.mockito.Mockito;
 import pl.cantabo.database.profile.ProfileDAO;
 import pl.cantabo.database.profile.ProfileRepository;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
-import pl.cantabo.service.ProfileService;
 
 import java.util.List;
 import java.util.UUID;

@@ -38,7 +38,7 @@ class SettingsMapperTest {
     @Test
     void settingsCreateDAO2SettingsDTO() {
         //Given
-        SettingsCreateDTO  settingsCreateDTO = SettingsDTOFactory.defaultSettingsCreateDTO();
+        SettingsCreateDTO settingsCreateDTO = SettingsDTOFactory.defaultSettingsCreateDTO();
 
         //when
         SettingsDAO settingsDAO = settingsMapper.settingsCreateDAO2SettingsDTO(settingsCreateDTO);
@@ -49,8 +49,6 @@ class SettingsMapperTest {
         softly.assertThat(settingsCreateDTO.getFontSize()).isEqualTo(settingsDAO.getFontSize());
         softly.assertAll();
     }
-
-
 
 
     @Test

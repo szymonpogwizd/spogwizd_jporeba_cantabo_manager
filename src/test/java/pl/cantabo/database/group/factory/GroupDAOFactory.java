@@ -2,8 +2,6 @@ package pl.cantabo.database.group.factory;
 
 import pl.cantabo.database.group.GroupDAO;
 
-import java.util.UUID;
-
 public class GroupDAOFactory {
 
     public static final Boolean DEFAULT_ITEM = true;

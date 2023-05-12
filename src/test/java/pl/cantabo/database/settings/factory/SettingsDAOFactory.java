@@ -8,7 +8,7 @@ public class SettingsDAOFactory {
     public static final float FONT_SIZE = 12;
 
 
-    public static SettingsDAO.SettingsDAOBuilder defaultBuilder(){
+    public static SettingsDAO.SettingsDAOBuilder defaultBuilder() {
         return SettingsDAO.builder()
                 .darkTheme(DARK_THEME)
                 .fontSize(FONT_SIZE);
