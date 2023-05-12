@@ -18,9 +18,11 @@ public class UserCreateDTO {
     private UserType userType;
 
     @Email
+    @NotBlank
     private String email;
 
     @Password
+    @NotBlank
     private String password;
 
     private Boolean active;

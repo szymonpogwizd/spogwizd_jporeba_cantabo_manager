@@ -3,11 +3,10 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
-import pl.cantabo.database.user.UserInfoDTO;
-import pl.cantabo.database.user.UserMapper;
-import pl.cantabo.database.user.UserType;
+import pl.cantabo.database.user.*;
 import pl.cantabo.service.UserService;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +21,14 @@ public class UserController {
 
     private final UserService userService;
     private final UserMapper userMapper;
+
+    @PostMapping
+    public UserInfoDTO createUser(@RequestBody @Valid UserCreateDTO user) {
+        log.debug("Create user {}", user);
+        UserDAO toCreate = userMapper.userCreateDTO2UserDAO(user);
+        UserDAO createdUser = userService.create(toCreate);
+        return log.traceExit(userMapper.userDAO2UserInfoDTO(createdUser));
+    }
 
     @GetMapping
     public List<UserInfoDTO> getAll() {
