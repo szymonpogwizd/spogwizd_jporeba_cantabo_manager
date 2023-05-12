@@ -8,7 +8,7 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 
-public interface GroupMapper  {
+public interface GroupMapper {
 
     GroupInfoDTO groupDAO2GroupInfoDTO(GroupDAO groupDAO);
 

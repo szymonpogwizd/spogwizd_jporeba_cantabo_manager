@@ -23,11 +23,11 @@ public class ProfileInfoDTO {
 
     private String fontStyle;
 
-    private float margin;
+    private double margin;
 
-    private float maxFont;
+    private double maxFont;
 
-    private float maxMin;
+    private double maxMin;
 
     private String align;
 

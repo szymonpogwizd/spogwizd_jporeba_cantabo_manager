@@ -3,10 +3,13 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+import pl.cantabo.database.profile.ProfileCreateDTO;
+import pl.cantabo.database.profile.ProfileDAO;
 import pl.cantabo.database.profile.ProfileInfoDTO;
 import pl.cantabo.database.profile.ProfileMapper;
 import pl.cantabo.service.ProfileService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -20,6 +23,14 @@ public class ProfileController {
 
     private final ProfileService profileService;
     private final ProfileMapper profileMapper;
+
+    @PostMapping
+    public ProfileInfoDTO createProfile(@RequestBody @Valid ProfileCreateDTO profile) {
+        log.debug("Create profile {}", profile);
+        ProfileDAO toCreate = profileMapper.profileCreateDTO2ProfileDAO(profile);
+        ProfileDAO createdProfile = profileService.create(toCreate);
+        return log.traceExit(profileMapper.profileDAO2ProfileInfoDTO(createdProfile));
+    }
 
     @GetMapping
     public List<ProfileInfoDTO> getAll() {
