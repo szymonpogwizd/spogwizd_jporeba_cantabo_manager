@@ -4,15 +4,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
+import pl.cantabo.database.profile.ProfileCreateDTO;
 import pl.cantabo.database.profile.ProfileDAO;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
+import pl.cantabo.database.profile.factory.ProfileDTOFactory;
 import pl.cantabo.service.ProfileService;
 import pl.cantabo.service.SongCategoryService;
 import pl.cantabo.service.SongService;
 import pl.cantabo.service.UserService;
+import pl.cantabo.utils.JsonUtility;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +25,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -44,6 +47,38 @@ class ProfileControllerTest {
 
     @MockBean
     private SongCategoryService songCategoryService;
+
+    @Test
+    public void createProfile() throws Exception {
+        // given
+        ProfileDAO profileDAO = ProfileDAOFactory.defaultBuilder().build();
+        ProfileCreateDTO createDTO = ProfileDTOFactory.defaultProfileCreateDTO();
+        given(profileService.create(any())).willReturn(profileDAO);
+
+        // when
+        // then
+        mockMvc.perform(post("/dashboard/profiles")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonUtility.toJson(createDTO)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(profileDAO.getName())))
+                .andExpect(jsonPath("$.active", is(profileDAO.isActive())))
+                .andExpect(jsonPath("$.sortByUsed", is(profileDAO.isSortByUsed())))
+                .andExpect(jsonPath("$.bgColor", is(profileDAO.getBgColor())))
+                .andExpect(jsonPath("$.txColor", is(profileDAO.getTxColor())))
+                .andExpect(jsonPath("$.stopColor", is(profileDAO.getStopColor())))
+                .andExpect(jsonPath("$.fontStyle", is(profileDAO.getFontStyle())))
+                .andExpect(jsonPath("$.margin", is(profileDAO.getMargin())))
+                .andExpect(jsonPath("$.maxFont", is(profileDAO.getMaxFont())))
+                .andExpect(jsonPath("$.maxMin", is(profileDAO.getMaxMin())))
+                .andExpect(jsonPath("$.align", is(profileDAO.getAlign())))
+                .andExpect(jsonPath("$.algorithmRange", is(profileDAO.getAlgorithmRange())))
+                .andExpect(jsonPath("$.showTitle", is(profileDAO.isShowTitle())))
+                .andExpect(jsonPath("$.allBig", is(profileDAO.isAllBig())))
+                .andExpect(jsonPath("$.showEmptySlide", is(profileDAO.isShowEmptySlide())))
+                .andExpect(jsonPath("$.invertColors", is(profileDAO.isInvertColors())))
+                .andExpect(jsonPath("$.expandedList", is(profileDAO.isExpandedList())));
+    }
 
     @Test
     public void getAll() throws Exception {

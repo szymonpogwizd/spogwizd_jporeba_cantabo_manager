@@ -13,9 +13,9 @@ public class ProfileDAOFactory {
     public static final int TX_COLOR = 0;
     public static final int STOP_COLOR = 0;
     public static final String FONT_STYLE = "Arial";
-    public static final float MARGIN = 0.0f;
-    public static final float MAX_FONT = 0.0f;
-    public static final float MAX_MIN = 0.0f;
+    public static final double MARGIN = 0.0d;
+    public static final double MAX_FONT = 0.0d;
+    public static final double MAX_MIN = 0.0d;
     public static final String ALIGN = "center";
     public static final String ALGORITHM_RANGE = "50";
     public static final boolean SHOW_TITLE = false;
