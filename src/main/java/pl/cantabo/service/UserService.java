@@ -35,7 +35,21 @@ public class UserService {
         user.setToken(TokenUtility.generate());
         user.setTokenExpiration(ZonedDateTime.now().plusDays(tokenValidity));
 
+        parseUserType(user);
+
         return log.traceExit(userRepository.save(user));
+    }
+
+    private void parseUserType(UserDAO user) {
+        UserType userType = UserType.valueOf(String.valueOf(user.getUserType()));
+
+        if (userType == UserType.USER) {
+            user.setUserType(UserType.USER);
+        } else if (userType == UserType.ADMINISTRATOR) {
+            user.setUserType(UserType.ADMINISTRATOR);
+        } else if (userType == UserType.SUPERADMINISTRATOR) {
+            user.setUserType(UserType.SUPERADMINISTRATOR);
+        }
     }
 
     public void delete(UUID id) {
