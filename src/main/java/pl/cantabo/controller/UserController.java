@@ -3,7 +3,11 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+import pl.cantabo.database.group.GroupDAO;
+import pl.cantabo.database.group.GroupInfoDTO;
+import pl.cantabo.database.group.GroupMapper;
 import pl.cantabo.database.user.*;
+import pl.cantabo.service.GroupService;
 import pl.cantabo.service.UserService;
 
 import javax.validation.Valid;
@@ -20,7 +24,9 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private final UserService userService;
+    private final GroupService groupService;
     private final UserMapper userMapper;
+    private final GroupMapper groupMapper;
 
     @PostMapping
     public UserInfoDTO createUser(@RequestBody @Valid UserCreateDTO user) {
@@ -46,6 +52,17 @@ public class UserController {
         log.debug("Getting all user types");
         return log.traceExit(
                 new ArrayList<>(userService.getAllUserTypes())
+        );
+    }
+
+    @GetMapping("/groups")
+    public List<GroupInfoDTO> getGroups() {
+        log.debug("Getting all groups");
+        return log.traceExit(
+                groupService.getAll()
+                        .stream()
+                        .map(groupMapper::groupDAO2GroupInfoDTO)
+                        .collect(Collectors.toList())
         );
     }
 

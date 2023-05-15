@@ -12,10 +12,7 @@ import pl.cantabo.database.profile.ProfileCreateDTO;
 import pl.cantabo.database.profile.ProfileDAO;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
 import pl.cantabo.database.profile.factory.ProfileDTOFactory;
-import pl.cantabo.service.ProfileService;
-import pl.cantabo.service.SongCategoryService;
-import pl.cantabo.service.SongService;
-import pl.cantabo.service.UserService;
+import pl.cantabo.service.*;
 import pl.cantabo.utils.JsonUtility;
 
 import java.util.List;
@@ -47,6 +44,9 @@ class ProfileControllerTest {
 
     @MockBean
     private SongCategoryService songCategoryService;
+
+    @MockBean
+    private GroupService groupService;
 
     @Test
     public void createProfile() throws Exception {

@@ -1,6 +1,7 @@
 package pl.cantabo.database.user;
 
 import lombok.Data;
+import pl.cantabo.database.group.GroupDAO;
 
 import java.util.UUID;
 
@@ -16,4 +17,6 @@ public class UserInfoDTO {
     private String email;
 
     private Boolean active;
+
+    private GroupDAO group;
 }
