@@ -39,7 +39,7 @@ public class UserDAO extends Auditable<UUID> {
     @Email
     private String email;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false)
     @NotEmpty
     @Password
     private String password;
