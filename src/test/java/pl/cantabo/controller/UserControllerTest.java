@@ -8,15 +8,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
+import pl.cantabo.database.group.GroupDAO;
+import pl.cantabo.database.group.factory.GroupDAOFactory;
 import pl.cantabo.database.user.UserCreateDTO;
 import pl.cantabo.database.user.UserDAO;
 import pl.cantabo.database.user.UserType;
 import pl.cantabo.database.user.factory.UserDAOFactory;
 import pl.cantabo.database.user.factory.UserDTOFactory;
-import pl.cantabo.service.ProfileService;
-import pl.cantabo.service.SongCategoryService;
-import pl.cantabo.service.SongService;
-import pl.cantabo.service.UserService;
+import pl.cantabo.service.*;
 import pl.cantabo.utils.JsonUtility;
 
 import java.util.Arrays;
@@ -51,6 +50,9 @@ class UserControllerTest {
 
     @MockBean
     private ProfileService profileService;
+
+    @MockBean
+    private GroupService groupService;
 
     @Test
     public void createUser_ok() throws Exception {
@@ -113,6 +115,19 @@ class UserControllerTest {
                 .andExpect(jsonPath("$[0]").value(UserType.USER.toString()))
                 .andExpect(jsonPath("$[1]").value(UserType.ADMINISTRATOR.toString()))
                 .andExpect(jsonPath("$[2]").value(UserType.SUPERADMINISTRATOR.toString()));
+    }
+
+    @Test
+    public void getGroup() throws Exception {
+        // given
+        List<GroupDAO> givenGroups = GroupDAOFactory.defaultList();
+        given(groupService.getAll()).willReturn(givenGroups);
+
+        // when
+        // then
+        mockMvc.perform(get("/dashboard/users/groups"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.size()", is(givenGroups.size())));
     }
 
     @Test

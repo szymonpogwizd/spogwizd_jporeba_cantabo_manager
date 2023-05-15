@@ -1,6 +1,7 @@
 package pl.cantabo.database.user;
 
 import lombok.Data;
+import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.validator.email.Email;
 
 import javax.validation.constraints.NotBlank;
@@ -20,4 +21,6 @@ public class UserUpdateDTO {
     private String email;
 
     private Boolean active;
+
+    private GroupDAO group;
 }

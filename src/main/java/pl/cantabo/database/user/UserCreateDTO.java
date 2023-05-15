@@ -1,6 +1,7 @@
 package pl.cantabo.database.user;
 
 import lombok.Data;
+import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.validator.email.Email;
 import pl.cantabo.validator.password.Password;
 
@@ -26,4 +27,6 @@ public class UserCreateDTO {
     private String password;
 
     private Boolean active;
+
+    private GroupDAO group;
 }

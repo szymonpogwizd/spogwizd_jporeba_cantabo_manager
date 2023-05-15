@@ -14,10 +14,7 @@ import pl.cantabo.database.song.factory.SongDAOFactory;
 import pl.cantabo.database.song.factory.SongDTOFactory;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
-import pl.cantabo.service.ProfileService;
-import pl.cantabo.service.SongCategoryService;
-import pl.cantabo.service.SongService;
-import pl.cantabo.service.UserService;
+import pl.cantabo.service.*;
 import pl.cantabo.utils.JsonUtility;
 
 import java.util.List;
@@ -49,6 +46,9 @@ class SongControllerTest {
 
     @MockBean
     private ProfileService profileService;
+
+    @MockBean
+    private GroupService groupService;
 
     @Test
     public void createSong() throws Exception {
