@@ -31,7 +31,7 @@ public class CantaboApplication {
 //		GroupRepository groupRepository = context.getBean(GroupRepository.class);
 //		SongRepository songRepository = context.getBean(SongRepository.class);
 //		SongCategoryRepository songCategoryRepository = context.getBean(SongCategoryRepository.class);
-		ProfileRepository profileRepository = context.getBean(ProfileRepository.class);
+//		ProfileRepository profileRepository = context.getBean(ProfileRepository.class);
 //
 //		List<UserDAO> users = Arrays.asList(
 //				new UserDAO(UUID.randomUUID(), "User 1", UserType.USER, "user1@example.com", "passwordQWEq223!@#", true, UUID.randomUUID().toString(), ZonedDateTime.now().plusDays(1), null, null),
@@ -60,17 +60,17 @@ public class CantaboApplication {
 //				new SongCategoryDAO(UUID.randomUUID(), "Category 4", true, null, null)
 //		);
 
-		List<ProfileDAO> profiles = Arrays.asList(
-				new ProfileDAO(UUID.randomUUID(), "Profile 1", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
-				new ProfileDAO(UUID.randomUUID(), "Profile 2", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
-				new ProfileDAO(UUID.randomUUID(), "Profile 3", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
-				new ProfileDAO(UUID.randomUUID(), "Profile 4", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null)
-		);
+//		List<ProfileDAO> profiles = Arrays.asList(
+//				new ProfileDAO(UUID.randomUUID(), "Profile 1", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
+//				new ProfileDAO(UUID.randomUUID(), "Profile 2", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
+//				new ProfileDAO(UUID.randomUUID(), "Profile 3", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null),
+//				new ProfileDAO(UUID.randomUUID(), "Profile 4", false, false, 0, 0, 0, "Arial", 0.0f, 0.0f, 0.0f, "center", "50", false, false, false, false, false, false, null)
+//		);
 //
 //		userRepository.saveAllAndFlush(users);
 ////		groupRepository.saveAllAndFlush(groups);
 //		songRepository.saveAllAndFlush(songs);
 //		songCategoryRepository.saveAllAndFlush(songCategories);
-		profileRepository.saveAllAndFlush(profiles);
+//		profileRepository.saveAllAndFlush(profiles);
 	}
 }
