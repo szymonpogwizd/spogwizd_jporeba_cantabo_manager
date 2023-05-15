@@ -28,7 +28,7 @@ public class GroupDAO extends Auditable<UUID> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false, unique = true)
     @NotEmpty
     private String name;
 

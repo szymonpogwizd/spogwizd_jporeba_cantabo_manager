@@ -11,6 +11,7 @@ import pl.cantabo.validator.email.Email;
 import pl.cantabo.validator.password.Password;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ public class UserDAO extends Auditable<UUID> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false, unique = true)
     @NotEmpty
     private String name;
 
@@ -33,7 +34,7 @@ public class UserDAO extends Auditable<UUID> {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    @Column(columnDefinition = "text")
+    @Column(columnDefinition = "text", nullable = false, unique = true)
     @NotEmpty
     @Email
     private String email;
