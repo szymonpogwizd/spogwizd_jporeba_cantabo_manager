@@ -3,7 +3,6 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
-import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.group.GroupInfoDTO;
 import pl.cantabo.database.group.GroupMapper;
 import pl.cantabo.database.user.*;

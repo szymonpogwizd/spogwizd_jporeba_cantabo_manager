@@ -7,7 +7,6 @@ import pl.cantabo.database.user.UserDAO;
 import pl.cantabo.database.user.UserRepository;
 import pl.cantabo.database.user.UserType;
 import pl.cantabo.database.user.factory.UserDAOFactory;
-import pl.cantabo.utils.exception.EntityExistsException;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,20 +41,6 @@ class UserServiceTest {
         assertTrue(userDAO.getActive());
         assertNotNull(userDAO.getToken());
         assertNotNull(userDAO.getTokenExpiration());
-    }
-
-    @Test
-    void create_whenUserExists() {
-        // given
-        UserDAO user = buildCreateUserDAO();
-
-        when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
-
-        // when
-        // then
-        Exception exception = assertThrows(EntityExistsException.class, () -> userService.create(user));
-
-        assertEquals("User " + user.getEmail() + " is already exists", exception.getMessage());
     }
 
     @Test

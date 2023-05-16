@@ -9,9 +9,14 @@ import pl.cantabo.database.user.UserDAO;
 import pl.cantabo.database.user.UserRepository;
 import pl.cantabo.database.user.UserType;
 import pl.cantabo.utils.TokenUtility;
-import pl.cantabo.utils.exception.EntityExistsException;
+import pl.cantabo.validator.email.EmailValidator;
+import pl.cantabo.validator.email.EmailValidatorException;
+import pl.cantabo.validator.password.PasswordValidator;
+import pl.cantabo.validator.password.PasswordValidatorException;
 
+import javax.validation.ValidationException;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,15 +27,14 @@ public class UserService {
 
     @Value("${app.user.token.activation.validity-days:7}")
     private int tokenValidity;
-
     private final UserRepository userRepository;
 
     @Transactional
     public UserDAO create(UserDAO user) {
         log.debug("Creating user {}", user);
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new EntityExistsException("User " + user.getEmail() + " is already exists");
-        }
+
+        validateUser(user);
+
         user.setActive(true);
         user.setToken(TokenUtility.generate());
         user.setTokenExpiration(ZonedDateTime.now().plusDays(tokenValidity));
@@ -49,6 +53,39 @@ public class UserService {
             user.setUserType(UserType.ADMINISTRATOR);
         } else if (userType == UserType.SUPERADMINISTRATOR) {
             user.setUserType(UserType.SUPERADMINISTRATOR);
+        }
+    }
+
+    private void validateUser(UserDAO user) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if (user.getName() == null || user.getName().isEmpty()) {
+            validationErrors.add("Nazwa użytkownika nie może być pusta\n");
+        }
+
+        if (userRepository.findByName(user.getName()).isPresent()) {
+            validationErrors.add("Użytkownik o podanej nazwie już istnieje\n");
+        }
+
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            validationErrors.add("Użytkownik o podanym adresie e-mail już istnieje\n");
+        }
+
+        try {
+            EmailValidator.validate(user.getEmail());
+        } catch (EmailValidatorException e) {
+            validationErrors.add(e.getMessage() + "\n");
+        }
+
+        try {
+            PasswordValidator.validate(user.getPassword());
+        } catch (PasswordValidatorException e) {
+            validationErrors.add(e.getMessage() + "\n");
+        }
+
+        if (!validationErrors.isEmpty()) {
+            String errorMessage = String.join("", validationErrors);
+            throw new ValidationException(errorMessage);
         }
     }
 

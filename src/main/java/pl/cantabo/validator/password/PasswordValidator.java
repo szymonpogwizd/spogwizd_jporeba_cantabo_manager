@@ -11,10 +11,10 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
 
     public static void validate(String password) {
         if (password == null || password.isBlank()) {
-            throw new PasswordValidatorException("Password is empty");
+            throw new PasswordValidatorException("Hasło nie może być puste");
         }
         if (!PASSWORD_PATTERN.matcher(password).matches()) {
-            throw new PasswordValidatorException("Password '" + password + "' is not valid");
+            throw new PasswordValidatorException("Podane hasło nie spełnia wymagań: musi zawierać co najmniej 8 znaków, jedną cyfrę, jedną małą literę, jedną dużą literę oraz jeden znak specjalny.");
         }
     }
 

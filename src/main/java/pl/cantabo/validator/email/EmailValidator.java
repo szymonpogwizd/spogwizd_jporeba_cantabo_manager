@@ -12,10 +12,10 @@ public class EmailValidator implements ConstraintValidator<Email, String> {
 
     public static void validate(String emailStr) {
         if (emailStr == null || emailStr.isBlank()) {
-            throw new EmailValidatorException("There is no email address.");
+            throw new EmailValidatorException("Nie podano adresu email");
         }
         if (!VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr).matches()) {
-            throw new EmailValidatorException("Email '" + emailStr + "' is not valid");
+            throw new EmailValidatorException("Podany adres email jest niepoprawny");
         }
     }
 

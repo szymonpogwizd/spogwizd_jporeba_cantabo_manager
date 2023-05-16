@@ -15,6 +15,8 @@ public interface UserRepository extends JpaRepository<UserDAO, UUID> {
 
     Optional<UserDAO> findByEmail(String email);
 
+    Optional<UserDAO> findByName(String name);
+
     @Query("SELECT u FROM UserDAO u WHERE u.name LIKE %:fragment% OR u.email LIKE %:fragment%")
     List<UserDAO> findByUserNameOrEmail(String fragment);
 }
