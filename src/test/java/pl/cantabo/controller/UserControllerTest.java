@@ -54,6 +54,9 @@ class UserControllerTest {
     @MockBean
     private GroupService groupService;
 
+    @MockBean
+    private PlaylistCategoryService playlistCategoryService;
+
     @Test
     public void createUser_ok() throws Exception {
         // given

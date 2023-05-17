@@ -45,6 +45,9 @@ public class SongCategoryControllerTest {
     @MockBean
     private GroupService groupService;
 
+    @MockBean
+    private PlaylistCategoryService playlistCategoryService;
+
     @Test
     public void getAllCategories() throws Exception {
         // given
@@ -59,7 +62,7 @@ public class SongCategoryControllerTest {
     }
 
     @Test
-    public void deleteSong() throws Exception {
+    public void deleteSongCategories() throws Exception {
         // given
         doNothing().when(songCategoryService).delete(any());
 

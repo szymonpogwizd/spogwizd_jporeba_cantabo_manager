@@ -45,6 +45,9 @@ class SongControllerTest {
     @MockBean
     private GroupService groupService;
 
+    @MockBean
+    private PlaylistCategoryService playlistCategoryService;
+
     @Test
     public void getAll() throws Exception {
         // given

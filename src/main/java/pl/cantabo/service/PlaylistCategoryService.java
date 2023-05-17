@@ -6,12 +6,11 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryRepository;
-import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 
 import javax.validation.ValidationException;
 import java.util.ArrayList;
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -23,6 +22,14 @@ public class PlaylistCategoryService {
         log.debug("Creating playlist category{}",playlistCategory);
         validatePlaylistCategory(playlistCategory);
         return log.traceExit(playlistCategoryRepository.save(playlistCategory));
+    }
+
+    public PlaylistCategoryDAO update(UUID id, PlaylistCategoryDAO playlistCategory){
+        log.debug("Updating playlist category {}: {}", id, playlistCategory);
+        validatePlaylistCategory(playlistCategory);
+        PlaylistCategoryDAO toUpdate = playlistCategoryRepository.findById(id).orElseThrow(() -> new ValidationException("Kategoria playlisty o podanym id nie istnieje"));
+        toUpdate.setName(playlistCategory.getName());
+        return log.traceExit(playlistCategoryRepository.save(toUpdate));
     }
 
     private void validatePlaylistCategory(PlaylistCategoryDAO playlistCategory) {

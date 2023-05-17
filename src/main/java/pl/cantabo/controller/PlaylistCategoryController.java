@@ -32,6 +32,13 @@ public class PlaylistCategoryController {
         return log.traceExit(playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryInfoDTO(createdSongCategory));
     }
 
+    @PutMapping("{id}")
+    public PlaylistCategoryInfoDTO updatePlaylistCategory(@RequestBody @Valid PlaylistCategoryCreateDTO playlistCategory, @PathVariable UUID id) {
+        log.debug("Update playlist category {}: {}", id, playlistCategory);
+        PlaylistCategoryDAO updatedPlaylistCategory = playlistCategoryService.update(id, playlistCategoryMapper.playlistCategoryCreateDTO2PlaylistCategoryDAO(playlistCategory));
+        return log.traceExit(playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryInfoDTO(updatedPlaylistCategory));
+    }
+
     @GetMapping
     public List<PlaylistCategoryInfoDTO> getAllCategories() {
         log.debug("Getting all playlist categories");
