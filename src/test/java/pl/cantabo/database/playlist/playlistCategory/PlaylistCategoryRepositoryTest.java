@@ -73,30 +73,4 @@ public class PlaylistCategoryRepositoryTest {
         //then
         assertEquals(2, playlistCategoryDAOList.size());
     }
-//    @Test
-//    public void findAllPlaylistCategoryByName(){
-//        //given
-//        PlaylistCategoryDAO playlistCategoryDAO1 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlistCategory1").build();
-//        PlaylistCategoryDAO playlistCategoryDAO2 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlistCategory2").build();
-//        //when
-//        playlistCategoryRepository.saveAndFlush(playlistCategoryDAO1);
-//        playlistCategoryRepository.saveAndFlush(playlistCategoryDAO2);
-//        List<PlaylistCategoryDAO> playlistCategoryDAOList = playlistCategoryRepository.findAll();
-//        //then
-//        assertEquals(2, playlistCategoryDAOList.size());
-//    }
-//    @Test
-//    public void findPlaylistCategoryByNameTest(){
-//        //given
-//        PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().name("playlistCategory1").build();
-//        PlaylistCategoryDAO playlistCategoryDAO2 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlistCategory2").build();
-//        //when
-//        playlistCategoryRepository.saveAndFlush(playlistCategoryDAO);
-//        playlistCategoryRepository.saveAndFlush(playlistCategoryDAO2);
-//        List<PlaylistCategoryDAO> playlistCategory = playlistCategoryRepository.findPlaylistCategoryByName("playlistCategory");
-//        List<PlaylistCategoryDAO> playlistCategory1 = playlistCategoryRepository.findPlaylistCategoryByName("playlistCategory");
-//        //then
-//        assertEquals(2, playlistCategory.size());
-//        assertEquals(1, playlistCategory1.size());
-//    }
 }

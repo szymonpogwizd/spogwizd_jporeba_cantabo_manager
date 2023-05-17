@@ -26,4 +26,13 @@ public class SongHistoryDAO extends Auditable<UUID> {
     @ManyToOne
     @JoinColumn(name = "songId")
     private SongDAO song;
+
+    public SongHistoryDAO() {
+    }
+
+    public SongHistoryDAO(UUID id, Calendar scheduledDate, SongDAO song) {
+        this.id = id;
+        this.scheduledDate = scheduledDate;
+        this.song = song;
+    }
 }

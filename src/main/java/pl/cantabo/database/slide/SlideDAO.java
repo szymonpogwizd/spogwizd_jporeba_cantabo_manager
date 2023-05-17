@@ -39,4 +39,17 @@ public class SlideDAO extends Auditable<UUID> {
     @ManyToOne
     @JoinColumn(name = "songId")
     private SongDAO song;
+
+    public SlideDAO() {
+    }
+
+    public SlideDAO(UUID id, Integer itemOrder, String body, boolean defaultItem, Set<PlaylistDAO> playlists, Set<GroupDAO> groups, SongDAO song) {
+        this.id = id;
+        this.itemOrder = itemOrder;
+        this.body = body;
+        this.defaultItem = defaultItem;
+        this.playlists = playlists;
+        this.groups = groups;
+        this.song = song;
+    }
 }

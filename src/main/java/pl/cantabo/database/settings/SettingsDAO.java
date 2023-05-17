@@ -26,4 +26,14 @@ public class SettingsDAO extends Auditable<UUID> {
     @OneToOne
     @JoinColumn(name = "userId")
     private UserDAO user;
+
+    public SettingsDAO() {
+    }
+
+    public SettingsDAO(UUID id, boolean darkTheme, float fontSize, UserDAO user) {
+        this.id = id;
+        this.darkTheme = darkTheme;
+        this.fontSize = fontSize;
+        this.user = user;
+    }
 }
