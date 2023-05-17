@@ -35,13 +35,32 @@ public class UserService {
 
         validateUser(user);
 
-        user.setActive(true);
         user.setToken(TokenUtility.generate());
         user.setTokenExpiration(ZonedDateTime.now().plusDays(tokenValidity));
 
         parseUserType(user);
 
         return log.traceExit(userRepository.save(user));
+    }
+
+    @Transactional
+    public UserDAO update(UUID id, UserDAO user) {
+        log.debug("Editing user {} - {}", id, user);
+        validateUser(user);
+        UserDAO toUpdate = userRepository.findById(id)
+                .orElseThrow(() -> new ValidationException("User with id " + id + " was not found"));
+
+        toUpdate.setName(user.getName());
+        toUpdate.setEmail(user.getEmail());
+        toUpdate.setPassword(user.getPassword());
+        toUpdate.setActive(user.getActive());
+        toUpdate.setGroup(user.getGroup());
+        toUpdate.setToken(user.getToken());
+        toUpdate.setTokenExpiration(user.getTokenExpiration());
+
+        parseUserType(toUpdate);
+
+        return log.traceExit(userRepository.save(toUpdate));
     }
 
     private void parseUserType(UserDAO user) {
