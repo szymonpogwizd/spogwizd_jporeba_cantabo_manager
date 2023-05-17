@@ -24,6 +24,14 @@ public class SongCategoryService {
         return log.traceExit(songCategoryRepository.save(songCategory));
     }
 
+    public SongCategoryDAO update(UUID id, SongCategoryDAO songCategory) {
+        log.debug("Updating song category {}: {}", id, songCategory);
+        validateSongCategory(songCategory);
+        SongCategoryDAO toUpdate = songCategoryRepository.findById(id).orElseThrow(() -> new ValidationException("Kategoria pieśni o podanym id nie istnieje"));
+        toUpdate.setName(songCategory.getName());
+        return log.traceExit(songCategoryRepository.save(toUpdate));
+    }
+
     private void validateSongCategory(SongCategoryDAO songCategory) {
         List<String> validationErrors = new ArrayList<>();
 
