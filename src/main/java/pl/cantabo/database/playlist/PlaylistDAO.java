@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.cantabo.auditor.Auditable;
 import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
@@ -35,6 +37,7 @@ public class PlaylistDAO  extends Auditable<UUID>  {
             name = "playlistsPlaylistCategories",
             joinColumns = @JoinColumn(name = "playlistId"),
             inverseJoinColumns = @JoinColumn(name = "playlistCategoryId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<PlaylistCategoryDAO> playlistCategories;
 
     @ManyToMany
@@ -42,9 +45,11 @@ public class PlaylistDAO  extends Auditable<UUID>  {
             name = "playlistsSlides",
             joinColumns = @JoinColumn(name = "playlistId"),
             inverseJoinColumns = @JoinColumn(name = "slideId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<SlideDAO> slides;
 
     @ManyToMany(mappedBy = "playlists")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<GroupDAO> groups;
 
     public PlaylistDAO() {

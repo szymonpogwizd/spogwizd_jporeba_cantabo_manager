@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.cantabo.auditor.Auditable;
 import pl.cantabo.database.playlist.PlaylistDAO;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
@@ -39,6 +41,7 @@ public class GroupDAO extends Auditable<UUID> {
             name = "groupsSongs",
             joinColumns = @JoinColumn(name = "groupId"),
             inverseJoinColumns = @JoinColumn(name = "songId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<SongDAO> songs;
 
     @ManyToMany
@@ -46,6 +49,7 @@ public class GroupDAO extends Auditable<UUID> {
             name = "groupsSongCategories",
             joinColumns = @JoinColumn(name = "groupId"),
             inverseJoinColumns = @JoinColumn(name = "songCategoryId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<SongCategoryDAO> songCategories;
 
     @ManyToMany
@@ -53,6 +57,7 @@ public class GroupDAO extends Auditable<UUID> {
             name = "groupsSlides",
             joinColumns = @JoinColumn(name = "groupId"),
             inverseJoinColumns = @JoinColumn(name = "slideId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<SlideDAO> slides;
 
     @ManyToMany
@@ -60,6 +65,7 @@ public class GroupDAO extends Auditable<UUID> {
             name = "groupsPlaylists",
             joinColumns = @JoinColumn(name = "groupId"),
             inverseJoinColumns = @JoinColumn(name = "playlistId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<PlaylistDAO> playlists;
 
     @ManyToMany
@@ -67,6 +73,7 @@ public class GroupDAO extends Auditable<UUID> {
             name = "groupsPlaylistCategories",
             joinColumns = @JoinColumn(name = "groupId"),
             inverseJoinColumns = @JoinColumn(name = "playlistCategoryId"))
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<PlaylistCategoryDAO> playlistCategories;
 
     @OneToMany(mappedBy = "group")

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.cantabo.auditor.Auditable;
 import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.song.SongDAO;
@@ -30,9 +32,11 @@ public class SongCategoryDAO extends Auditable<UUID> {
     private boolean defaultItem;
 
     @ManyToMany(mappedBy = "songCategories")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<SongDAO> songs;
 
     @ManyToMany(mappedBy = "songCategories")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<GroupDAO> groups;
 
     public SongCategoryDAO() {
