@@ -3,10 +3,7 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
-import pl.cantabo.database.song.songCategory.SongCategoryCreateDTO;
-import pl.cantabo.database.song.songCategory.SongCategoryDAO;
-import pl.cantabo.database.song.songCategory.SongCategoryInfoDTO;
-import pl.cantabo.database.song.songCategory.SongCategoryMapper;
+import pl.cantabo.database.song.songCategory.*;
 import pl.cantabo.service.SongCategoryService;
 
 import javax.validation.Valid;
@@ -33,9 +30,9 @@ public class SongCategoryController {
     }
 
     @PutMapping("{id}")
-    public SongCategoryInfoDTO updateSongCategory(@RequestBody @Valid SongCategoryCreateDTO songCategory, @PathVariable UUID id) {
+    public SongCategoryInfoDTO updateSongCategory(@RequestBody @Valid SongCategoryUpdateDTO songCategory, @PathVariable UUID id) {
         log.debug("Update song category {}: {}", id, songCategory);
-        SongCategoryDAO updatedSongCategory = songCategoryService.update(id, songCategoryMapper.songCategoryCreateDTO2SongCategoryDAO(songCategory));
+        SongCategoryDAO updatedSongCategory = songCategoryService.update(id, songCategoryMapper.songCategoryUpdateDTO2SongCategoryDAO(songCategory));
         return log.traceExit(songCategoryMapper.songCategoryDAO2SongCategoryInfoDTO(updatedSongCategory));
     }
 

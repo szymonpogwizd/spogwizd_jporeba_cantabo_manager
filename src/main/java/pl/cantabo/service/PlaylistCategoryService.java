@@ -1,9 +1,9 @@
 package pl.cantabo.service;
 
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryRepository;
 
@@ -18,12 +18,14 @@ import java.util.UUID;
 public class PlaylistCategoryService {
     private final PlaylistCategoryRepository playlistCategoryRepository;
 
+    @Transactional
     public PlaylistCategoryDAO create(PlaylistCategoryDAO playlistCategory){
         log.debug("Creating playlist category{}",playlistCategory);
         validatePlaylistCategory(playlistCategory);
         return log.traceExit(playlistCategoryRepository.save(playlistCategory));
     }
 
+    @Transactional
     public PlaylistCategoryDAO update(UUID id, PlaylistCategoryDAO playlistCategory){
         log.debug("Updating playlist category {}: {}", id, playlistCategory);
         validatePlaylistCategory(playlistCategory);
