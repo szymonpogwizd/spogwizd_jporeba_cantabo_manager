@@ -6,7 +6,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.cantabo.database.song.SongDAO;
 import pl.cantabo.database.song.SongRepository;
+import pl.cantabo.database.user.UserDAO;
+import pl.cantabo.validator.email.EmailValidator;
+import pl.cantabo.validator.email.EmailValidatorException;
+import pl.cantabo.validator.password.PasswordValidator;
+import pl.cantabo.validator.password.PasswordValidatorException;
 
+import javax.validation.ValidationException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +27,25 @@ public class SongService {
     @Transactional
     public SongDAO create(SongDAO song) {
         log.debug("Creating song {}", song);
+        validateSong(song);
         return log.traceExit(songRepository.save(song));
+    }
+
+    private void validateSong(SongDAO song) {
+        List<String> validationErrors = new ArrayList<>();
+
+        if (song.getName() == null || song.getName().isEmpty()) {
+            validationErrors.add("Nazwa pieśni nie może być pusta\n");
+        }
+
+        if (songRepository.findByName(song.getName()).isPresent()) {
+            validationErrors.add("Pieśń o podanej nazwie już istnieje\n");
+        }
+
+        if (!validationErrors.isEmpty()) {
+            String errorMessage = String.join("", validationErrors);
+            throw new ValidationException(errorMessage);
+        }
     }
 
     public void delete(UUID id) {
