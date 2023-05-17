@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -12,4 +13,6 @@ public interface SongCategoryRepository extends JpaRepository<SongCategoryDAO, U
 
     @Query("SELECT sc FROM SongCategoryDAO sc WHERE sc.name LIKE %:nameFragment%")
     List<SongCategoryDAO> findSongCategoryByName(String nameFragment);
+
+    Optional<SongCategoryDAO> findByName(String name);
 }

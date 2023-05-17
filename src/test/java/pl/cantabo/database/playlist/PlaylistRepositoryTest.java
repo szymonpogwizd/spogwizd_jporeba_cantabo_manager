@@ -35,7 +35,7 @@ public class PlaylistRepositoryTest {
     }
 
     @Test
-    public void detelePlaylistTest() {
+    public void deletePlaylistTest() {
         //given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
         playlistRepository.saveAndFlush(playlistDAO);
