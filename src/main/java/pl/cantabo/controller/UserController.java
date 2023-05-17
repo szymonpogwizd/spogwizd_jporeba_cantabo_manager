@@ -35,6 +35,13 @@ public class UserController {
         return log.traceExit(userMapper.userDAO2UserInfoDTO(createdUser));
     }
 
+    @PutMapping("{id}")
+    public UserInfoDTO updateUser(@RequestBody @Valid UserUpdateDTO user, @PathVariable UUID id) {
+        log.debug("Update user {}: {}", id, user);
+        UserDAO updatedUser = userService.update(id, userMapper.userUpdateDTO2UserDAO(user));
+        return log.traceExit(userMapper.userDAO2UserInfoDTO(updatedUser));
+    }
+
     @GetMapping
     public List<UserInfoDTO> getAll() {
         log.debug("Getting all users");
