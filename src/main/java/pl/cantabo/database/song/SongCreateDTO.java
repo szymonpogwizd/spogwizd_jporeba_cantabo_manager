@@ -1,9 +1,11 @@
 package pl.cantabo.database.song;
 
 import lombok.Data;
+import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Data
 public class SongCreateDTO {
@@ -17,4 +19,6 @@ public class SongCreateDTO {
 
     @Size(min = 1, max = 100)
     private String wordsAuthor;
+
+    private Set<SongCategoryDAO> songCategories;
 }

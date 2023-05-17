@@ -7,8 +7,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
-import pl.cantabo.database.song.SongDAO;
-import pl.cantabo.database.song.factory.SongDAOFactory;
+import pl.cantabo.database.song.songCategory.SongCategoryDAO;
+import pl.cantabo.database.song.songCategory.factory.SongCategoryDAOFactory;
 import pl.cantabo.service.*;
 
 import java.util.List;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ContextConfiguration(classes = MapperConfiguration.class)
 @WebMvcTest
-class SongControllerTest {
+public class SongCategoryControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -46,26 +46,26 @@ class SongControllerTest {
     private GroupService groupService;
 
     @Test
-    public void getAll() throws Exception {
+    public void getAllCategories() throws Exception {
         // given
-        List<SongDAO> givenSongs = SongDAOFactory.defaultList();
-        given(songService.getAll()).willReturn(givenSongs);
+        List<SongCategoryDAO> givenSongCategories = SongCategoryDAOFactory.defaultList();
+        given(songCategoryService.getAll()).willReturn(givenSongCategories);
 
         // when
         // then
-        mockMvc.perform(get("/dashboard/songs"))
+        mockMvc.perform(get("/dashboard/songCategories"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()", is(givenSongs.size())));
+                .andExpect(jsonPath("$.size()", is(givenSongCategories.size())));
     }
 
     @Test
     public void deleteSong() throws Exception {
         // given
-        doNothing().when(songService).delete(any());
+        doNothing().when(songCategoryService).delete(any());
 
         // when
         // then
-        mockMvc.perform(delete("/dashboard/songs/" + UUID.randomUUID()))
+        mockMvc.perform(delete("/dashboard/songCategories/" + UUID.randomUUID()))
                 .andExpect(status().isOk());
     }
 }
