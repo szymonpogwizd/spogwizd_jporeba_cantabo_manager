@@ -31,6 +31,18 @@ public class SongService {
         return log.traceExit(songRepository.save(song));
     }
 
+    @Transactional
+    public SongDAO update(UUID id, SongDAO song) {
+        log.debug("Updating song {}: {}", id, song);
+        validateSong(song);
+        SongDAO toUpdate = songRepository.findById(id).orElseThrow(() -> new ValidationException("Pieśń o podanym id nie istnieje"));
+        toUpdate.setName(song.getName());
+        toUpdate.setMusicAuthor(song.getMusicAuthor());
+        toUpdate.setWordsAuthor(song.getWordsAuthor());
+        toUpdate.setSongCategories(song.getSongCategories());
+        return log.traceExit(songRepository.save(toUpdate));
+    }
+
     private void validateSong(SongDAO song) {
         List<String> validationErrors = new ArrayList<>();
 

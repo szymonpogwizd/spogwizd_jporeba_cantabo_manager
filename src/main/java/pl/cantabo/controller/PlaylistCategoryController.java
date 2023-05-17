@@ -3,10 +3,7 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
-import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryCreateDTO;
-import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
-import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryInfoDTO;
-import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryMapper;
+import pl.cantabo.database.playlist.playlistCategory.*;
 import pl.cantabo.service.PlaylistCategoryService;
 
 import javax.validation.Valid;
@@ -33,9 +30,9 @@ public class PlaylistCategoryController {
     }
 
     @PutMapping("{id}")
-    public PlaylistCategoryInfoDTO updatePlaylistCategory(@RequestBody @Valid PlaylistCategoryCreateDTO playlistCategory, @PathVariable UUID id) {
+    public PlaylistCategoryInfoDTO updatePlaylistCategory(@RequestBody @Valid PlaylistCategoryUpdateDTO playlistCategory, @PathVariable UUID id) {
         log.debug("Update playlist category {}: {}", id, playlistCategory);
-        PlaylistCategoryDAO updatedPlaylistCategory = playlistCategoryService.update(id, playlistCategoryMapper.playlistCategoryCreateDTO2PlaylistCategoryDAO(playlistCategory));
+        PlaylistCategoryDAO updatedPlaylistCategory = playlistCategoryService.update(id, playlistCategoryMapper.playlistCategoryUpdateDTO2PlaylistCategoryDAO(playlistCategory));
         return log.traceExit(playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryInfoDTO(updatedPlaylistCategory));
     }
 
