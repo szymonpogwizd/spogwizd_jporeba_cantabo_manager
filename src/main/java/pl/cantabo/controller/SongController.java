@@ -29,14 +29,6 @@ public class SongController {
     private final SongMapper songMapper;
     private final SongCategoryMapper songCategoryMapper;
 
-    @PostMapping
-    public SongInfoDTO createSong(@RequestBody @Valid SongCreateDTO song) {
-        log.debug("Create song {}", song);
-        SongDAO toCreate = songMapper.songCreateDTO2SongDAO(song);
-        SongDAO createdSong = songService.create(toCreate);
-        return log.traceExit(songMapper.songDAO2SongInfoDTO(createdSong));
-    }
-
     @GetMapping
     public List<SongInfoDTO> getAll() {
         log.debug("Getting all songs");
