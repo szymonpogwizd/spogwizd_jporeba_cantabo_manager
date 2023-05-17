@@ -8,7 +8,8 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 public interface PlaylistCategoryMapper {
-    PlaylistCategoryInfoDTO playlistCategoryDAO2PlaylistCategoryDTO(PlaylistCategoryDAO playlistCategoryDAO);
+
+    PlaylistCategoryInfoDTO playlistCategoryDAO2PlaylistCategoryInfoDTO(PlaylistCategoryDAO playlistCategoryDAO);
 
     PlaylistCategoryDAO playlistCategoryCreateDTO2PlaylistCategoryDAO(PlaylistCategoryCreateDTO playlistCategoryCreateDTO);
 

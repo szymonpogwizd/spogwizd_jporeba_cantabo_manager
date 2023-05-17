@@ -24,7 +24,7 @@ public class PlaylistCategoryMapperTest {
         //given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         //when
-        PlaylistCategoryInfoDTO playlistCategoryInfoDTO = playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryDTO(playlistCategoryDAO);
+        PlaylistCategoryInfoDTO playlistCategoryInfoDTO = playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryInfoDTO(playlistCategoryDAO);
         //then
         assertNotNull(playlistCategoryInfoDTO);
         SoftAssertions softly = new SoftAssertions();
