@@ -48,6 +48,9 @@ class ProfileControllerTest {
     @MockBean
     private GroupService groupService;
 
+    @MockBean
+    private PlaylistCategoryService playlistCategoryService;
+
     @Test
     public void createProfile() throws Exception {
         // given
