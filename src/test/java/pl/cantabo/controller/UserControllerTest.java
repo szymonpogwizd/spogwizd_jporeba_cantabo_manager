@@ -117,7 +117,7 @@ class UserControllerTest {
                 .andExpect(jsonPath("$", hasSize(userTypes.size())))
                 .andExpect(jsonPath("$[0]").value(UserType.USER.toString()))
                 .andExpect(jsonPath("$[1]").value(UserType.ADMINISTRATOR.toString()))
-                .andExpect(jsonPath("$[2]").value(UserType.SUPERADMINISTRATOR.toString()));
+                .andExpect(jsonPath("$[2]").value(UserType.SUPER_ADMINISTRATOR.toString()));
     }
 
     @Test

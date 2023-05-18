@@ -70,8 +70,8 @@ public class UserService {
             user.setUserType(UserType.USER);
         } else if (userType == UserType.ADMINISTRATOR) {
             user.setUserType(UserType.ADMINISTRATOR);
-        } else if (userType == UserType.SUPERADMINISTRATOR) {
-            user.setUserType(UserType.SUPERADMINISTRATOR);
+        } else if (userType == UserType.SUPER_ADMINISTRATOR) {
+            user.setUserType(UserType.SUPER_ADMINISTRATOR);
         }
     }
 
