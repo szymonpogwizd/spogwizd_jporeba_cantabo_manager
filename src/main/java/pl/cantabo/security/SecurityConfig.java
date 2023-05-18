@@ -1,13 +1,12 @@
 package pl.cantabo.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import pl.cantabo.configuration.PasswordEncoderConfig;
-import pl.cantabo.security.UserDetailsServiceImpl;
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
@@ -18,14 +17,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new PasswordEncoderConfig().passwordEncoder();
-    }
-
-    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests()
-                .requestMatchers("/dashboard/users/**").hasAuthority("ADMINISTRATOR")
+        http
+                .authorizeHttpRequests()
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/dashboard/users/**").hasAnyAuthority("ADMINISTRATOR", "SUPER_ADMINISTRATOR")
                 .requestMatchers("/dashboard/groups/**").hasAuthority("SUPER_ADMINISTRATOR")
                 .anyRequest().authenticated()
                 .and()
