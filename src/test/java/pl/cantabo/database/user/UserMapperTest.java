@@ -56,7 +56,7 @@ class UserMapperTest {
         softly.assertThat(userCreateDTO.getUserType()).isEqualTo(userDAO.getUserType());
         softly.assertThat(userCreateDTO.getEmail()).isEqualTo(userDAO.getEmail());
         softly.assertThat(userCreateDTO.getName()).isEqualTo(userDAO.getName());
-//        softly.assertThat(passwordEncoder.matches(userCreateDTO.getPassword(), userDAO.getPassword())).isTrue();
+        softly.assertThat(passwordEncoder.matches(userCreateDTO.getPassword(), userDAO.getPassword())).isTrue();
         softly.assertAll();
     }
 
