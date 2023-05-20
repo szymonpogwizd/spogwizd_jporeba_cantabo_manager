@@ -10,7 +10,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import pl.cantabo.configuration.PasswordEncoderConfig;
+import pl.cantabo.utils.jwt.JwtAuthenticationFilter;
+import pl.cantabo.utils.jwt.JwtLoginFilter;
 
 import java.util.Arrays;
 
@@ -28,7 +31,7 @@ public class SecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoderConfig.passwordEncoder());
     }
 
     @Bean
@@ -39,7 +42,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .authorizeHttpRequests()
+                .authorizeRequests()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/dashboard/users/**").hasAnyAuthority("ADMINISTRATOR", "SUPER_ADMINISTRATOR")
                 .requestMatchers("/dashboard/groups/**").hasAuthority("SUPER_ADMINISTRATOR")
@@ -47,7 +50,10 @@ public class SecurityConfig {
                 .and()
                 .httpBasic()
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .addFilterBefore(new JwtLoginFilter("/login", authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthenticationFilter(authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
