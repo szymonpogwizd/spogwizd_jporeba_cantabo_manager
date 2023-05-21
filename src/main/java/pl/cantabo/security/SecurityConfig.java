@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import pl.cantabo.configuration.PasswordEncoderConfig;
 import pl.cantabo.utils.jwt.JwtAuthenticationFilter;
 import pl.cantabo.utils.jwt.JwtLoginFilter;
+import pl.cantabo.utils.jwt.JwtUtils;
 
 import java.util.Arrays;
 
@@ -21,11 +22,13 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final JwtUtils jwtUtils;
     private final UserDetailsServiceImpl userDetailsService;
     @Autowired
     private PasswordEncoderConfig passwordEncoderConfig;
 
-    public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
+    public SecurityConfig(JwtUtils jwtUtils, UserDetailsServiceImpl userDetailsService) {
+        this.jwtUtils = jwtUtils;
         this.userDetailsService = userDetailsService;
     }
 
@@ -52,8 +55,8 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .and()
-                .addFilterBefore(new JwtLoginFilter("/login", authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(new JwtAuthenticationFilter(authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtLoginFilter("/login", authenticationManagerBean(), jwtUtils), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthenticationFilter(authenticationManagerBean(), jwtUtils), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

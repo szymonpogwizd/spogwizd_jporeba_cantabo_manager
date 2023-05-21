@@ -15,8 +15,11 @@ import java.util.ArrayList;
 
 public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+    private final JwtUtils jwtUtils;
+
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtUtils jwtUtils) {
         super(authenticationManager);
+        this.jwtUtils = jwtUtils;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         String token = request.getHeader("Authorization");
         if (token != null) {
             String user = Jwts.parser()
-                    .setSigningKey("tajny_klucz".getBytes())
+                    .setSigningKey(jwtUtils.getSecretKey())
                     .parseClaimsJws(token.replace("Bearer ", ""))
                     .getBody()
                     .getSubject();
@@ -48,7 +51,6 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
             }
-            return null;
         }
         return null;
     }
