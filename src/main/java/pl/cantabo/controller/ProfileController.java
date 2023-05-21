@@ -3,10 +3,7 @@ package pl.cantabo.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
-import pl.cantabo.database.profile.ProfileCreateDTO;
-import pl.cantabo.database.profile.ProfileDAO;
-import pl.cantabo.database.profile.ProfileInfoDTO;
-import pl.cantabo.database.profile.ProfileMapper;
+import pl.cantabo.database.profile.*;
 import pl.cantabo.service.ProfileService;
 
 import javax.validation.Valid;
@@ -30,6 +27,13 @@ public class ProfileController {
         ProfileDAO toCreate = profileMapper.profileCreateDTO2ProfileDAO(profile);
         ProfileDAO createdProfile = profileService.create(toCreate);
         return log.traceExit(profileMapper.profileDAO2ProfileInfoDTO(createdProfile));
+    }
+
+    @PutMapping("{id}")
+    public ProfileInfoDTO updateProfile(@RequestBody @Valid ProfileUpdateDTO profile, @PathVariable UUID id) {
+        log.debug("Update profile {}: {}", id, profile);
+        ProfileDAO updatedProfile = profileService.update(id, profileMapper.profileUpdateDTO2ProfileDAO(profile));
+        return log.traceExit(profileMapper.profileDAO2ProfileInfoDTO(updatedProfile));
     }
 
     @GetMapping
