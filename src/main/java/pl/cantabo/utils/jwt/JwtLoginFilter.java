@@ -12,13 +12,16 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import pl.cantabo.database.user.UserType;
 
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -47,8 +50,11 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 
         SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
+        String userRole = auth.getAuthorities().stream().findFirst().get().getAuthority();
+
         String token = Jwts.builder()
                 .setSubject(auth.getName())
+                .claim("role", userRole)
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
                 .signWith(key)
                 .compact();
