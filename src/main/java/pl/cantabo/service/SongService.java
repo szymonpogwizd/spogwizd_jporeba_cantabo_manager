@@ -15,6 +15,7 @@ import pl.cantabo.validator.password.PasswordValidatorException;
 import javax.validation.ValidationException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -27,14 +28,15 @@ public class SongService {
     @Transactional
     public SongDAO create(SongDAO song) {
         log.debug("Creating song {}", song);
-        validateSong(song);
+        validateSong(song, false);
         return log.traceExit(songRepository.save(song));
     }
 
     @Transactional
     public SongDAO update(UUID id, SongDAO song) {
         log.debug("Updating song {}: {}", id, song);
-        validateSong(song);
+        boolean isSameSong = checkIfSameSong(id, song);
+        validateSong(song, isSameSong);
         SongDAO toUpdate = songRepository.findById(id).orElseThrow(() -> new ValidationException("Pieśń o podanym id nie istnieje"));
         toUpdate.setName(song.getName());
         toUpdate.setMusicAuthor(song.getMusicAuthor());
@@ -43,15 +45,22 @@ public class SongService {
         return log.traceExit(songRepository.save(toUpdate));
     }
 
-    private void validateSong(SongDAO song) {
+    private boolean checkIfSameSong(UUID id, SongDAO song) {
+        Optional<SongDAO> foundSong = songRepository.findByName(song.getName());
+        return foundSong.isPresent() && foundSong.get().getId().equals(id);
+    }
+
+    private void validateSong(SongDAO song, boolean isSameSong) {
         List<String> validationErrors = new ArrayList<>();
 
         if (song.getName() == null || song.getName().isEmpty()) {
             validationErrors.add("Nazwa pieśni nie może być pusta\n");
         }
 
-        if (songRepository.findByName(song.getName()).isPresent()) {
-            validationErrors.add("Pieśń o podanej nazwie już istnieje\n");
+        if (!isSameSong) {
+            if (songRepository.findByName(song.getName()).isPresent()) {
+                validationErrors.add("Pieśń o podanej nazwie już istnieje\n");
+            }
         }
 
         if (!validationErrors.isEmpty()) {
