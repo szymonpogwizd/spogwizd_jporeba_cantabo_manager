@@ -7,6 +7,7 @@ import pl.cantabo.database.user.UserDAO;
 import pl.cantabo.database.user.UserRepository;
 import pl.cantabo.database.user.UserType;
 import pl.cantabo.database.user.factory.UserDAOFactory;
+import pl.cantabo.validator.UserValidator;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,7 @@ class UserServiceTest {
     @BeforeEach
     public void init() {
         userRepository = Mockito.mock(UserRepository.class);
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, new UserValidator(userRepository));
     }
 
     @Test
