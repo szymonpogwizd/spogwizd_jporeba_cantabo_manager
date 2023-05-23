@@ -1,12 +1,12 @@
 package pl.cantabo.service;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.group.GroupRepository;
 import pl.cantabo.database.group.factory.GroupDAOFactory;
+import pl.cantabo.validator.GroupValidator;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,13 +22,12 @@ class GroupServiceTest {
     @BeforeEach
     public void init() {
         groupRepository = Mockito.mock(GroupRepository.class);
-        groupService = new GroupService(groupRepository);
+        groupService = new GroupService(groupRepository, new GroupValidator(groupRepository));
     }
 
     @Test
     void create() {
-        //givennn
-
+        //given
         GroupDAO group = GroupDAOFactory.defaultBuilder().build();
 
         // when
@@ -46,7 +45,6 @@ class GroupServiceTest {
         groupService.delete(id);
         //then
         verify(groupRepository, times(1)).deleteById(id);
-
     }
 
     @Test
@@ -67,5 +65,4 @@ class GroupServiceTest {
         verify(groupRepository, times(1)).findAll();
         assertEquals(3, groupDAOList.size());
     }
-
 }

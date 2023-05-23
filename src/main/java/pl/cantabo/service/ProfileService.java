@@ -5,11 +5,10 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.cantabo.database.profile.ProfileDAO;
 import pl.cantabo.database.profile.ProfileRepository;
+import pl.cantabo.validator.ProfileValidator;
 
 import javax.validation.ValidationException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -18,17 +17,18 @@ import java.util.UUID;
 public class ProfileService {
 
     private final ProfileRepository profileRepository;
+    private final ProfileValidator profileValidator;
 
     public ProfileDAO create(ProfileDAO profile) {
         log.debug("Creating profile {}", profile);
-        validateProfile(profile, false);
+        profileValidator.validateProfile(profile, false);
         return log.traceExit(profileRepository.save(profile));
     }
 
     public ProfileDAO update(UUID id, ProfileDAO profile) {
         log.debug("Updating profile {}: {}", id, profile);
-        boolean isSameProfile = checkIsSameProfile(id, profile);
-        validateProfile(profile, true);
+        boolean isSameProfile = profileValidator.checkIsSameProfile(id, profile);
+        profileValidator.validateProfile(profile, true);
         ProfileDAO toUpdate = profileRepository.findById(id).orElseThrow(() -> new ValidationException("Profil o podanym id nie istnieje"));
         toUpdate.setName(profile.getName());
         toUpdate.setActive(profile.isActive());
@@ -48,30 +48,6 @@ public class ProfileService {
         toUpdate.setInvertColors(profile.isInvertColors());
         toUpdate.setExpandedList(profile.isExpandedList());
         return log.traceExit(profileRepository.save(toUpdate));
-    }
-
-    private boolean checkIsSameProfile(UUID id, ProfileDAO profile) {
-        Optional<ProfileDAO> foundProfile = profileRepository.findByName(profile.getName());
-        return foundProfile.isPresent() && foundProfile.get().getId().equals(id);
-    }
-
-    private void validateProfile(ProfileDAO profileDAO, boolean isSameProfile) {
-        List<String> validationErrors = new ArrayList<>();
-
-        if (profileDAO.getName() == null || profileDAO.getName().isEmpty()) {
-            validationErrors.add("Nazwa profilu nie może być pusta\n");
-        }
-
-        if (!isSameProfile) {
-            if (profileRepository.findByName(profileDAO.getName()).isPresent()) {
-                validationErrors.add("Profil o podanej nazwie już istnieje\n");
-            }
-        }
-
-        if (!validationErrors.isEmpty()) {
-            String errorMessage = String.join("", validationErrors);
-            throw new ValidationException(errorMessage);
-        }
     }
 
     public void delete(UUID id) {

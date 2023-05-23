@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 import pl.cantabo.database.song.SongDAO;
 import pl.cantabo.database.song.SongRepository;
 import pl.cantabo.database.song.factory.SongDAOFactory;
+import pl.cantabo.validator.SongValidator;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,7 +24,7 @@ class SongServiceTest {
     @BeforeEach
     public void init() {
         songRepository = Mockito.mock(SongRepository.class);
-        songService = new SongService(songRepository);
+        songService = new SongService(songRepository, new SongValidator(songRepository));
     }
 
     @Test

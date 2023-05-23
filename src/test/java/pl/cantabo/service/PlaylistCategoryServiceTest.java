@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryRepository;
 import pl.cantabo.database.playlist.playlistCategory.factory.PlaylistCategoryDAOFactory;
+import pl.cantabo.validator.PlaylistCategoryValidator;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +22,7 @@ class PlaylistCategoryServiceTest {
     @BeforeEach
     public void init() {
         playlistCategoryRepository = Mockito.mock(PlaylistCategoryRepository.class);
-        playlistCategoryService = new PlaylistCategoryService(playlistCategoryRepository);
+        playlistCategoryService = new PlaylistCategoryService(playlistCategoryRepository, new PlaylistCategoryValidator(playlistCategoryRepository));
     }
 
 
