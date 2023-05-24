@@ -9,9 +9,9 @@ public class ProfileDAOFactory {
     public static final String NAME = "Test Profile";
     public static final boolean ACTIVE = false;
     public static final boolean SORT_BY_USED = false;
-    public static final int BG_COLOR = 0;
-    public static final int TX_COLOR = 0;
-    public static final int STOP_COLOR = 0;
+    public static final String BG_COLOR = "0";
+    public static final String TX_COLOR = "0";
+    public static final String STOP_COLOR = "0";
     public static final String FONT_STYLE = "Arial";
     public static final double MARGIN = 0.0d;
     public static final double MAX_FONT = 0.0d;

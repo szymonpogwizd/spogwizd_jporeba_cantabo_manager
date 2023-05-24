@@ -16,11 +16,11 @@ public class ProfileCreateDTO {
 
     private boolean sortByUsed;
 
-    private int bgColor;
+    private String bgColor;
 
-    private int txColor;
+    private String txColor;
 
-    private int stopColor;
+    private String stopColor;
 
     private String fontStyle;
 

@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 import pl.cantabo.database.profile.ProfileDAO;
 import pl.cantabo.database.profile.ProfileRepository;
 import pl.cantabo.database.profile.factory.ProfileDAOFactory;
+import pl.cantabo.validator.ProfileValidator;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +23,7 @@ class ProfileServiceTest {
     @BeforeEach
     public void init() {
         profileRepository = Mockito.mock(ProfileRepository.class);
-        profileService = new ProfileService(profileRepository);
+        profileService = new ProfileService(profileRepository, new ProfileValidator(profileRepository));
     }
 
     @Test

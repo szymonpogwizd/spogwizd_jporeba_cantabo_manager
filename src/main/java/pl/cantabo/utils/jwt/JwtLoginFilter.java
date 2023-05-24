@@ -50,7 +50,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
         String token = Jwts.builder()
                 .setSubject(auth.getName())
                 .claim("role", userRole)
-                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
+//                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
                 .signWith(jwtUtils.getSecretKey())
                 .compact();
         res.addHeader("Access-Control-Expose-Headers", "Authorization");
