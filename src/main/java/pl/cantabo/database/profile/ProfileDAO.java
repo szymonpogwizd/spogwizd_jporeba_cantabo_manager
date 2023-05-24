@@ -29,11 +29,11 @@ public class ProfileDAO  extends Auditable<UUID>  {
 
     private boolean sortByUsed;
 
-    private int bgColor;
+    private String bgColor;
 
-    private int txColor;
+    private String txColor;
 
-    private int stopColor;
+    private String stopColor;
 
     private String fontStyle;
 
@@ -66,7 +66,7 @@ public class ProfileDAO  extends Auditable<UUID>  {
     public ProfileDAO() {
     }
 
-    public ProfileDAO(UUID id, String name, boolean active, boolean sortByUsed, int bgColor, int txColor, int stopColor, String fontStyle, double margin, double maxFont, double maxMin, String align, String algorithmRange, boolean showTitle, boolean allBig, boolean showEmptySlide, boolean invertColors, boolean expandedList, boolean defaultItem, GroupDAO group) {
+    public ProfileDAO(UUID id, String name, boolean active, boolean sortByUsed, String bgColor, String txColor, String stopColor, String fontStyle, double margin, double maxFont, double maxMin, String align, String algorithmRange, boolean showTitle, boolean allBig, boolean showEmptySlide, boolean invertColors, boolean expandedList, boolean defaultItem, GroupDAO group) {
         this.id = id;
         this.name = name;
         this.active = active;
