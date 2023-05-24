@@ -15,5 +15,4 @@ public interface PlaylistMapper {
     PlaylistDAO playlistCreateDTO2PlaylistDAO(PlaylistCreateDTO playlistCreateDTO);
 
     PlaylistDAO playlistUpdateDTO2PlaylistDAO(PlaylistUpdateDTO playlistUpdateDTO);
-
 }
