@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import pl.cantabo.auditor.Auditable;
 import pl.cantabo.database.group.GroupDAO;
+import pl.cantabo.database.playlist.PlaylistDAO;
 import pl.cantabo.database.slide.SlideDAO;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.song.songHistory.SongHistoryDAO;
@@ -55,6 +56,11 @@ public class SongDAO extends Auditable<UUID> {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<GroupDAO> groups;
 
+    @ManyToMany(mappedBy = "songs")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<PlaylistDAO> playlists;
+
+
     @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SlideDAO> slides;
 
@@ -64,7 +70,7 @@ public class SongDAO extends Auditable<UUID> {
     public SongDAO() {
     }
 
-    public SongDAO(UUID id, String name, String musicAuthor, String wordsAuthor, long viewCounter, boolean defaultItem, UUID parentId, Set<SongCategoryDAO> songCategories, Set<GroupDAO> groups, Set<SlideDAO> slides, Set<SongHistoryDAO> songHistory) {
+    public SongDAO(UUID id, String name, String musicAuthor, String wordsAuthor, long viewCounter, boolean defaultItem, UUID parentId, Set<SongCategoryDAO> songCategories, Set<GroupDAO> groups, Set<PlaylistDAO> playlists, Set<SlideDAO> slides, Set<SongHistoryDAO> songHistory) {
         this.id = id;
         this.name = name;
         this.musicAuthor = musicAuthor;
@@ -74,6 +80,7 @@ public class SongDAO extends Auditable<UUID> {
         this.parentId = parentId;
         this.songCategories = songCategories;
         this.groups = groups;
+        this.playlists = playlists;
         this.slides = slides;
         this.songHistory = songHistory;
     }
