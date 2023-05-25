@@ -1,6 +1,7 @@
 package pl.cantabo.database.slide;
 
 import lombok.Data;
+import pl.cantabo.database.song.SongDAO;
 
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ public class SlideInfoDTO {
 
     private String body;
 
-    private boolean defaultItem;
-
     private Integer itemOrder;
+
+    private SongDAO song;
 }

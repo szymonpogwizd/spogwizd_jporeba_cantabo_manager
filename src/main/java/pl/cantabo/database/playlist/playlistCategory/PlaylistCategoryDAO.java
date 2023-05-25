@@ -1,5 +1,7 @@
 package pl.cantabo.database.playlist.playlistCategory;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +13,7 @@ import pl.cantabo.database.group.GroupDAO;
 import pl.cantabo.database.playlist.PlaylistDAO;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,8 +21,8 @@ import java.util.UUID;
 @Entity
 @Builder
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "playlistCategories"
-)
+@Table(name = "playlistCategories")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class PlaylistCategoryDAO extends Auditable<UUID> {
 
     @Id
@@ -34,7 +37,7 @@ public class PlaylistCategoryDAO extends Auditable<UUID> {
 
     @ManyToMany(mappedBy = "playlistCategories")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<PlaylistDAO> playlists;
+    private List<PlaylistDAO> playlists;
 
     @ManyToMany(mappedBy = "playlistCategories")
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -43,7 +46,7 @@ public class PlaylistCategoryDAO extends Auditable<UUID> {
     public PlaylistCategoryDAO() {
     }
 
-    public PlaylistCategoryDAO(UUID id, @NotEmpty String name, boolean defaultItem, Set<PlaylistDAO> playlists, Set<GroupDAO> groups) {
+    public PlaylistCategoryDAO(UUID id, @NotEmpty String name, boolean defaultItem, List<PlaylistDAO> playlists, Set<GroupDAO> groups) {
         this.id = id;
         this.name = name;
         this.defaultItem = defaultItem;

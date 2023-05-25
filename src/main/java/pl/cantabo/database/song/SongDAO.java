@@ -1,5 +1,8 @@
 package pl.cantabo.database.song;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +17,7 @@ import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 import pl.cantabo.database.song.songHistory.SongHistoryDAO;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -22,6 +26,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Table(name = "songs")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class SongDAO extends Auditable<UUID> {
 
     @Id
@@ -58,11 +63,10 @@ public class SongDAO extends Auditable<UUID> {
 
     @ManyToMany(mappedBy = "songs")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<PlaylistDAO> playlists;
-
+    private List<PlaylistDAO> playlists;
 
     @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<SlideDAO> slides;
+    private List<SlideDAO> slides;
 
     @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<SongHistoryDAO> songHistory;
@@ -70,7 +74,7 @@ public class SongDAO extends Auditable<UUID> {
     public SongDAO() {
     }
 
-    public SongDAO(UUID id, String name, String musicAuthor, String wordsAuthor, long viewCounter, boolean defaultItem, UUID parentId, Set<SongCategoryDAO> songCategories, Set<GroupDAO> groups, Set<PlaylistDAO> playlists, Set<SlideDAO> slides, Set<SongHistoryDAO> songHistory) {
+    public SongDAO(UUID id, String name, String musicAuthor, String wordsAuthor, long viewCounter, boolean defaultItem, UUID parentId, Set<SongCategoryDAO> songCategories, Set<GroupDAO> groups, List<PlaylistDAO> playlists, List<SlideDAO> slides, Set<SongHistoryDAO> songHistory) {
         this.id = id;
         this.name = name;
         this.musicAuthor = musicAuthor;
