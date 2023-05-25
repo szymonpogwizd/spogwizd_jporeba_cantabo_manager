@@ -1,6 +1,5 @@
 package pl.cantabo.database.slide;
 
-
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
@@ -15,5 +14,4 @@ public interface SlideMapper {
     SlideDAO slideCreateDTO2SlideDAO(SlideCreateDTO slideCreateDTO);
 
     SlideDAO slideUpdateDTO2SlideDAO(SlideUpdateDTO slideUpdateDTO);
-
 }
