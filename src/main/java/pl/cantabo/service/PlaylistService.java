@@ -34,6 +34,8 @@ public class PlaylistService {
         playlistValidator.validatePlaylist(playlist, isSamePlaylist);
         PlaylistDAO toUpdate = playlistRepository.findById(id).orElseThrow(() -> new ValidationException("Playlist o podanym id nie istnieje"));
         toUpdate.setName(playlist.getName());
+        toUpdate.setPlaylistCategories(playlist.getPlaylistCategories());
+        toUpdate.setSongs(playlist.getSongs());
         return log.traceExit(playlistRepository.save(toUpdate));
     }
 
@@ -41,6 +43,7 @@ public class PlaylistService {
         log.debug("Deleting playlist{}", id);
         playlistRepository.deleteById(id);
     }
+
     public List<PlaylistDAO> getAll(){
         log.debug("Getting all playlists");
         return log.traceExit(playlistRepository.findAll());

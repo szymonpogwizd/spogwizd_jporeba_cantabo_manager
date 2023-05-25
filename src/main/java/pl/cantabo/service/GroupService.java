@@ -33,6 +33,7 @@ public class GroupService {
         groupValidator.validateGroup(group, isSameGroup);
         GroupDAO toUpdate = groupRepository.findById(id).orElseThrow(() -> new ValidationException("Grupa o podanym id nie istnieje"));
         toUpdate.setName(group.getName());
+        // TODO dodanie pozostałych elementów jakie są zapisywane
         return log.traceExit(groupRepository.save(toUpdate));
     }
 
