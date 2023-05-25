@@ -5,13 +5,12 @@ import pl.cantabo.database.slide.SlideCreateDTO;
 import pl.cantabo.database.song.SongCreateDTO;
 
 import javax.validation.Valid;
-import java.util.Set;
-
+import java.util.List;
 @Data
 public class SongAndCreateRequestDTO {
     @Valid
     private SongCreateDTO song;
 
     @Valid
-    private Set<SlideCreateDTO> slides;
+    private List<SlideCreateDTO> slides;
 }

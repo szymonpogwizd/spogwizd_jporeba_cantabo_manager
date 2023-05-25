@@ -1,6 +1,7 @@
 package pl.cantabo.database.slide;
 
 import lombok.Data;
+import pl.cantabo.database.song.SongDAO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -13,4 +14,6 @@ public class SlideUpdateDTO {
     private String Body;
 
     private Integer itemOrder;
+
+    private SongDAO song;
 }
