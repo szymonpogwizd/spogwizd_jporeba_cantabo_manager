@@ -8,6 +8,7 @@ import pl.cantabo.database.slide.SlideDAO;
 import pl.cantabo.database.slide.SlideRepository;
 import java.util.List;
 import java.util.UUID;
+
 @Service
 @Log4j2
 @RequiredArgsConstructor
