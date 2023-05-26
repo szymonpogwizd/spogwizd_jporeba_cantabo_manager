@@ -4,6 +4,7 @@ import lombok.Data;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
 import pl.cantabo.database.song.SongDAO;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ public class PlaylistInfoDTO {
 
     private String name;
 
-    private Set<PlaylistCategoryDAO> playlistCategories;
+    private List<PlaylistCategoryDAO> playlistCategories;
 
     private Set<SongDAO> songs;
 }
