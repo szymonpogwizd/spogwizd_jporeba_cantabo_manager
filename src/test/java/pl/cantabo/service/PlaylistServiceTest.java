@@ -22,7 +22,7 @@ class PlaylistServiceTest {
     @BeforeEach
     public void init() {
         playlistRepository = Mockito.mock(PlaylistRepository.class);
-        playlistService = new PlaylistService(playlistRepository, new PlaylistValidator(playlistRepository));
+        playlistService = new PlaylistService(playlistRepository, null, null, new PlaylistValidator(playlistRepository));
     }
 
     @Test

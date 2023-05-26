@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.cantabo.database.playlist.PlaylistDAO;
 import pl.cantabo.database.playlist.PlaylistRepository;
+import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryDAO;
+import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryRepository;
+import pl.cantabo.database.song.SongDAO;
+import pl.cantabo.database.song.SongRepository;
 import pl.cantabo.validator.PlaylistValidator;
 
 import javax.validation.ValidationException;
@@ -18,6 +22,8 @@ import java.util.UUID;
 public class PlaylistService {
 
     private final PlaylistRepository playlistRepository;
+    private final SongRepository songRepository;
+    private final PlaylistCategoryRepository playlistCategoryRepository;
     private final PlaylistValidator playlistValidator;
 
     @Transactional
@@ -47,5 +53,15 @@ public class PlaylistService {
     public List<PlaylistDAO> getAll(){
         log.debug("Getting all playlists");
         return log.traceExit(playlistRepository.findAll());
+    }
+
+    public List<SongDAO> getSongsByPlaylistId(UUID id) {
+        log.debug("Getting all songs for playlist");
+        return log.traceExit(songRepository.findSongsByPlaylistId(id));
+    }
+
+    public List<PlaylistCategoryDAO> getPlaylistCategoriesByPlaylistId(UUID id) {
+        log.debug("Getting all playlist categories for playlist");
+        return log.traceExit(playlistCategoryRepository.findPlaylistCategoriesByPlaylistId(id));
     }
 }

@@ -7,6 +7,10 @@ import pl.cantabo.database.playlist.PlaylistDAO;
 import pl.cantabo.database.playlist.PlaylistInfoDTO;
 import pl.cantabo.database.playlist.PlaylistMapper;
 import pl.cantabo.database.playlist.PlaylistUpdateDTO;
+import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryInfoDTO;
+import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryMapper;
+import pl.cantabo.database.song.SongInfoDTO;
+import pl.cantabo.database.song.SongMapper;
 import pl.cantabo.service.PlaylistService;
 
 import javax.validation.Valid;
@@ -23,6 +27,8 @@ public class PlaylistController {
 
     private final PlaylistService playlistService;
     private final PlaylistMapper playlistMapper;
+    private final SongMapper songMapper;
+    private final PlaylistCategoryMapper playlistCategoryMapper;
 
     @PutMapping("{id}")
     public PlaylistInfoDTO updatePlaylist(@RequestBody @Valid PlaylistUpdateDTO playlist, @PathVariable UUID id) {
@@ -44,6 +50,28 @@ public class PlaylistController {
                 playlistService.getAll()
                         .stream()
                         .map(playlistMapper::playlistDAO2PlaylistInfoDTO)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("/songsForPlaylist/{id}")
+    public List<SongInfoDTO> getSongsByPlaylistId(@PathVariable UUID id) {
+        log.debug("Getting all songs for playlist");
+        return log.traceExit(
+                playlistService.getSongsByPlaylistId(id)
+                        .stream()
+                        .map(songMapper::songDAO2SongInfoDTO)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("/getPlaylistCategoriesForPlaylist/{id}")
+    public List<PlaylistCategoryInfoDTO> getPlaylistCategoriesByPlaylistId(@PathVariable UUID id) {
+        log.debug("Getting all playlist categories for playlist");
+        return log.traceExit(
+                playlistService.getPlaylistCategoriesByPlaylistId(id)
+                        .stream()
+                        .map(playlistCategoryMapper::playlistCategoryDAO2PlaylistCategoryInfoDTO)
                         .collect(Collectors.toList())
         );
     }

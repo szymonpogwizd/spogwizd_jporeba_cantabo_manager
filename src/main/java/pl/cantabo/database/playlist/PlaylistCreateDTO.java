@@ -6,6 +6,7 @@ import pl.cantabo.database.song.SongDAO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -14,7 +15,7 @@ public class PlaylistCreateDTO {
     @Size(min = 1, max = 100)
     private String name;
 
-    private Set<PlaylistCategoryDAO> playlistCategories;
+    private List<PlaylistCategoryDAO> playlistCategories;
 
     private Set<SongDAO> songs;
 }
