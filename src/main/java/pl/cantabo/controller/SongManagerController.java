@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.cantabo.database.slide.SlideCreateDTO;
 import pl.cantabo.database.slide.SlideInfoDTO;
 import pl.cantabo.database.slide.SlideMapper;
+import pl.cantabo.database.slide.SlideUpdateDTO;
 import pl.cantabo.database.song.SongDAO;
 import pl.cantabo.database.song.SongInfoDTO;
 import pl.cantabo.database.song.SongMapper;
@@ -34,7 +35,7 @@ public class SongManagerController {
     private final SlideService slideService;
 
     @PostMapping
-    public SongInfoDTO createSong(@RequestBody @Valid SongAndCreateRequestDTO songAndSlide) {
+    public SongInfoDTO createSong(@RequestBody @Valid SongAndSlideCreateRequestDTO songAndSlide) {
         log.debug("Create songAndSlide {}", songAndSlide);
         SongDAO toCreate = songMapper.songCreateDTO2SongDAO(songAndSlide.getSong());
         SongDAO createdSong = songService.create(toCreate);
@@ -52,10 +53,21 @@ public class SongManagerController {
     }
 
     @PutMapping("{id}")
-    public SongInfoDTO updateSong(@RequestBody @Valid SongUpdateDTO song, @PathVariable UUID id) {
-        log.debug("Update song {}: {}", id, song);
-        SongDAO updatedSong = songService.update(id, songMapper.songUpdateDTO2SongDAO(song));
+    public SongInfoDTO updateSong(@RequestBody @Valid SongAndSlideUpdateRequestDTO songAndSlide, @PathVariable UUID id) {
+        log.debug("Update song {}: {}", id, songAndSlide);
+        SongDAO updatedSong = songService.update(id, songMapper.songUpdateDTO2SongDAO(songAndSlide.getSong()));
+        slideService.deleteSlidesBySongId(id);
+        if (songAndSlide.getSlides() != null && !songAndSlide.getSlides().isEmpty()) {
+            updateSlidesAndAssignToSong(updatedSong, songAndSlide.getSlides());
+        }
         return log.traceExit(songMapper.songDAO2SongInfoDTO(updatedSong));
+    }
+
+    private void updateSlidesAndAssignToSong(SongDAO songDAO, List<SlideCreateDTO> slideUpdateDTOs) {
+        slideUpdateDTOs.stream()
+                .map(slideMapper::slideCreateDTO2SlideDAO)
+                .peek(slideDAO -> slideDAO.setSong(songDAO))
+                .forEach(slideService::create);
     }
 
     @GetMapping("/songCategoriesForSong/{id}")

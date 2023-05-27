@@ -21,6 +21,15 @@ public class SlideService {
         return log.traceExit(slideRepository.save(slide));
     }
 
+    @Transactional
+    public SlideDAO update(UUID id, SlideDAO slide){
+        log.debug("Updating slide {}: {}", id, slide);
+        SlideDAO toUpdate = slideRepository.findById(id).orElseThrow(() -> new RuntimeException("Slide with given id does not exist"));
+        toUpdate.setSong(slide.getSong());
+        toUpdate.setBody(slide.getBody());
+        return log.traceExit(slideRepository.save(toUpdate));
+    }
+
     public void delete(UUID id){
         log.debug("Deleting slide", id);
         slideRepository.deleteById(id);
@@ -29,5 +38,10 @@ public class SlideService {
     public List<SlideDAO> getAll(){
         log.debug("Getting all slides");
         return  log.traceExit(slideRepository.findAll());
+    }
+
+    public void deleteSlidesBySongId(UUID id){
+        log.debug("Deleting slides by song id {}", id);
+        slideRepository.deleteSlidesBySongId(id);
     }
 }
