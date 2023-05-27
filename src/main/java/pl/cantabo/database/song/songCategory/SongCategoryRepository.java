@@ -15,4 +15,7 @@ public interface SongCategoryRepository extends JpaRepository<SongCategoryDAO, U
     List<SongCategoryDAO> findSongCategoryByName(String nameFragment);
 
     Optional<SongCategoryDAO> findByName(String name);
+
+    @Query("SELECT sc FROM SongCategoryDAO sc JOIN sc.songs s WHERE s.id = :songId")
+    List<SongCategoryDAO> findSongCategoriesBySongId(UUID songId);
 }

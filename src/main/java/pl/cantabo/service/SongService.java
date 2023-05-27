@@ -4,8 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.cantabo.database.slide.SlideDAO;
+import pl.cantabo.database.slide.SlideRepository;
 import pl.cantabo.database.song.SongDAO;
 import pl.cantabo.database.song.SongRepository;
+import pl.cantabo.database.song.songCategory.SongCategoryDAO;
+import pl.cantabo.database.song.songCategory.SongCategoryRepository;
 import pl.cantabo.validator.SongValidator;
 
 import javax.validation.ValidationException;
@@ -18,6 +22,8 @@ import java.util.UUID;
 public class SongService {
 
     private final SongRepository songRepository;
+    private final SongCategoryRepository songCategoryRepository;
+    private final SlideRepository slideRepository;
     private final SongValidator songValidator;
 
     @Transactional
@@ -48,5 +54,15 @@ public class SongService {
     public List<SongDAO> getAll() {
         log.debug("Getting all songs");
         return log.traceExit(songRepository.findAll());
+    }
+
+    public List<SongCategoryDAO> getSongCategoriesBySongId(UUID id) {
+        log.debug("Getting all song categories for song");
+        return log.traceExit(songCategoryRepository.findSongCategoriesBySongId(id));
+    }
+
+    public List<SlideDAO> getSlidesBySongId(UUID id) {
+        log.debug("Getting all slides for song");
+        return log.traceExit(slideRepository.findSlidesBySongId(id));
     }
 }
