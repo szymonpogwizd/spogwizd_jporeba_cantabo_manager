@@ -65,7 +65,7 @@ public class PlaylistController {
         );
     }
 
-    @GetMapping("/getPlaylistCategoriesForPlaylist/{id}")
+    @GetMapping("/playlistCategoriesForPlaylist/{id}")
     public List<PlaylistCategoryInfoDTO> getPlaylistCategoriesByPlaylistId(@PathVariable UUID id) {
         log.debug("Getting all playlist categories for playlist");
         return log.traceExit(
