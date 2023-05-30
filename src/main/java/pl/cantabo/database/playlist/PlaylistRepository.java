@@ -25,4 +25,12 @@ public interface PlaylistRepository extends JpaRepository<PlaylistDAO, UUID> {
             @Param("name") String name,
             @Param("defaultItem") boolean defaultItem
     );
+
+    @Modifying
+    @Query(value = "INSERT INTO playlists_songs (playlist_id, song_id) " +
+            "VALUES (:playlistId, :songId) ON CONFLICT DO NOTHING", nativeQuery = true)
+    void insertPlaylistSong(
+            @Param("playlistId") UUID playlistId,
+            @Param("songId") UUID songId
+    );
 }

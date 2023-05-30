@@ -17,6 +17,7 @@ public class DatabaseInitializer implements CommandLineRunner {
     private final PlaylistCategoryInitializer playlistCategoryInitializer;
     private final PlaylistPlaylistCategoryInitializer playlistPlaylistCategoryInitializer;
     private final ProfileInitializer profileInitializer;
+    private final PlaylistSongInitializer playlistSongInitializer;
     private final UserInitializer userInitializer;
 
     @Override
@@ -30,6 +31,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         playlistInitializer.initialize();
         playlistCategoryInitializer.initialize();
         playlistPlaylistCategoryInitializer.initialize();
+        playlistSongInitializer.initialize();
         profileInitializer.initialize();
     }
 }
