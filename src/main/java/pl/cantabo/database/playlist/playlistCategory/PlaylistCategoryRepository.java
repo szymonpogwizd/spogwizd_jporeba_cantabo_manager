@@ -24,5 +24,13 @@ public interface PlaylistCategoryRepository extends JpaRepository<PlaylistCatego
             @Param("name") String name,
             @Param("defaultItem") boolean defaultItem
     );
+
+    @Modifying
+    @Query(value = "INSERT INTO playlists_playlist_categories (playlist_id, playlist_category_id) " +
+            "VALUES (:playlistId, :playlistCategoryId) ON CONFLICT DO NOTHING", nativeQuery = true)
+    void insertPlaylistPlaylistCategory(
+            @Param("playlistId") UUID playlistId,
+            @Param("playlistCategoryId") UUID playlistCategoryId
+    );
 }
 

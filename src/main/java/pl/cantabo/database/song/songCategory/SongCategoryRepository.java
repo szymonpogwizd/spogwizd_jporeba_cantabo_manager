@@ -29,4 +29,12 @@ public interface SongCategoryRepository extends JpaRepository<SongCategoryDAO, U
             @Param("name") String name,
             @Param("defaultItem") boolean defaultItem
     );
+
+    @Modifying
+    @Query(value = "INSERT INTO songs_song_categories (song_id, category_id) " +
+            "VALUES (:songId, :categoryId) ON CONFLICT DO NOTHING", nativeQuery = true)
+    void insertSongSongCategory(
+            @Param("songId") UUID songId,
+            @Param("categoryId") UUID categoryId
+    );
 }

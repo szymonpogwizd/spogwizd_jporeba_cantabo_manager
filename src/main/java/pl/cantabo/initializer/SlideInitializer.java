@@ -66,7 +66,7 @@ public class SlideInitializer {
                 0,
                 "<p>Wśród nocnej ciszy głos się rozchodzi:</p><p>Wstańcie, pasterze, Bóg się wam rodzi</p><p>Czym prędzej się wybierajcie,</p><p>Do Betlejem pośpieszajcie,</p><p>Przywitać Pana.</p>",
                 true,
-                UUID.fromString("03785b7f-1ffc-4d46-a012-171d63f34d8e")
+                UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e")
         );
 
         slideRepository.insertSlide(
@@ -74,7 +74,7 @@ public class SlideInitializer {
                 1,
                 "<p>Poszli, znaleźli Dzieciątko w żłobie,</p><p>Z wszystkimi znaki, danymi sobie.</p><p>Jako Bogu cześć Mu dali,</p><p>A witając zawołali,</p><p>Z wielkiej radości.</p>",
                 true,
-                UUID.fromString("03785b7f-1ffc-4d46-a012-171d63f34d8e")
+                UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e")
         );
 
         slideRepository.insertSlide(
@@ -82,7 +82,7 @@ public class SlideInitializer {
                 2,
                 "<p>„Ach witaj, Zbawco; z dawna żądany,</p><p>Tyle tysięcy lat wyglądany!</p><p>Na Ciebie króle, prorocy,</p><p>Czekali, a Tyś tej nocy –</p><p>Nam się objawił”.</p>",
                 true,
-                UUID.fromString("03785b7f-1ffc-4d46-a012-171d63f34d8e")
+                UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e")
         );
 
         slideRepository.insertSlide(
@@ -90,7 +90,127 @@ public class SlideInitializer {
                 3,
                 "<p>I my czekamy na Ciebie, Pana,</p><p>A skoro przyjdziesz na głos kapłana.</p><p>Padniemy na twarz przed Tobą,</p><p>Wierząc, żeś jest pod osłoną,</p><p>Chleba i wina.</p>",
                 true,
-                UUID.fromString("03785b7f-1ffc-4d46-a012-171d63f34d8e")
+                UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("c019513e-1f30-4261-9137-febde493794f"),
+                0,
+                "<p>Dzisiaj w Betlejem, dzisiaj w Betlejem,</p><p>Wesoła nowina.</p><p>Że Panna czysta, że Panna czysta</p><p>Porodziła Syna.</p>",
+                true,
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("1aaa6522-f4f6-4a7b-b41f-56c9a750b17c"),
+                1,
+                "<p>Chrystus się rodzi,</p><p>nas oswobodzi,</p><p>Anieli grają,</p><p>Króle witają,</p><p>Pasterze śpiewają,</p><p>bydlęta klękają,</p><p>Cuda, cuda ogłaszają.</p>",
+                true,
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("abcde123-4567-890a-bcde-f1234567890a"),
+                2,
+                "<p>Maryja Panna, Maryja Panna,</p><p>Dzieciątko piastuje.</p><p>I Józef święty, I Józef święty,</p><p>Ono pielęgnuje.</p>",
+                true,
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("6d3e86f9-d0a9-42cb-a825-364b7771d694"),
+                3,
+                "<p>Choć w stajeneczce, choć w stajeneczce,</p><p>Panna Syna rodzi,</p><p>Przecież On wkrótce, Przecież On wkrótce,</p><p>Ludzi oswobodzi.</p>",
+                true,
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("8870ff52-7165-4960-afd9-28269baa08d8"),
+                4,
+                "<p>I trzej Królowie, i trzej Królowie,</p><p>Od wschodu przybyli,</p><p>I dary Panu, i dary Panu,</p><p>Kosztowne złożyli.</p>",
+                true,
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("b23c3506-82c1-41c3-a979-98fc7c7fff77"),
+                5,
+                "<p>Pójdźmy też i my, pójdźmy też i my,</p><p>Przywitać Jezusa,</p><p>Króla nad królami, Króla nad królami,</p><p>Uwielbić Chrystusa.</p>",
+                true,
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("d0692c1f-bb09-4186-86eb-cf33f26639c1"),
+                0,
+                "<p>Przybieżeli do Betlejem pasterze,</p><p>grając skocznie Dzieciąteczku na lirze.</p><p>Ref: Chwała na wysokości,</p><p>chwała na wysokości,</p><p>a pokój na ziemi.</p>",
+                true,
+                UUID.fromString("4f6b7d3d-3490-4eb7-a1c5-2c948d8a2c50")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("4ca2dbf7-dcc7-42ca-8c99-783f235e34ce"),
+                1,
+                "<p>Oddawali swe ukłony w pokorze</p><p>Tobie, z serca ochotnego, o Boże!</p><p>Ref: Chwała na wysokości,</p><p>chwała na wysokości,</p><p>a pokój na ziemi.</p>",
+                true,
+                UUID.fromString("4f6b7d3d-3490-4eb7-a1c5-2c948d8a2c50")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("5214c113-40d1-4dbd-9c67-2766fff16f14"),
+                2,
+                "<p>Anioł Pański sam ogłosił te dziwy,</p><p>których oni nie słyszeli, jak żywi.</p><p>Ref: Chwała na wysokości,</p><p>chwała na wysokości,</p><p>a pokój na ziemi.</p>",
+                true,
+                UUID.fromString("4f6b7d3d-3490-4eb7-a1c5-2c948d8a2c50")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("220cfd8b-9a8a-43ed-bd19-6fc035977c87"),
+                3,
+                "<p>I Anieli gromadami pilnują,</p><p>Panna czysta wraz z Józefem piastują.</p><p>Ref: Chwała na wysokości,</p><p>chwała na wysokości,</p><p>a pokój na ziemi.</p>",
+                true,
+                UUID.fromString("4f6b7d3d-3490-4eb7-a1c5-2c948d8a2c50")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("2d6e3e11-609f-4315-95d5-cc643ca62b4c"),
+                0,
+                "<p>Bóg się rodzi, moc truchleje:</p><p>Pan niebiosów obnażony.</p><p>Ogień krzepnie, blask ciemnieje,</p><p>Ma granice Nieskończony:</p>",
+                true,
+                UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("93539823-cf4a-4a19-bec8-890d88bb57a7"),
+                1,
+                "<p>Wzgardzony okryty chwałą,</p><p>Śmiertelny Król nad wiekami;</p><p>A Słowo ciałem się stało</p><p>I mieszkało między nami.</p>",
+                true,
+                UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("cfefe0b0-7519-45bd-8739-aff980ff0653"),
+                2,
+                "<p>Cóż masz, niebo, nad ziemiami?</p><p>Bóg porzucił szczęście swoje,</p><p>Wszedł między lud ukochany,</p><p>Dzieląc z nim trudy i znoje,</p>",
+                true,
+                UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("c702d02e-d755-4072-90a9-1780eb31fd57"),
+                3,
+                "<p>Niemało cierpiał, niemało,</p><p>Żeśmy byli winni sami,</p><p>A Słowo ciałem się stało</p><p>I mieszkało między nami.</p>",
+                true,
+                UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("a35f9b62-0c0a-4425-901a-f8f545f47b02"),
+                4,
+                "<p>W nędznej szopie urodzony,</p><p>Żłób Mu za kolebkę dano.</p><p>Cóż jest, czym był otoczony?</p><p>Bydło, pasterze i siano;</p>",
+                true,
+                UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
         );
 
         slideRepository.insertSlide(

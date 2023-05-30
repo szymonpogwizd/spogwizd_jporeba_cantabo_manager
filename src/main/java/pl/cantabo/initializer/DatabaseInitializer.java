@@ -12,7 +12,10 @@ public class DatabaseInitializer implements CommandLineRunner {
     private final SongInitializer songInitializer;
     private final SlideInitializer slideInitializer;
     private final SongCategoryInitializer songCategoryInitializer;
+    private final SongSongCategoryInitializer songSongCategoryInitializer;
+    private final PlaylistInitializer playlistInitializer;
     private final PlaylistCategoryInitializer playlistCategoryInitializer;
+    private final PlaylistPlaylistCategoryInitializer playlistPlaylistCategoryInitializer;
     private final ProfileInitializer profileInitializer;
     private final UserInitializer userInitializer;
 
@@ -23,7 +26,10 @@ public class DatabaseInitializer implements CommandLineRunner {
         songInitializer.initialize();
         slideInitializer.initialize();
         songCategoryInitializer.initialize();
+        songSongCategoryInitializer.initialize();
+        playlistInitializer.initialize();
         playlistCategoryInitializer.initialize();
+        playlistPlaylistCategoryInitializer.initialize();
         profileInitializer.initialize();
     }
 }

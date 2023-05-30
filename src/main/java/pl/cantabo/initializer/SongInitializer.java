@@ -21,8 +21,29 @@ public class SongInitializer {
         );
 
         songRepository.insertSong(
-                UUID.fromString("03785b7f-1ffc-4d46-a012-171d63f34d8e"),
+                UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e"),
                 "Wśród nocnej ciszy",
+                0,
+                true
+        );
+
+        songRepository.insertSong(
+                UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1"),
+                "Dzisiaj w Betlejem",
+                0,
+                true
+        );
+
+        songRepository.insertSong(
+                UUID.fromString("4f6b7d3d-3490-4eb7-a1c5-2c948d8a2c50"),
+                "Przybieżeli do Betlejem pasterze",
+                0,
+                true
+        );
+
+        songRepository.insertSong(
+                UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0"),
+                "Bóg się rodzi",
                 0,
                 true
         );
