@@ -31,5 +31,11 @@ public class PlaylistPlaylistCategoryInitializer {
                 UUID.fromString("a1b9b561-588e-4a4c-8f44-382fcd1a52ca"),
                 UUID.fromString("6700b4e7-13f0-45c4-b63b-44d446a45a3f")
         );
+
+        // Adoracja
+        playlistCategoryRepository.insertPlaylistPlaylistCategory(
+                UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
+                UUID.fromString("5e94c08b-8e9a-4f4d-b4d2-df6658a297c6")
+        );
     }
 }

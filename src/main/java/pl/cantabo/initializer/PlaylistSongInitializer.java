@@ -65,5 +65,21 @@ public class PlaylistSongInitializer {
                 UUID.fromString("a1b9b561-588e-4a4c-8f44-382fcd1a52ca"),
                 UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832")
         );
+
+        // Adoracja Najświętszego Sakramentu
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
+                UUID.fromString("1a03f4fe-a53a-435c-9a4e-fffc0819cdb0")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
+                UUID.fromString("f4bb4062-dce9-4086-b02c-7c933d8e7745")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
+        );
     }
 }

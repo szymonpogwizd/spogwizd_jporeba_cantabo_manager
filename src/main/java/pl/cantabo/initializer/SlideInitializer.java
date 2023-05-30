@@ -467,6 +467,39 @@ public class SlideInitializer {
                 UUID.fromString("1a03f4fe-a53a-435c-9a4e-fffc0819cdb0")
         );
 
+        // Bądźże pozdrowiona
+        slideRepository.insertSlide(
+                UUID.fromString("7c49b5ba-5f9a-4788-895b-15cfb5d7df5d"),
+                0,
+                "<p>Bądźże pozdrowiona, Hostio żywa,</p><p>W której Jezus Chrystus Bóstwo ukrywa!</p>",
+                true,
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("51ea34df-5a39-4a3d-8012-3cbe31bbb0e6"),
+                1,
+                "<p>Witaj, Jezu, Synu Maryi,</p><p>Tyś jest Bóg prawdziwy w świętej Hostii!!</p>",
+                true,
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("a58765f5-0a79-4a16-8213-d37a7d3b6176"),
+                2,
+                "<p>Bądźże pozdrowione, drzewo żywota!</p><p>Niech kwitnie niewinność, anielska cnota.</p>",
+                true,
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("f490fcb0-9f4e-4d06-878a-075dededc0fc"),
+                3,
+                "<p>Bądźże pozdrowiony Baranku Boży!</p><p>Zbaw nas, gdy miecz Pański na złych się sroży!</p>",
+                true,
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
+        );
+
         // Psalm 23
         slideRepository.insertSlide(
                 UUID.fromString("c06f2be9-2c07-46a6-a4a0-70a4818d8a7d"),

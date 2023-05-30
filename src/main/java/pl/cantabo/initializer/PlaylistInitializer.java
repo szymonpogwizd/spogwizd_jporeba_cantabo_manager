@@ -30,5 +30,11 @@ public class PlaylistInitializer {
                 "Rekolekcje Adwentowe",
                 true
         );
+
+        playlistRepository.insertPlaylist(
+                UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
+                "Adoracja Najświętszego Sakramentu",
+                true
+        );
     }
 }

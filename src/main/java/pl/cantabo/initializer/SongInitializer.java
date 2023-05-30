@@ -102,6 +102,13 @@ public class SongInitializer {
                 true
         );
 
+        songRepository.insertSong(
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e"),
+                "Bądźże pozdrowiona",
+                0,
+                true
+        );
+
         // Psalmy
         songRepository.insertSong(
                 UUID.fromString("f4bb4062-dce9-4086-b02c-7c933d8e7745"),
