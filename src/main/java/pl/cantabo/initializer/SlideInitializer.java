@@ -13,6 +13,8 @@ public class SlideInitializer {
     private final SlideRepository slideRepository;
 
     public void initialize() {
+        // Treść pieśni źródło: https://piesni-religijne.pl
+
         // Bliskie jest królestwo Boże
         slideRepository.insertSlide(
                 UUID.fromString("09d7f388-0d59-48ea-a14b-31350a837b1d"),
@@ -60,6 +62,80 @@ public class SlideInitializer {
                 "<p>Ref: Bliskie jest królestwo Boże</p><p>Nawracajmy się i wierzmy w Ewangelię.</p>",
                 true,
                 UUID.fromString("dd51c3f7-6716-40ff-af45-d0ae81a7751b")
+        );
+
+        // Archanioł Boży Gabriel
+        slideRepository.insertSlide(
+                UUID.fromString("ee624dd2-618d-430a-a705-12e69bf2def8"),
+                0,
+                "<p>Archanioł Boży Gabriel,</p><p>Posłan do Panny Maryi,</p><p>Z Majestatu Trójcy Świętej,</p><p>Tak sprawował poselstwo k’Niej</p>",
+                true,
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("ff6e941f-2aa1-426e-9c55-5074b3bd5ad0"),
+                1,
+                "<p>Zdrowaś, Panno, łaskiś pełna,</p><p>Pan jest z Tobą, to rzecz pewna.</p>",
+                true,
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("12805266-6571-4ccc-91f9-e1e97ddc9330"),
+                2,
+                "<p>Panna się wielce zdumiała</p><p>Z poselstwa, które słyszała;</p><p>Pokorniuchno się skłoniła,</p><p>Jako Panna sromięźliwa,</p>",
+                true,
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("4a285b33-16e8-4021-8dec-af71721d2067"),
+                3,
+                "<p>Zdrowaś, Panno, łaskiś pełna,</p><p>Pan jest z Tobą, to rzecz pewna.</p>",
+                true,
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("98ec08ed-e937-4cd2-8af7-57ebcfaaca0b"),
+                4,
+                "<p>Ale poseł z wysokości.</p><p>Napełnion Boskiej mądrości,</p><p>Rzekł Jej: „Nie bój się Marya,</p><p>Najszczęśliwszaś Panno miła,</p>",
+                true,
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3")
+        );
+
+        // Spuśccie nam na ziemskie niwy
+        slideRepository.insertSlide(
+                UUID.fromString("ea3b37ba-6a1c-4bb3-8947-41560290930b"),
+                0,
+                "<p>Spuśćcie nam na ziemskie niwy</p><p>Zbawcę z niebios, obłoki,</p><p>Świat przez grzechy nieszczęśliwy.</p><p>Wołał w nocy głębokiej;</p>",
+                true,
+                UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("ef8b20d2-1060-4d17-8f8c-3f3b532905a2"),
+                1,
+                "<p>Gdy wśród przekleństwa od Boga</p><p>Czart panował, śmierć i trwoga,</p><p>A ciężkie przewinienia</p><p>Zamkły bramy zbawienia.</p>",
+                true,
+                UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("fafb9afc-41c8-4e21-b23a-9c7c3282e5f6"),
+                2,
+                "<p>Ale się Ojciec zlitował</p><p>nad nędzną ludzi dolą,</p><p>Syn się chętnie ofiarował,</p><p>by spełnił wieczną wolę;</p>",
+                true,
+                UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("f147ed01-e7eb-443a-bee6-b76b130983a8"),
+                3,
+                "<p>zaraz Gabryel zstępuje</p><p>i Maryi to zwiastuje,</p><p>iże z Ducha Świętego</p><p>pocznie Syna Bożego.</p>",
+                true,
+                UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832")
         );
 
         // Wśród nocnej ciszy

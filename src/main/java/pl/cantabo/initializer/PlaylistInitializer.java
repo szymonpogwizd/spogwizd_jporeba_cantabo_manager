@@ -24,5 +24,11 @@ public class PlaylistInitializer {
                 "Droga Krzyżowa - Wielki Piątek",
                 true
         );
+
+        playlistRepository.insertPlaylist(
+                UUID.fromString("a1b9b561-588e-4a4c-8f44-382fcd1a52ca"),
+                "Rekolekcje Adwentowe",
+                true
+        );
     }
 }

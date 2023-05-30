@@ -21,6 +21,20 @@ public class SongInitializer {
                 true
         );
 
+        songRepository.insertSong(
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3"),
+                "Archanioł Boży Gabriel",
+                0,
+                true
+        );
+
+        songRepository.insertSong(
+                UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832"),
+                "Spuśćcie nam na ziemskie niwy",
+                0,
+                true
+        );
+
         // Boże Narodzenie
         songRepository.insertSong(
                 UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e"),

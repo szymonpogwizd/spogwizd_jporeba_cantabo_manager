@@ -49,5 +49,21 @@ public class PlaylistSongInitializer {
                 UUID.fromString("2d0ea284-1288-4c8c-8bfb-0810a0f633de"),
                 UUID.fromString("789bd035-b492-4b26-9588-a671fe091d16")
         );
+
+        // Rekolekcje Adwentowe
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("a1b9b561-588e-4a4c-8f44-382fcd1a52ca"),
+                UUID.fromString("dd51c3f7-6716-40ff-af45-d0ae81a7751b")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("a1b9b561-588e-4a4c-8f44-382fcd1a52ca"),
+                UUID.fromString("21543c8c-6c5e-4fe7-a140-78c0a52470e3")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("a1b9b561-588e-4a4c-8f44-382fcd1a52ca"),
+                UUID.fromString("71db877c-6d94-40e8-9dbb-d92c80162832")
+        );
     }
 }
