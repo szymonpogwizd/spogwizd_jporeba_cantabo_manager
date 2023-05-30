@@ -20,4 +20,14 @@ public interface SlideRepository extends JpaRepository<SlideDAO, UUID> {
     @Modifying
     @Query("DELETE FROM SlideDAO s WHERE s.song.id = :songId")
     void deleteSlidesBySongId(@Param("songId") UUID songId);
+
+    @Modifying
+    @Query(value = "INSERT INTO slides (id, item_order, body, default_item, song_id) VALUES (:id, :itemOrder, :body, :defaultItem, :songId) ON CONFLICT DO NOTHING", nativeQuery = true)
+    void insertSlide(
+            @Param("id") UUID id,
+            @Param("itemOrder") int itemOrder,
+            @Param("body") String body,
+            @Param("defaultItem") boolean defaultItem,
+            @Param("songId") UUID songId
+    );
 }
