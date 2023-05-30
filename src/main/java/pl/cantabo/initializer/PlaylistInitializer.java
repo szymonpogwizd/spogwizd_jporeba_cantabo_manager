@@ -18,5 +18,11 @@ public class PlaylistInitializer {
                 "Pasterka",
                 true
         );
+
+        playlistRepository.insertPlaylist(
+                UUID.fromString("2d0ea284-1288-4c8c-8bfb-0810a0f633de"),
+                "Droga Krzyżowa - Wielki Piątek",
+                true
+        );
     }
 }

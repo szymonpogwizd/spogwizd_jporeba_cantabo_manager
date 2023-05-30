@@ -13,6 +13,7 @@ public class PlaylistSongInitializer {
     private final PlaylistRepository playlistRepository;
 
     public void initialize() {
+        // Pasterka
         playlistRepository.insertPlaylistSong(
                 UUID.fromString("e0a1cd9f-fafd-4766-af94-489ec23006d8"),
                 UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e")
@@ -31,6 +32,22 @@ public class PlaylistSongInitializer {
         playlistRepository.insertPlaylistSong(
                 UUID.fromString("e0a1cd9f-fafd-4766-af94-489ec23006d8"),
                 UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
+        );
+
+        // Droga Krzyżowa - Wielki Piątek
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("2d0ea284-1288-4c8c-8bfb-0810a0f633de"),
+                UUID.fromString("8c9dc5e1-605c-416a-9405-57058c007076")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("2d0ea284-1288-4c8c-8bfb-0810a0f633de"),
+                UUID.fromString("b77433fb-2e21-4fef-abff-8e1637456c0e")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("2d0ea284-1288-4c8c-8bfb-0810a0f633de"),
+                UUID.fromString("789bd035-b492-4b26-9588-a671fe091d16")
         );
     }
 }

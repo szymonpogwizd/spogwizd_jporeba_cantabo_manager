@@ -46,6 +46,16 @@ public class SongSongCategoryInitializer {
                 UUID.fromString("5e94c08b-8e9a-4f4d-b4d2-df6658a297c6")
         );
 
+        songCategoryRepository.insertSongSongCategory(
+                UUID.fromString("b77433fb-2e21-4fef-abff-8e1637456c0e"),
+                UUID.fromString("5e94c08b-8e9a-4f4d-b4d2-df6658a297c6")
+        );
+
+        songCategoryRepository.insertSongSongCategory(
+                UUID.fromString("789bd035-b492-4b26-9588-a671fe091d16"),
+                UUID.fromString("5e94c08b-8e9a-4f4d-b4d2-df6658a297c6")
+        );
+
         // Wielkanoc
         songCategoryRepository.insertSongSongCategory(
                 UUID.fromString("60c81edc-a645-4fa6-9413-e32c71ad96a7"),

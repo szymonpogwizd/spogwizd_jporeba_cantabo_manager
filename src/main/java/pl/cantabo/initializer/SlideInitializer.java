@@ -13,6 +13,7 @@ public class SlideInitializer {
     private final SlideRepository slideRepository;
 
     public void initialize() {
+        // Bliskie jest królestwo Boże
         slideRepository.insertSlide(
                 UUID.fromString("09d7f388-0d59-48ea-a14b-31350a837b1d"),
                 0,
@@ -61,6 +62,7 @@ public class SlideInitializer {
                 UUID.fromString("dd51c3f7-6716-40ff-af45-d0ae81a7751b")
         );
 
+        // Wśród nocnej ciszy
         slideRepository.insertSlide(
                 UUID.fromString("4a12579c-6d78-45a8-b227-9e9ff80181c1"),
                 0,
@@ -93,6 +95,7 @@ public class SlideInitializer {
                 UUID.fromString("03795b7f-1ffc-4d46-a012-171d63f34d8e")
         );
 
+        // Dzisiaj w Betlejem
         slideRepository.insertSlide(
                 UUID.fromString("c019513e-1f30-4261-9137-febde493794f"),
                 0,
@@ -141,6 +144,7 @@ public class SlideInitializer {
                 UUID.fromString("5e66a7cd-4f7a-4f14-a66b-96bde53627d1")
         );
 
+        // Przybieżeli do Betlejem pasterze
         slideRepository.insertSlide(
                 UUID.fromString("d0692c1f-bb09-4186-86eb-cf33f26639c1"),
                 0,
@@ -173,6 +177,7 @@ public class SlideInitializer {
                 UUID.fromString("4f6b7d3d-3490-4eb7-a1c5-2c948d8a2c50")
         );
 
+        // Bóg się rodzi
         slideRepository.insertSlide(
                 UUID.fromString("2d6e3e11-609f-4315-95d5-cc643ca62b4c"),
                 0,
@@ -213,6 +218,7 @@ public class SlideInitializer {
                 UUID.fromString("1e5dccfd-022b-40d7-87af-5809bdb137a0")
         );
 
+        // Ach mój Jezu
         slideRepository.insertSlide(
                 UUID.fromString("84245ef2-7356-4212-8811-6d63f73df663"),
                 0,
@@ -261,6 +267,57 @@ public class SlideInitializer {
                 UUID.fromString("8c9dc5e1-605c-416a-9405-57058c007076")
         );
 
+        // Pewnej nocy
+        slideRepository.insertSlide(
+                UUID.fromString("d2796472-30ab-491e-a0c5-2b2f275645cc"),
+                0,
+                "Pewnej nocy łzy z oczu mych\notarł dłonią swą Jezus\ni powiedział mi: „Nie martw się,\nJam przy boku jest twym.”",
+                true,
+                UUID.fromString("b77433fb-2e21-4fef-abff-8e1637456c0e")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("9ee2bc12-2eee-4acf-b8b4-9b126617ecf7"),
+                1,
+                "Potem spojrzał na grzeszny świat\npogrążony w ciemności,\ni zwracając się do mnie,\npełen smutku tak rzekł:",
+                true,
+                UUID.fromString("b77433fb-2e21-4fef-abff-8e1637456c0e")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("fc8a7c40-0809-4141-aac4-17870b3bf60a"),
+                2,
+                "Ref.: „Powiedz ludziom, że kocham ich,\nże się o nich wciąż troszczę,.\njeśli zeszli już z moich dróg,\npowiedz, że szukam ich.”(2x)",
+                true,
+                UUID.fromString("b77433fb-2e21-4fef-abff-8e1637456c0e")
+        );
+
+        // Rozpięty na ramionach
+        slideRepository.insertSlide(
+                UUID.fromString("4e1fbb1b-061e-424c-a1e8-1d25ce44bb68"),
+                0,
+                "Rozpięty na ramionach\nJak sokół na niebie.\nChrystusie, Synu Boga,\nSpójrz proszę na ziemię.",
+                true,
+                UUID.fromString("789bd035-b492-4b26-9588-a671fe091d16")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("3c458198-a9cd-42ed-9cb6-771e3d5da6aa"),
+                1,
+                "Na ruchliwe ulice,\nZabieganych ludzi.\nGdy noc się już kończy,\nA ranek się budzi.",
+                true,
+                UUID.fromString("789bd035-b492-4b26-9588-a671fe091d16")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("cacee787-24ff-49d0-b965-3da87b76bc8a"),
+                2,
+                "Uśmiechnij się przyjaźnie\nZ wysokiego krzyża.\nDo ciężko pracujących,\nCierpiących na pryczach.",
+                true,
+                UUID.fromString("789bd035-b492-4b26-9588-a671fe091d16")
+        );
+
+        // Nie zna śmierci Pan żywota
         slideRepository.insertSlide(
                 UUID.fromString("4f972b86-9c4c-4a34-9651-17c42438c523"),
                 0,
@@ -301,6 +358,7 @@ public class SlideInitializer {
                 UUID.fromString("60c81edc-a645-4fa6-9413-e32c71ad96a7")
         );
 
+        // Abba Ojcze
         slideRepository.insertSlide(
                 UUID.fromString("a6b09b3b-8bde-4f83-9481-c9e7245f0f68"),
                 0,
@@ -333,6 +391,7 @@ public class SlideInitializer {
                 UUID.fromString("1a03f4fe-a53a-435c-9a4e-fffc0819cdb0")
         );
 
+        // Psalm 23
         slideRepository.insertSlide(
                 UUID.fromString("c06f2be9-2c07-46a6-a4a0-70a4818d8a7d"),
                 0,
