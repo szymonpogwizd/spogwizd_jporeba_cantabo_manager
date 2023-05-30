@@ -109,6 +109,13 @@ public class SongInitializer {
                 true
         );
 
+        songRepository.insertSong(
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de"),
+                "Wszystko Tobie oddać pragnę",
+                0,
+                true
+        );
+
         // Psalmy
         songRepository.insertSong(
                 UUID.fromString("f4bb4062-dce9-4086-b02c-7c933d8e7745"),

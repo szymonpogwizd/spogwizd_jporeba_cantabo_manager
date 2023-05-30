@@ -81,5 +81,21 @@ public class PlaylistSongInitializer {
                 UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
                 UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
         );
+
+        // II Niedziela okresu Wielkanocnego
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("faa35a7d-3051-415d-a64f-e9919334e75b"),
+                UUID.fromString("60c81edc-a645-4fa6-9413-e32c71ad96a7")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("faa35a7d-3051-415d-a64f-e9919334e75b"),
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de")
+        );
+
+        playlistRepository.insertPlaylistSong(
+                UUID.fromString("faa35a7d-3051-415d-a64f-e9919334e75b"),
+                UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
+        );
     }
 }

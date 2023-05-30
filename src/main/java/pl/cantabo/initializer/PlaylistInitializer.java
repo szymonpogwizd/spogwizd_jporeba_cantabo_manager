@@ -36,5 +36,11 @@ public class PlaylistInitializer {
                 "Adoracja Najświętszego Sakramentu",
                 true
         );
+
+        playlistRepository.insertPlaylist(
+                UUID.fromString("faa35a7d-3051-415d-a64f-e9919334e75b"),
+                "II Niedziela okresu Wielkanocnego",
+                true
+        );
     }
 }

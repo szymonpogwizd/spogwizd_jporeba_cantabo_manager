@@ -37,5 +37,11 @@ public class PlaylistPlaylistCategoryInitializer {
                 UUID.fromString("20158e2a-9de4-4067-a62b-c7f0e66e167c"),
                 UUID.fromString("5e94c08b-8e9a-4f4d-b4d2-df6658a297c6")
         );
+
+        // Msza święta
+        playlistCategoryRepository.insertPlaylistPlaylistCategory(
+                UUID.fromString("faa35a7d-3051-415d-a64f-e9919334e75b"),
+                UUID.fromString("f2cbf45e-54b8-4e56-8a94-d1b118f810d0")
+        );
     }
 }

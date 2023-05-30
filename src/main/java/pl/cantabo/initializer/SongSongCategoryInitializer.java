@@ -83,6 +83,11 @@ public class SongSongCategoryInitializer {
                 UUID.fromString("1684a118-9e33-4f45-8aeb-d3e1b51ef2be")
         );
 
+        songCategoryRepository.insertSongSongCategory(
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de"),
+                UUID.fromString("1684a118-9e33-4f45-8aeb-d3e1b51ef2be")
+        );
+
         // Psalmy
         songCategoryRepository.insertSongSongCategory(
                 UUID.fromString("f4bb4062-dce9-4086-b02c-7c933d8e7745"),

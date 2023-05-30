@@ -500,6 +500,39 @@ public class SlideInitializer {
                 UUID.fromString("af0b1fe7-6889-4314-8de1-9361b2c78e7e")
         );
 
+        // Wszystko Tobie oddać pragnę
+        slideRepository.insertSlide(
+                UUID.fromString("0fc21a22-0ebb-4737-9069-d9fbcfa6cd4f"),
+                0,
+                "<p>Wszystko Tobie oddać pragnę</p><p>i dla Ciebie tylko żyć!</p><p>Chcę Cię Jezu kochać wiernie</p><p>dzieckiem Twoim zawsze być!</p>",
+                true,
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("638397c4-a5ab-4048-8376-d28d1a696b31"),
+                1,
+                "<p>Serce moje weź, niech Twą śpiewa cześć,</p><p>serce moje, duszę moją, Panie Jezu weź!</p>",
+                true,
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("a7e9cc6a-e999-47ff-aacb-5ee9aae9d94d"),
+                2,
+                "<p>Wszystko Tobie oddać pragnę</p><p>od najmłodszych moich lat.</p><p>Pomóż Jezu by mnie nie zwiódł</p><p>pokusami swymi świat.</p>",
+                true,
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de")
+        );
+
+        slideRepository.insertSlide(
+                UUID.fromString("a5486f9e-bef4-4c16-bcee-f8d8d660763a"),
+                3,
+                "<p>Serce moje weź, niech Twą śpiewa cześć,</p><p>serce moje, duszę moją, Panie Jezu weź!</p>",
+                true,
+                UUID.fromString("f127ab80-84ee-4d26-a6ff-573d27b451de")
+        );
+
         // Psalm 23
         slideRepository.insertSlide(
                 UUID.fromString("c06f2be9-2c07-46a6-a4a0-70a4818d8a7d"),
