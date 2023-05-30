@@ -1,0 +1,29 @@
+package pl.cantabo.initializer;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+@Component
+@RequiredArgsConstructor
+public class DatabaseInitializer implements CommandLineRunner {
+
+    private final SongInitializer songInitializer;
+    private final SlideInitializer slideInitializer;
+    private final SongCategoryInitializer songCategoryInitializer;
+    private final PlaylistCategoryInitializer playlistCategoryInitializer;
+    private final ProfileInitializer profileInitializer;
+    private final UserInitializer userInitializer;
+
+    @Override
+    @Transactional
+    public void run(String... args) throws Exception {
+        userInitializer.initialize();
+        songInitializer.initialize();
+        slideInitializer.initialize();
+        songCategoryInitializer.initialize();
+        playlistCategoryInitializer.initialize();
+        profileInitializer.initialize();
+    }
+}

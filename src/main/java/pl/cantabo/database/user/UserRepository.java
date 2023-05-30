@@ -1,7 +1,9 @@
 package pl.cantabo.database.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +24,17 @@ public interface UserRepository extends JpaRepository<UserDAO, UUID> {
 
     @Query("SELECT COUNT(u) FROM UserDAO u")
     int countUsers();
+
+    @Modifying
+    @Query(value = "INSERT INTO users (id, active, email, name, password, user_type, default_item) " +
+            "VALUES (:id, :active, :email, :name, :password, :userType, :defaultItem) ON CONFLICT DO NOTHING", nativeQuery = true)
+    void insertUser(
+            @Param("id") UUID id,
+            @Param("active") boolean active,
+            @Param("email") String email,
+            @Param("name") String name,
+            @Param("password") String password,
+            @Param("userType") String userType,
+            @Param("defaultItem") boolean defaultItem
+    );
 }

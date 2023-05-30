@@ -1,6 +1,7 @@
 package pl.cantabo.database.song;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -19,4 +20,13 @@ public interface SongRepository extends JpaRepository<SongDAO, UUID> {
 
     @Query("SELECT COUNT(s) FROM SongDAO s")
     int countSongs();
+
+    @Modifying
+    @Query(value = "INSERT INTO songs (id, name, view_counter, default_item) VALUES (:id, :name, :viewCounter, :defaultItem) ON CONFLICT DO NOTHING", nativeQuery = true)
+    void insertSong(
+            @Param("id") UUID id,
+            @Param("name") String name,
+            @Param("viewCounter") int viewCounter,
+            @Param("defaultItem") boolean defaultItem
+    );
 }
