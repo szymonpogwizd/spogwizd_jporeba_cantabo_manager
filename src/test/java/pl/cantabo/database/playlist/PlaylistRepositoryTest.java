@@ -49,8 +49,8 @@ public class PlaylistRepositoryTest {
     @Test
     public void findAllPlaylistTest() {
         //given
-        PlaylistDAO playlistDAO1 = PlaylistDAOFactory.defaultBuilder().build();
-        PlaylistDAO playlistDAO2 = PlaylistDAOFactory.defaultBuilder().build();
+        PlaylistDAO playlistDAO1 = PlaylistDAOFactory.defaultBuilder().name("playlist1").build();
+        PlaylistDAO playlistDAO2 = PlaylistDAOFactory.defaultBuilder().name("playlist2").build();
         playlistRepository.saveAndFlush(playlistDAO1);
         playlistRepository.saveAndFlush(playlistDAO2);
         // when

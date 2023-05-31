@@ -70,8 +70,8 @@ class ProfileRepositoryTest {
     @Test
     public void findAllProfileTest() {
         // given
-        ProfileDAO profileDAO1 = ProfileDAOFactory.defaultBuilder().build();
-        ProfileDAO profileDAO2 = ProfileDAOFactory.defaultBuilder().build();
+        ProfileDAO profileDAO1 = ProfileDAOFactory.defaultBuilder().name("profile1").build();
+        ProfileDAO profileDAO2 = ProfileDAOFactory.defaultBuilder().name("profile2").build();
         profileRepository.saveAndFlush(profileDAO1);
         profileRepository.saveAndFlush(profileDAO2);
 

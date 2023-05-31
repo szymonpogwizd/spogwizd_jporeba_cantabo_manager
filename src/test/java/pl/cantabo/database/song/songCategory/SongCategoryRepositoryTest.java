@@ -71,8 +71,8 @@ class SongCategoryRepositoryTest {
     @Test
     public void findAllSongCategoryTest() {
         // given
-        SongCategoryDAO songCategoryDAO = SongCategoryDAOFactory.defaultBuilder().build();
-        SongCategoryDAO songCategoryDAO2 = SongCategoryDAOFactory.defaultBuilder().build();
+        SongCategoryDAO songCategoryDAO = SongCategoryDAOFactory.defaultBuilder().name("song1").build();
+        SongCategoryDAO songCategoryDAO2 = SongCategoryDAOFactory.defaultBuilder().name("song2").build();
 
         // when
         songCategoryRepository.saveAndFlush(songCategoryDAO);

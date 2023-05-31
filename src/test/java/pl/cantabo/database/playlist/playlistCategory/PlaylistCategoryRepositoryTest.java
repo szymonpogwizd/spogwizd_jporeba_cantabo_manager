@@ -64,8 +64,8 @@ public class PlaylistCategoryRepositoryTest {
     @Test
     public void findAllPlaylistCategoryTest() {
         //given
-        PlaylistCategoryDAO playlistCategoryDAO1 = PlaylistCategoryDAOFactory.defaultBuilder().build();
-        PlaylistCategoryDAO playlistCategoryDAO2 = PlaylistCategoryDAOFactory.defaultBuilder().build();
+        PlaylistCategoryDAO playlistCategoryDAO1 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlist1").build();
+        PlaylistCategoryDAO playlistCategoryDAO2 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlist2").build();
         //when
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO1);
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO2);
