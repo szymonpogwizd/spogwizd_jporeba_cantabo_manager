@@ -1,11 +1,14 @@
 package pl.cantabo.controller;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.group.GroupDAO;
@@ -28,12 +31,15 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ContextConfiguration(classes = MapperConfiguration.class)
-@WebMvcTest
+@RunWith(SpringRunner.class)
+@WebMvcTest(UserController.class)
+@WithMockUser(username = "user", roles = "USER")
 class UserControllerTest {
 
     @Autowired
@@ -66,7 +72,7 @@ class UserControllerTest {
 
         // when
         // then
-        mockMvc.perform(post("/dashboard/users")
+        mockMvc.perform(post("/dashboard/users").with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JsonUtility.toJson(createDTO)))
                 .andExpect(status().isOk())
@@ -84,7 +90,7 @@ class UserControllerTest {
 
         // when
         // then
-        mockMvc.perform(post("/dashboard/users")
+        mockMvc.perform(post("/dashboard/users").with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(JsonUtility.toJson(createDTO)))
                 .andExpect(status().isOk());
@@ -98,7 +104,7 @@ class UserControllerTest {
 
         // when
         // then
-        mockMvc.perform(get("/dashboard/users"))
+        mockMvc.perform(get("/dashboard/users").with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()", is(givenUsers.size())));
     }
@@ -110,7 +116,7 @@ class UserControllerTest {
         when(userService.getAllUserTypes()).thenReturn(userTypes);
 
         // when
-        mockMvc.perform(get("/dashboard/users/userTypes"))
+        mockMvc.perform(get("/dashboard/users/userTypes").with(csrf()))
 
                 // then
                 .andExpect(status().isOk())
@@ -128,7 +134,7 @@ class UserControllerTest {
 
         // when
         // then
-        mockMvc.perform(get("/dashboard/users/groups"))
+        mockMvc.perform(get("/dashboard/users/groups").with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()", is(givenGroups.size())));
     }
@@ -140,7 +146,7 @@ class UserControllerTest {
 
         // when
         // then
-        mockMvc.perform(delete("/dashboard/users/" + UUID.randomUUID()))
+        mockMvc.perform(delete("/dashboard/users/" + UUID.randomUUID()).with(csrf()))
                 .andExpect(status().isOk());
     }
 }
