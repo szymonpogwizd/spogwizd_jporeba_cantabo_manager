@@ -74,7 +74,7 @@ VALUES ('aabd811e-97b5-4ed9-9650-242a30b2f119', true, 'szymonpogwizd12@gmail.com
 ON CONFLICT DO NOTHING;
 
 INSERT INTO users (id, active, email, name, password, user_type, default_item)
-VALUES ('4011b8d0-f4d3-42dd-a4be-b2e0dff0f219', true, 'jakubporeba@gmail.com', 'Jakub Poręba', '$2a$10$ZavydPLj7og39pWGFIKc0erCzLgGdxontrcwQ5c492ZcpcjwZa2W6', 'SUPER_ADMINISTRATOR', true)
+VALUES ('4011b8d0-f4d3-42dd-a4be-b2e0dff0f219', true, 'jakubporeba8@gmail.com', 'Jakub Poręba', '$2a$10$ZavydPLj7og39pWGFIKc0erCzLgGdxontrcwQ5c492ZcpcjwZa2W6', 'SUPER_ADMINISTRATOR', true)
 ON CONFLICT DO NOTHING;
 
 

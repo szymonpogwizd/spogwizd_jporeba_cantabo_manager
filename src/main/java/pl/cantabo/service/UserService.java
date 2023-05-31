@@ -62,8 +62,17 @@ public class UserService {
     }
 
     public void delete(UUID id) {
+        isSuperAdmin(id);
         log.debug("Deleting user {}", id);
         userRepository.deleteById(id);
+    }
+
+    public void isSuperAdmin(UUID id) {
+        UserDAO user = userRepository.findById(id)
+                .orElseThrow(() -> new ValidationException("User with id " + id + " was not found"));
+        if (user.getUserType() == UserType.SUPER_ADMINISTRATOR) {
+            throw new ValidationException("Nie można usunąć super administratora");
+        }
     }
 
     public List<UserDAO> getAll() {
