@@ -24,7 +24,7 @@ class SongServiceTest {
     @BeforeEach
     public void init() {
         songRepository = Mockito.mock(SongRepository.class);
-        songService = new SongService(songRepository, new SongValidator(songRepository));
+        songService = new SongService(songRepository, null,null,new SongValidator(songRepository));
     }
 
     @Test

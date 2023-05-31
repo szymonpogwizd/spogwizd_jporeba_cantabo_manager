@@ -31,7 +31,6 @@ public class SlideMapperTest {
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(slideDAO.getBody()).isEqualTo(slideInfoDTO.getBody());
         softly.assertThat(slideDAO.getItemOrder()).isEqualTo(slideInfoDTO.getItemOrder());
-        softly.assertThat(slideDAO.isDefaultItem()).isEqualTo(slideInfoDTO.isDefaultItem());
         softly.assertAll();
 
     }
@@ -47,7 +46,6 @@ public class SlideMapperTest {
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(slideCreateDTO.getBody()).isEqualTo(slideDAO.getBody());
         softly.assertThat(slideCreateDTO.getItemOrder()).isEqualTo(slideDAO.getItemOrder());
-        softly.assertThat(slideCreateDTO.getDefaultItem()).isEqualTo(slideDAO.isDefaultItem());
         softly.assertAll();
     }
 
