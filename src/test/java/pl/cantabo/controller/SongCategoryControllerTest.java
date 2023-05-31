@@ -1,10 +1,13 @@
 package pl.cantabo.controller;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.cantabo.database.configuration.MapperConfiguration;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
@@ -18,13 +21,16 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ContextConfiguration(classes = MapperConfiguration.class)
-@WebMvcTest
+@RunWith(SpringRunner.class)
+@WebMvcTest(SongCategoryController.class)
+@WithMockUser(username = "user", roles = "USER")
 public class SongCategoryControllerTest {
 
     @Autowired
@@ -56,7 +62,7 @@ public class SongCategoryControllerTest {
 
         // when
         // then
-        mockMvc.perform(get("/dashboard/songCategories"))
+        mockMvc.perform(get("/dashboard/songCategories").with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()", is(givenSongCategories.size())));
     }
@@ -68,7 +74,7 @@ public class SongCategoryControllerTest {
 
         // when
         // then
-        mockMvc.perform(delete("/dashboard/songCategories/" + UUID.randomUUID()))
+        mockMvc.perform(delete("/dashboard/songCategories/" + UUID.randomUUID()).with(csrf()))
                 .andExpect(status().isOk());
     }
 }
