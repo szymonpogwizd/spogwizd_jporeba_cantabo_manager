@@ -70,8 +70,8 @@ class SongRepositoryTest {
     @Test
     public void findAllSongsTest() {
         // given
-        SongDAO songDAO1 = SongDAOFactory.defaultBuilder().build();
-        SongDAO songDAO2 = SongDAOFactory.defaultBuilder().build();
+        SongDAO songDAO1 = SongDAOFactory.defaultBuilder().name("song1").build();
+        SongDAO songDAO2 = SongDAOFactory.defaultBuilder().name("song2").build();
         songRepository.saveAndFlush(songDAO1);
         songRepository.saveAndFlush(songDAO2);
 

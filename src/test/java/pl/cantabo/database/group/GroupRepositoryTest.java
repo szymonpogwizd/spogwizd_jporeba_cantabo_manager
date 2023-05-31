@@ -71,8 +71,8 @@ class GroupRepositoryTest {
     @Test
     public void findAllGroupTest() {
         // given
-        GroupDAO groupDAO1 = GroupDAOFactory.defaultBuilder().build();
-        GroupDAO groupDAO2 = GroupDAOFactory.defaultBuilder().build();
+        GroupDAO groupDAO1 = GroupDAOFactory.defaultBuilder().name("group1").build();
+        GroupDAO groupDAO2 = GroupDAOFactory.defaultBuilder().name("group2").build();
 
         // when
         groupRepository.saveAndFlush(groupDAO1);
