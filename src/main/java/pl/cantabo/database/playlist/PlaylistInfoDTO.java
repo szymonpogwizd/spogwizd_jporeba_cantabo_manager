@@ -16,7 +16,5 @@ public class PlaylistInfoDTO {
     private String name;
 
     private List<PlaylistCategoryDAO> playlistCategories;
-
-    private Set<SongDAO> songs;
 }
 

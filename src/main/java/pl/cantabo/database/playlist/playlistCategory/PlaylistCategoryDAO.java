@@ -22,7 +22,7 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "playlistCategories")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = PlaylistCategoryDAO.class)
 public class PlaylistCategoryDAO extends Auditable<UUID> {
 
     @Id
