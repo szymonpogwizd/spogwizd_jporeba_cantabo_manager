@@ -45,12 +45,15 @@ class UserServiceTest {
     }
 
     @Test
-    void delete() {
+    public void delete() {
         // given
         UUID id = UUID.randomUUID();
+        UserDAO userDAO = UserDAOFactory.defaultBuilder().build();
+        when(userRepository.existsById(id)).thenReturn(true);
+        when(userRepository.findById(id)).thenReturn(Optional.of(userDAO));
 
         // when
-        userService.delete(id);
+        assertDoesNotThrow(() -> userService.delete(id));
 
         // then
         verify(userRepository, times(1)).deleteById(id);

@@ -7,7 +7,7 @@ import java.util.List;
 public class GroupDAOFactory {
 
     public static final Boolean DEFAULT_ITEM = true;
-    public static final String NAME = null;
+    public static final String NAME = "Grouptest1";
 
     public static GroupDAO.GroupDAOBuilder defaultBuilder() {
         return GroupDAO.builder()
