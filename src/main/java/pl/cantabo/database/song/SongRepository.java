@@ -18,6 +18,9 @@ public interface SongRepository extends JpaRepository<SongDAO, UUID> {
     @Query("SELECT s FROM SongDAO s JOIN s.playlists p WHERE p.id = :playlistId")
     List<SongDAO> findSongsByPlaylistId(@Param("playlistId") UUID playlistId);
 
+    @Query("SELECT s FROM SongDAO s JOIN s.songCategories sc WHERE sc.id = :categoryId")
+    List<SongDAO> findSongsByCategoryId(UUID categoryId);
+
     @Query("SELECT COUNT(s) FROM SongDAO s")
     int countSongs();
 

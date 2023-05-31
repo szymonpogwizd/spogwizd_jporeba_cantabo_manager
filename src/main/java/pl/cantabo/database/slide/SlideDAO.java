@@ -1,6 +1,5 @@
 package pl.cantabo.database.slide;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -22,6 +21,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Table(name = "slides")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = SlideDAO.class)
 public class SlideDAO extends Auditable<UUID> {
 
     @Id

@@ -24,7 +24,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Table(name = "playlists")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = PlaylistDAO.class)
 public class PlaylistDAO  extends Auditable<UUID>  {
 
     @Id

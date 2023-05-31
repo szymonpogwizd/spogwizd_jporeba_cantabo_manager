@@ -16,6 +16,4 @@ public class SongInfoDTO {
     private String musicAuthor;
 
     private String wordsAuthor;
-
-    private List<SongCategoryDAO> songCategories;
 }

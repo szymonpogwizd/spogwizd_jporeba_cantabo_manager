@@ -22,10 +22,28 @@ public class SongController {
     private final SongMapper songMapper;
 
     @GetMapping
-    public List<SongInfoDTO> getAll() {
+    public List<SongInfoDTO> getAll(@RequestParam(required = false) UUID category) {
+        if (category != null) {
+            return getSongsByCategory(category);
+        } else {
+            return getAllSongs();
+        }
+    }
+
+    private List<SongInfoDTO> getAllSongs() {
         log.debug("Getting all songs");
         return log.traceExit(
                 songService.getAll()
+                        .stream()
+                        .map(songMapper::songDAO2SongInfoDTO)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    private List<SongInfoDTO> getSongsByCategory(UUID category) {
+        log.debug("Getting songs by category: {}", category);
+        return log.traceExit(
+                songService.getAllByCategory(category)
                         .stream()
                         .map(songMapper::songDAO2SongInfoDTO)
                         .collect(Collectors.toList())

@@ -13,6 +13,4 @@ public class SlideInfoDTO {
     private String body;
 
     private Integer itemOrder;
-
-    private SongDAO song;
 }
