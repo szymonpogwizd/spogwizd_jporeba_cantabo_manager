@@ -44,10 +44,28 @@ public class PlaylistController {
     }
 
     @GetMapping
-    public List<PlaylistInfoDTO> getAll() {
+    public List<PlaylistInfoDTO> getAll(@RequestParam(required = false) UUID category) {
+        if (category != null) {
+            return getPlaylistsByCategory(category);
+        } else {
+            return getAllPlaylists();
+        }
+    }
+
+    private List<PlaylistInfoDTO> getAllPlaylists() {
         log.debug("Getting all playlists");
         return log.traceExit(
                 playlistService.getAll()
+                        .stream()
+                        .map(playlistMapper::playlistDAO2PlaylistInfoDTO)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    private List<PlaylistInfoDTO> getPlaylistsByCategory(UUID category) {
+        log.debug("Getting playlists by category: {}", category);
+        return log.traceExit(
+                playlistService.getAllByCategory(category)
                         .stream()
                         .map(playlistMapper::playlistDAO2PlaylistInfoDTO)
                         .collect(Collectors.toList())

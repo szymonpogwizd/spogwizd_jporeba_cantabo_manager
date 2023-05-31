@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -16,6 +17,9 @@ public interface PlaylistRepository extends JpaRepository<PlaylistDAO, UUID> {
 
     @Query("SELECT COUNT(p) FROM PlaylistDAO p")
     int countPlaylists();
+
+    @Query("SELECT p FROM PlaylistDAO p JOIN p.playlistCategories pc WHERE pc.id = :categoryId")
+    List<PlaylistDAO> findPlaylistsByCategoryId(UUID categoryId);
 
     @Modifying
     @Query(value = "INSERT INTO playlists (id, name, default_item) " +

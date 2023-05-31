@@ -55,6 +55,11 @@ public class PlaylistService {
         return log.traceExit(playlistRepository.findAll());
     }
 
+    public List<PlaylistDAO> getAllByCategory(UUID category) {
+        log.debug("Getting all playlists by category: {}", category);
+        return log.traceExit(playlistRepository.findPlaylistsByCategoryId(category));
+    }
+
     public List<SongDAO> getSongsByPlaylistId(UUID id) {
         log.debug("Getting all songs for playlist");
         return log.traceExit(songRepository.findSongsByPlaylistId(id));
