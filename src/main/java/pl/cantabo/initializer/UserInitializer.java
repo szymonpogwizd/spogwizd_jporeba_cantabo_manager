@@ -57,7 +57,7 @@ public class UserInitializer {
         userRepository.insertUser(
                 UUID.fromString("4011b8d0-f4d3-42dd-a4be-b2e0dff0f219"),
                 true,
-                "jakubporeba@gmail.com",
+                "jakubporeba8@gmail.com",
                 "Jakub Poręba",
                 "$2a$10$ZavydPLj7og39pWGFIKc0erCzLgGdxontrcwQ5c492ZcpcjwZa2W6",
                 "SUPER_ADMINISTRATOR",
