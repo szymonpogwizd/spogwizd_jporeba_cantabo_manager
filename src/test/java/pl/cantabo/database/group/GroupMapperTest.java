@@ -12,7 +12,6 @@ import pl.cantabo.database.group.factory.GroupDTOFactory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MapperConfiguration.class)
 class GroupMapperTest {
@@ -22,48 +21,50 @@ class GroupMapperTest {
 
     @Test
     void groupDAO2GroupInfoDTO() {
-        //Given
+        // given
         GroupDAO groupDAO = GroupDAOFactory.defaultBuilder().build();
 
-        //when
+        // when
         GroupInfoDTO groupInfoDTO = groupMapper.groupDAO2GroupInfoDTO(groupDAO);
-        //then
+
+        // then
         assertNotNull(groupInfoDTO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(groupDAO.isDefaultItem()).isEqualTo(groupInfoDTO.getDefaultItem());
         softly.assertThat(groupDAO.getName()).isEqualTo(groupInfoDTO.getName());
         softly.assertAll();
-
     }
 
     @Test
     void groupCreateDTO2GroupDAO() {
-        //Given
+        // given
         GroupCreateDTO groupCreateDTO = GroupDTOFactory.defaultGroupCreateDTO();
-        //When
+
+        // when
         GroupDAO groupDAO = groupMapper.groupCreateDTO2GroupDAO(groupCreateDTO);
 
-        //Then
+        // then
         assertNotNull(groupDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(groupCreateDTO.getDefaultItem()).isEqualTo(groupDAO.isDefaultItem());
         softly.assertThat(groupCreateDTO.getName()).isEqualTo(groupDAO.getName());
         softly.assertAll();
-
     }
 
     @Test
     void groupUpdateDTO2GroupDAO() {
-        //given
+
+        // given
         GroupUpdateDTO groupUpdateDTO = GroupDTOFactory.defaultGroupUpdateDTO();
-        //when
+
+        // when
         GroupDAO groupDAO = groupMapper.groupUpdateDTO2GroupDAO(groupUpdateDTO);
-        //Then
+
+        //then
         assertNotNull(groupDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(groupUpdateDTO.getDefaultItem()).isEqualTo(groupDAO.isDefaultItem());
         softly.assertThat(groupUpdateDTO.getName()).isEqualTo(groupDAO.getName());
         softly.assertAll();
     }
-
 }

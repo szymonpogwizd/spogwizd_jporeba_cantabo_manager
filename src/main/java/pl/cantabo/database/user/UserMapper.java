@@ -5,7 +5,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import pl.cantabo.utils.password.EncodedMapping;
 import pl.cantabo.utils.password.PasswordEncoderMapper;
-import pl.cantabo.utils.password.PasswordEncoderMapper;
 
 @Mapper(
         componentModel = "spring",

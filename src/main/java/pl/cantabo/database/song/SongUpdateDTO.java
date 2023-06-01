@@ -1,7 +1,6 @@
 package pl.cantabo.database.song;
 
 import lombok.Data;
-import pl.cantabo.database.slide.SlideDAO;
 import pl.cantabo.database.song.songCategory.SongCategoryDAO;
 
 import javax.validation.constraints.NotBlank;

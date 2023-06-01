@@ -9,5 +9,4 @@ class CantaboApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

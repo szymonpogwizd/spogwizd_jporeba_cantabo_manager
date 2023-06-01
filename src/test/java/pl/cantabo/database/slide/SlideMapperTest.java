@@ -21,12 +21,13 @@ public class SlideMapperTest {
 
     @Test
     void slideDAO2SlideInfoDTO() {
-        //given
+        // given
         SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
-        //When
 
+        // when
         SlideInfoDTO slideInfoDTO = slideMapper.slideDAO2SlideInfoDTO(slideDAO);
-        //then
+
+        // then
         assertNotNull(slideInfoDTO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(slideDAO.getBody()).isEqualTo(slideInfoDTO.getBody());
@@ -37,11 +38,13 @@ public class SlideMapperTest {
 
     @Test
     void slideCreateDTO2SlideDAO() {
-        //Given
+        // given
         SlideCreateDTO slideCreateDTO = SlideDTOFactory.defaultSLideCreateDTO();
-        //when
+
+        // when
         SlideDAO slideDAO = slideMapper.slideCreateDTO2SlideDAO(slideCreateDTO);
-        //then
+
+        // then
         assertNotNull(slideDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(slideCreateDTO.getBody()).isEqualTo(slideDAO.getBody());
@@ -51,11 +54,13 @@ public class SlideMapperTest {
 
     @Test
     void slideUpdateDTO2SlideDAO() {
-        //Given
+        // given
         SlideUpdateDTO slideUpdateDTO = SlideDTOFactory.defaultSlideUpdateDTO();
-        //when
+
+        // when
         SlideDAO slideDAO = slideMapper.slideUpdateDTO2SlideDAO(slideUpdateDTO);
-        //then
+
+        // then
         assertNotNull(slideDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(slideUpdateDTO.getBody()).isEqualTo(slideDAO.getBody());

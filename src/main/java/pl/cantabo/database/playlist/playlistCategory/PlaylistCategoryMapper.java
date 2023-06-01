@@ -14,5 +14,4 @@ public interface PlaylistCategoryMapper {
     PlaylistCategoryDAO playlistCategoryCreateDTO2PlaylistCategoryDAO(PlaylistCategoryCreateDTO playlistCategoryCreateDTO);
 
     PlaylistCategoryDAO playlistCategoryUpdateDTO2PlaylistCategoryDAO(PlaylistCategoryUpdateDTO playlistCategoryUpdateDTO);
-
 }

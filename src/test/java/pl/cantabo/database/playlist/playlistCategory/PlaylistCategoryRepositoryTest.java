@@ -25,25 +25,29 @@ public class PlaylistCategoryRepositoryTest {
 
     @Test
     public void savePlaylistCategoryTest() {
-        //given
+        // given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         PlaylistCategoryDAO savedPlaylistCategoryDAO = playlistCategoryRepository.saveAndFlush(playlistCategoryDAO);
-        //then
+
+        // then
         assertNotNull(savedPlaylistCategoryDAO.getId());
         assertEquals(playlistCategoryDAO, savedPlaylistCategoryDAO);
     }
 
     @Test
     public void updatePlaylistCategoryTest() {
-        //given
+        // given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         playlistCategoryDAO.setName("old Name");
-        //when
+
+        // when
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO);
         playlistCategoryDAO.setName("new Name");
         PlaylistCategoryDAO savedPlaylistCategoryDAO = playlistCategoryRepository.saveAndFlush(playlistCategoryDAO);
-        //then
+
+        // then
         assertNotNull(savedPlaylistCategoryDAO);
         assertEquals(playlistCategoryDAO.getId(), savedPlaylistCategoryDAO.getId());
         assertEquals("new Name", savedPlaylistCategoryDAO.getName());
@@ -51,26 +55,30 @@ public class PlaylistCategoryRepositoryTest {
 
     @Test
     public void deletePlaylistCategory() {
-        //given
+        // given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO);
-        //when
+
+        // when
         playlistCategoryRepository.delete(playlistCategoryDAO);
         Optional<PlaylistCategoryDAO> deletedPlaylistCategoryDAO = playlistCategoryRepository.findById(playlistCategoryDAO.getId());
-        //then
+
+        // then
         assertFalse(deletedPlaylistCategoryDAO.isPresent());
     }
 
     @Test
     public void findAllPlaylistCategoryTest() {
-        //given
+        // given
         PlaylistCategoryDAO playlistCategoryDAO1 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlist1").build();
         PlaylistCategoryDAO playlistCategoryDAO2 = PlaylistCategoryDAOFactory.defaultBuilder().name("playlist2").build();
-        //when
+
+        // when
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO1);
         playlistCategoryRepository.saveAndFlush(playlistCategoryDAO2);
         List<PlaylistCategoryDAO> playlistCategoryDAOList = playlistCategoryRepository.findAll();
-        //then
+
+        // then
         assertEquals(2, playlistCategoryDAOList.size());
     }
 }

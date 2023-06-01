@@ -7,7 +7,6 @@ import org.mapstruct.ReportingPolicy;
         componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-
 public interface GroupMapper {
 
     GroupInfoDTO groupDAO2GroupInfoDTO(GroupDAO groupDAO);

@@ -71,8 +71,8 @@ class UserRepositoryTest {
     @Test
     public void findAllUserTest() {
         // given
-        UserDAO userDAO = UserDAOFactory.defaultBuilder().name("Użytkownik1").email("user1@example.com").build();
-        UserDAO userDAO2 = UserDAOFactory.defaultBuilder().name("Użytkownik2").email("user2@example.com").build();
+        UserDAO userDAO = UserDAOFactory.defaultBuilder().name("user1").email("user1@example.com").build();
+        UserDAO userDAO2 = UserDAOFactory.defaultBuilder().name("user2").email("user2@example.com").build();
         userRepository.saveAndFlush(userDAO);
         userRepository.saveAndFlush(userDAO2);
 
@@ -108,10 +108,9 @@ class UserRepositoryTest {
     @Test
     public void findUserByUserTypeTest() {
         // given
-        UserDAO user1 = UserDAOFactory.defaultBuilder().userType(UserType.USER).name("Użytkownik1").email("user1@example.com").build();
-        UserDAO user2 = UserDAOFactory.defaultBuilder().userType(UserType.USER).name("Użytkownik2").email("user2@example.com").build();
+        UserDAO user1 = UserDAOFactory.defaultBuilder().userType(UserType.USER).name("User1").email("user1@example.com").build();
+        UserDAO user2 = UserDAOFactory.defaultBuilder().userType(UserType.USER).name("User2").email("user2@example.com").build();
         UserDAO admin = UserDAOFactory.defaultBuilder().userType(UserType.ADMINISTRATOR).name("Administrator").email("admin@example.com").build();
-
 
         userRepository.save(user1);
         userRepository.save(user2);
@@ -132,9 +131,8 @@ class UserRepositoryTest {
     @Test
     public void findUserByEmailTest() {
         // given
-        UserDAO user1 = UserDAOFactory.defaultBuilder().email("user1@example.com").name("Użytkownik1").build();
-        UserDAO user2 = UserDAOFactory.defaultBuilder().email("user2@example.com").name("Użytkownik2").build();
-
+        UserDAO user1 = UserDAOFactory.defaultBuilder().email("user1@example.com").name("User1").build();
+        UserDAO user2 = UserDAOFactory.defaultBuilder().email("user2@example.com").name("User2").build();
 
         userRepository.save(user1);
         userRepository.save(user2);

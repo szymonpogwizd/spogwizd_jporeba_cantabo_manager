@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 class SlideServiceTest {
+
     private SlideService slideService;
 
     private SlideRepository slideRepository;
@@ -27,32 +28,32 @@ class SlideServiceTest {
 
     @Test
     void create() {
-        //given
+        // given
         SlideDAO slide = SlideDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         slideService.create(slide);
 
-        //then
+        // then
         verify(slideRepository, times(1)).save(slide);
         assertNotNull(slide);
     }
 
     @Test
     void delete() {
-        //given
+        // given
         UUID id = UUID.randomUUID();
 
-        //when
+        // when
         slideService.delete(id);
 
-        //then
+        // then
         verify(slideRepository, times(1)).deleteById(id);
-
     }
 
     @Test
     void getAll() {
-        //given
+        // given
         List<SlideDAO> slideList = List.of(
                 SlideDAOFactory.defaultBuilder().build(),
                 SlideDAOFactory.defaultBuilder().build(),
@@ -60,12 +61,11 @@ class SlideServiceTest {
         );
         when(slideRepository.findAll()).thenReturn(slideList);
 
-        //when
+        // when
         List<SlideDAO> slideDAOList = slideService.getAll();
 
         // then
         verify(slideRepository, times(1)).findAll();
         assertEquals(3, slideDAOList.size());
-
     }
 }

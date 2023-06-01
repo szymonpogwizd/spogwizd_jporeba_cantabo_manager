@@ -8,5 +8,4 @@ public class SettingsCreateDTO {
     private float fontSize;
 
     private boolean darkTheme;
-
 }

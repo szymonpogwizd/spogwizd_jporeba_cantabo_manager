@@ -11,7 +11,6 @@ import pl.cantabo.validator.email.Email;
 import pl.cantabo.validator.password.Password;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 

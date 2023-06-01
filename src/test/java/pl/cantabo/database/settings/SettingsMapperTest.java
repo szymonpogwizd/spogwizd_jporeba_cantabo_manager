@@ -19,14 +19,14 @@ class SettingsMapperTest {
     @Autowired
     private SettingsMapper settingsMapper;
 
-
     @Test
     void settingsDAO2SettingsDTO() {
-        //Given
+        // given
         SettingsDAO settingsDAO = SettingsDAOFactory.defaultBuilder().build();
-        // when
 
+        // when
         SettingsInfoDTO settingsInfoDTO = settingsMapper.settingsDA2SettingsDTO(settingsDAO);
+
         // then
         assertNotNull(settingsInfoDTO);
         SoftAssertions softly = new SoftAssertions();
@@ -37,12 +37,13 @@ class SettingsMapperTest {
 
     @Test
     void settingsCreateDAO2SettingsDTO() {
-        //Given
+        // given
         SettingsCreateDTO settingsCreateDTO = SettingsDTOFactory.defaultSettingsCreateDTO();
 
-        //when
+        // when
         SettingsDAO settingsDAO = settingsMapper.settingsCreateDAO2SettingsDTO(settingsCreateDTO);
-        //ten
+
+        // then
         assertNotNull(settingsDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(settingsCreateDTO.isDarkTheme()).isEqualTo(settingsDAO.isDarkTheme());
@@ -53,16 +54,17 @@ class SettingsMapperTest {
 
     @Test
     void settingsUpdateDAO2SettingsDTO() {
-        //Given
+        // given
         SettingsUpdateDTO settingsUpdateDTO = SettingsDTOFactory.defaultSettingsDTO();
-        //when
+
+        // when
         SettingsDAO settingsDAO = settingsMapper.settingsUpdateDAO2SettingsDTO(settingsUpdateDTO);
-        //then
+
+        // then
         assertNotNull(settingsDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(settingsUpdateDTO.isDarkTheme()).isEqualTo(settingsDAO.isDarkTheme());
         softly.assertThat(settingsDAO.getFontSize()).isEqualTo(settingsDAO.getFontSize());
         softly.assertAll();
-
     }
 }

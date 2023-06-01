@@ -6,6 +6,7 @@ import pl.cantabo.database.song.SongCreateDTO;
 
 import javax.validation.Valid;
 import java.util.List;
+
 @Data
 public class SongAndSlideCreateRequestDTO {
     @Valid

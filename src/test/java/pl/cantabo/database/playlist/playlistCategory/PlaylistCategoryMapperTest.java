@@ -21,11 +21,13 @@ public class PlaylistCategoryMapperTest {
 
     @Test
     void playlistCategoryDAO2PlaylistCategoryInfoDTO() {
-        //given
+        // given
         PlaylistCategoryDAO playlistCategoryDAO = PlaylistCategoryDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         PlaylistCategoryInfoDTO playlistCategoryInfoDTO = playlistCategoryMapper.playlistCategoryDAO2PlaylistCategoryInfoDTO(playlistCategoryDAO);
-        //then
+
+        // then
         assertNotNull(playlistCategoryInfoDTO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistCategoryDAO.getName()).isEqualTo(playlistCategoryInfoDTO.getName());
@@ -34,11 +36,13 @@ public class PlaylistCategoryMapperTest {
 
     @Test
     void playlistCategoryCreateDTO2PlaylistCategoryDAO() {
-        //given
+        // given
         PlaylistCategoryCreateDTO playlistCategoryCreateDTO = PlaylistCategoryDTOFactory.defaultPlaylistCategoryCreateDTO();
-        //when
+
+        // when
         PlaylistCategoryDAO playlistCategoryDAO = playlistCategoryMapper.playlistCategoryCreateDTO2PlaylistCategoryDAO(playlistCategoryCreateDTO);
-        //then
+
+        // then
         assertNotNull(playlistCategoryDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistCategoryCreateDTO.getName()).isEqualTo(playlistCategoryDAO.getName());
@@ -47,11 +51,13 @@ public class PlaylistCategoryMapperTest {
 
     @Test
     void playlistCategoryUpdateDTO2PlaylistCategoryDAO() {
-        //given
+        // given
         PlaylistCategoryUpdateDTO playlistCategoryUpdateDTO = PlaylistCategoryDTOFactory.defaultPlaylistCategoryDTO();
-        //when
+
+        // when
         PlaylistCategoryDAO playlistCategoryDAO = playlistCategoryMapper.playlistCategoryUpdateDTO2PlaylistCategoryDAO(playlistCategoryUpdateDTO);
-        //then
+
+        // then
         assertNotNull(playlistCategoryDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistCategoryUpdateDTO.getName()).isEqualTo(playlistCategoryDAO.getName());

@@ -10,7 +10,6 @@ import pl.cantabo.database.settings.factory.SettingsDAOFactory;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
 @SpringBootTest
 @Transactional
 public class SettingsRepositoryTest {
@@ -25,15 +24,14 @@ public class SettingsRepositoryTest {
 
     @Test
     public void saveSettingsTest() {
-        //given
+        // given
         SettingsDAO settingsDAO = SettingsDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         SettingsDAO savedSettingsDAO = settingsRepository.saveAndFlush(settingsDAO);
-        //then
+
+        // then
         assertNotNull(savedSettingsDAO.getId());
         assertEquals(settingsDAO, savedSettingsDAO);
-
     }
-
-
 }
