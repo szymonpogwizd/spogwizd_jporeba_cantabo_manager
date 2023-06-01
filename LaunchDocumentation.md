@@ -1,6 +1,6 @@
 # Instrukcja uruchomienia aplikacji
 
-**Szczegółowa instrukcja instalacji znajduje się [tutaj]([https://github.com/szymonpogwizd/spogwizd_jporeba_cantabo_manager/blob/main/LaunchDocumentation.pdf])**
+**Szczegółowa instrukcja instalacji znajduje się [tutaj](https://github.com/szymonpogwizd/spogwizd_jporeba_cantabo_manager/blob/main/LaunchDocumentation.pdf)**
 
 ## Wymagania wstępne
 - InteliJ IDEA
