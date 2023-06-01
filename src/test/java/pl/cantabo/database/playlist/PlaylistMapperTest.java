@@ -1,6 +1,5 @@
 package pl.cantabo.database.playlist;
 
-
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,11 +21,13 @@ public class PlaylistMapperTest {
 
     @Test
     void playlistDAO2PlaylistInfoDTO() {
-        //Given
+        // given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
+
         // when
         PlaylistInfoDTO playlistInfoDTO = playlistMapper.playlistDAO2PlaylistInfoDTO(playlistDAO);
-        //then
+
+        // then
         assertNotNull(playlistInfoDTO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistDAO.getName()).isEqualTo(playlistInfoDTO.getName());
@@ -35,12 +36,13 @@ public class PlaylistMapperTest {
 
     @Test
     void playlistCreateDTO2PlaylistDAO() {
-        //given
+        // given
         PlaylistCreateDTO playlistCreateDTO = PlaylistDTOFactory.defaultPlaylistCreateDTO();
 
-        //when
+        // when
         PlaylistDAO playlistDAO = playlistMapper.playlistCreateDTO2PlaylistDAO(playlistCreateDTO);
-        //then
+
+        // then
         assertNotNull(playlistDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistCreateDTO.getName()).isEqualTo(playlistDAO.getName());
@@ -49,14 +51,15 @@ public class PlaylistMapperTest {
 
     @Test
     void PlaylistUpdateDTO2PlaylistDAO() {
-        //given
+        // given
         PlaylistUpdateDTO playlistUpdateDTO = PlaylistDTOFactory.defaultPlaylistUpdateDTO();
-        //when
+
+        // when
         PlaylistDAO playlistDAO = playlistMapper.playlistUpdateDTO2PlaylistDAO(playlistUpdateDTO);
-        //then
+
+        // then
         assertNotNull(playlistDAO);
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(playlistUpdateDTO.getName()).isEqualTo(playlistDAO.getName());
-
     }
 }

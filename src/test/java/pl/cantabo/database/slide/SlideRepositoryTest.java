@@ -26,24 +26,28 @@ public class SlideRepositoryTest {
 
     @Test
     public void saveSlideTest() {
-        //givem
+        // given
         SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         SlideDAO savedSlideDAO = slideRepository.saveAndFlush(slideDAO);
-        //then
+
+        // then
         assertNotNull(savedSlideDAO.getId());
         assertEquals(slideDAO, savedSlideDAO);
     }
 
     @Test
     public void updateSlideTest() {
-        //given
+        // given
         SlideDAO slideDAO = SlideDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         slideRepository.saveAndFlush(slideDAO);
         slideDAO.setBody("newBody");
         SlideDAO savedSlideDAO = slideRepository.saveAndFlush(slideDAO);
-        //then
+
+        // then
         assertNotNull(savedSlideDAO);
         assertEquals(slideDAO.getId(), savedSlideDAO.getId());
         assertEquals("newBody", savedSlideDAO.getBody());
@@ -51,15 +55,16 @@ public class SlideRepositoryTest {
 
     @Test
     public void findSlideTest() {
-        //given
+        // given
         SlideDAO slideDAO1 = SlideDAOFactory.defaultBuilder().build();
         SlideDAO slideDAO2 = SlideDAOFactory.defaultBuilder().build();
         slideRepository.saveAndFlush(slideDAO1);
         slideRepository.saveAndFlush(slideDAO2);
-        //when
+
+        // when
         List<SlideDAO> allSlides = slideRepository.findAll();
+
         // then
         assertEquals(2, allSlides.size());
-
     }
 }

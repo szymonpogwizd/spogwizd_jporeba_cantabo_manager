@@ -15,7 +15,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Date;
 
 public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
 

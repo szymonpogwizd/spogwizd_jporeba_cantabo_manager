@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import pl.cantabo.database.slide.SlideDAO;
 import pl.cantabo.database.slide.SlideRepository;
+
 import java.util.List;
 import java.util.UUID;
 

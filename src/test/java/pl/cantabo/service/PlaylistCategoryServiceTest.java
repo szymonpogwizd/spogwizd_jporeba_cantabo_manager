@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 class PlaylistCategoryServiceTest {
+
     private PlaylistCategoryService playlistCategoryService;
     private PlaylistCategoryRepository playlistCategoryRepository;
 
@@ -25,33 +26,34 @@ class PlaylistCategoryServiceTest {
         playlistCategoryService = new PlaylistCategoryService(playlistCategoryRepository, new PlaylistCategoryValidator(playlistCategoryRepository));
     }
 
-
     @Test
     void create() {
-        //Given
+        // given
         PlaylistCategoryDAO playlistCategory = PlaylistCategoryDAOFactory.defaultBuilder().build();
 
-        //when
+        // when
         playlistCategoryService.create(playlistCategory);
-        //then
+
+        // then
         verify(playlistCategoryRepository, times(1)).save(playlistCategory);
         assertNotNull(playlistCategory);
     }
 
     @Test
     void delete() {
-        //given
+        // given
         UUID id = UUID.randomUUID();
-        //when
-        playlistCategoryService.delete(id);
-        //then
-        verify(playlistCategoryRepository, times(1)).deleteById(id);
 
+        // when
+        playlistCategoryService.delete(id);
+
+        // then
+        verify(playlistCategoryRepository, times(1)).deleteById(id);
     }
 
     @Test
     void getAll() {
-        //given
+        // given
         List<PlaylistCategoryDAO> playlistCategoryList = List.of(
                 PlaylistCategoryDAOFactory.defaultBuilder().build(),
                 PlaylistCategoryDAOFactory.defaultBuilder().build(),
@@ -60,11 +62,10 @@ class PlaylistCategoryServiceTest {
 
         when(playlistCategoryRepository.findAll()).thenReturn(playlistCategoryList);
 
-        //when
+        // when
         List<PlaylistCategoryDAO> result = playlistCategoryService.getAll();
 
-        //then
-
+        // then
         verify(playlistCategoryRepository, times(1)).findAll();
         assertEquals(playlistCategoryList, result);
     }

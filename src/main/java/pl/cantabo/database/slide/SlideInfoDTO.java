@@ -1,7 +1,6 @@
 package pl.cantabo.database.slide;
 
 import lombok.Data;
-import pl.cantabo.database.song.SongDAO;
 
 import java.util.UUID;
 

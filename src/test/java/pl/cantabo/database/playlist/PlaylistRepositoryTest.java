@@ -27,9 +27,11 @@ public class PlaylistRepositoryTest {
     public void savePlaylistTest() {
         //given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
-        //when
+
+        // when
         PlaylistDAO savedPlaylistDAO = playlistRepository.saveAndFlush(playlistDAO);
-        //then
+
+        // then
         assertNotNull(savedPlaylistDAO.getId());
         assertEquals(playlistDAO, savedPlaylistDAO);
     }
@@ -39,24 +41,27 @@ public class PlaylistRepositoryTest {
         //given
         PlaylistDAO playlistDAO = PlaylistDAOFactory.defaultBuilder().build();
         playlistRepository.saveAndFlush(playlistDAO);
-        //when
+
+        // when
         playlistRepository.delete(playlistDAO);
         PlaylistDAO deletedPlaylistDAO = playlistRepository.findById(playlistDAO.getId()).orElse(null);
-        //then
+
+        // then
         assertNull(deletedPlaylistDAO);
     }
 
     @Test
     public void findAllPlaylistTest() {
-        //given
+        // given
         PlaylistDAO playlistDAO1 = PlaylistDAOFactory.defaultBuilder().name("playlist1").build();
         PlaylistDAO playlistDAO2 = PlaylistDAOFactory.defaultBuilder().name("playlist2").build();
         playlistRepository.saveAndFlush(playlistDAO1);
         playlistRepository.saveAndFlush(playlistDAO2);
+
         // when
         List<PlaylistDAO> allPlaylist = playlistRepository.findAll();
-        //then
-        assertEquals(2, allPlaylist.size());
 
+        // then
+        assertEquals(2, allPlaylist.size());
     }
 }

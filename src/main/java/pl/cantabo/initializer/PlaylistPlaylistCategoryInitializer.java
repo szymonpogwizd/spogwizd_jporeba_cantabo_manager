@@ -3,7 +3,6 @@ package pl.cantabo.initializer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.cantabo.database.playlist.playlistCategory.PlaylistCategoryRepository;
-import pl.cantabo.database.song.songCategory.SongCategoryRepository;
 
 import java.util.UUID;
 

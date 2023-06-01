@@ -27,29 +27,32 @@ class GroupServiceTest {
 
     @Test
     void create() {
-        //given
+        // given
         GroupDAO group = GroupDAOFactory.defaultBuilder().build();
 
         // when
         groupService.create(group);
-        //then
+
+        // then
         verify(groupRepository, times(1)).save(group);
         assertNotNull(group);
     }
 
     @Test
     void delete() {
-        //given
+        // given
         UUID id = UUID.randomUUID();
-        //when
+
+        // when
         groupService.delete(id);
-        //then
+
+        // then
         verify(groupRepository, times(1)).deleteById(id);
     }
 
     @Test
     void getAll() {
-        //given
+        // given
         List<GroupDAO> groupList = List.of(
                 GroupDAOFactory.defaultBuilder().build(),
                 GroupDAOFactory.defaultBuilder().build(),
@@ -58,10 +61,10 @@ class GroupServiceTest {
 
         when(groupRepository.findAll()).thenReturn(groupList);
 
-        //when
+        // when
         List<GroupDAO> groupDAOList = groupService.getAll();
 
-        //then
+        // then
         verify(groupRepository, times(1)).findAll();
         assertEquals(3, groupDAOList.size());
     }
