@@ -17,5 +17,5 @@
 - Szczegółowa dokumentacja uruchomienia aplikacji: https://github.com/szymonpogwizd/spogwizd_jporeba_cantabo_manager/blob/main/LaunchDocumentation.pdf <br>
 
 ### Autorzy: 
-- Szymon Pogwizd 
-- Jakub Poręba
+- Szymon Pogwizd szymonpogwizd12@gmail.com
+- Jakub Poręba jakubporeba8@gmail.com
